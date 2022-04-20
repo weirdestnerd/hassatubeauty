@@ -1,5 +1,3 @@
-import Logo from '../../images/Logo.PNG'
-import ComingSoonPhoto from '../../images/coming_soon.jpg'
 import NotifyMeForm from "./NotifyMeForm";
 
 const offers = [
@@ -23,7 +21,7 @@ const ComingSoon = () => {
                                             <span className="sr-only">Hassatu Beauty</span>
                                             <img
                                                 className="h-8 w-auto"
-                                                src={Logo}
+                                                src="https://f004.backblazeb2.com/file/coming-soon-page/logo.PNG"
                                                 alt=""
                                             />
                                         </a>
@@ -33,7 +31,7 @@ const ComingSoon = () => {
                                     <a href="/" className="lg:hidden">
                                         <span className="sr-only">Hassatu Beauty</span>
                                         <img
-                                            src={Logo}
+                                            src="https://f004.backblazeb2.com/file/coming-soon-page/logo.PNG"
                                             alt=""
                                             className="h-8 w-auto"
                                         />
@@ -77,8 +75,7 @@ const ComingSoon = () => {
                         </div>
                         <div className="hidden w-full h-48 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full lg:block">
                             <img
-                                // src="https://tailwindui.com/img/ecommerce-images/home-page-02-hero-half-width.jpg"
-                                src={ComingSoonPhoto}
+                                src="https://f004.backblazeb2.com/file/coming-soon-page/coming_soon.jpg"
                                 alt=""
                                 className="w-full h-full object-center object-cover"
                             />
@@ -128,7 +125,7 @@ const ComingSoon = () => {
                             </a>
                             <a href="#!" className="mr-6 text-gray-600">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
-                                     className="w-3.5" role="img"
+                                     className="w-6 h-6 text-blue-600 fill-current" role="img"
                                      xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 448 512">
                                     <path fill="currentColor"
