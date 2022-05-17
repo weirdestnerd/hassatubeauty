@@ -74,7 +74,7 @@ const ComingSoon = () => {
                                         <p className="mt-4 text-xl text-gray-600">
                                             Once our awesomeness is ready for you, we'll email you.
                                         </p>
-                                        
+                                        <p>n: {process.env.NODE_ENV}</p>
                                         <NotifyMeForm setConfirmationModal={setConfirmationModel}/>
                                         
                                     </div>
