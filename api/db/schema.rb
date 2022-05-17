@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2022_04_20_061753) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "coming_soon_emails", force: :cascade do |t|
     t.string "email"
     t.boolean "confirmation_email_sent"
