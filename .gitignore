@@ -6,6 +6,7 @@
 
 .DS_Store
 .idea/
+.firebase
 
 # Ignore bundler config.
 api/.bundle
@@ -34,6 +35,8 @@ api/.byebug_history
 api/config/master.key
 
 api/.gitignore
+
+api/config/local_env.yml
 
 frontend/node_modules
 

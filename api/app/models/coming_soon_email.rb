@@ -1,0 +1,2 @@
+class ComingSoonEmail < ApplicationRecord
+end

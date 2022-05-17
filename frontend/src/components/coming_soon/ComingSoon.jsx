@@ -1,4 +1,6 @@
 import NotifyMeForm from "./NotifyMeForm";
+import Modal from "../Modal";
+import {useState} from "react";
 
 const offers = [
     { name: 'Customization like never before', description: 'You\'ll customize your wig to your taste', href: '#' },
@@ -7,8 +9,13 @@ const offers = [
 ]
 
 const ComingSoon = () => {
+    const [confirmationModal, setConfirmationModel] = useState(false)
+
     return (
         <div className="bg-white">
+    
+            {confirmationModal && <Modal onClose={() => setConfirmationModel(false)} />}
+            
             <header className="relative z-10">
                 <nav aria-label="Top">
                     <div className="bg-white">
@@ -68,7 +75,8 @@ const ComingSoon = () => {
                                             Once our awesomeness is ready for you, we'll email you.
                                         </p>
                                         
-                                        <NotifyMeForm />
+                                        <NotifyMeForm setConfirmationModal={setConfirmationModel}/>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +98,10 @@ const ComingSoon = () => {
                             >
                                 {offers.map((offer) => (
                                     <li key={offer.name} className="flex flex-col">
-                                        <a
-                                            href={offer.href}
-                                            className="relative flex-1 flex flex-col justify-center bg-white py-6 px-4 text-center focus:z-10"
-                                        >
+                                        <div className="relative flex-1 flex flex-col justify-center bg-white py-6 px-4 text-center focus:z-10">
                                             <p className="text-sm text-gray-500">{offer.name}</p>
                                             <p className="font-semibold text-gray-900">{offer.description}</p>
-                                        </a>
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
@@ -142,31 +147,8 @@ const ComingSoon = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="py-10 md:flex md:items-center md:justify-between">
                         <div className="text-center md:text-left">
-                            <p className="text-sm text-gray-500">&copy; 2021 All Rights Reserved</p>
+                            <p className="text-sm text-gray-500">&copy; 2022 All Rights Reserved</p>
                         </div>
-                        
-                        {/*TODO: Replace w/ social media links*/}
-                        {/*<div className="mt-4 flex items-center justify-center md:mt-0">*/}
-                        {/*    <div className="flex space-x-8">*/}
-                        {/*        {footerNavigation.bottomLinks.map((item) => (*/}
-                        {/*            <a key={item.name} href={item.href} className="text-sm text-gray-500 hover:text-gray-600">*/}
-                        {/*                {item.name}*/}
-                        {/*            </a>*/}
-                        {/*        ))}*/}
-                        {/*    </div>*/}
-                        {/*    */}
-                        {/*    <div className="ml-6 border-l border-gray-200 pl-6">*/}
-                        {/*        <a href="#" className="flex items-center text-gray-500 hover:text-gray-600">*/}
-                        {/*            <img*/}
-                        {/*                src="https://tailwindui.com/img/flags/flag-canada.svg"*/}
-                        {/*                alt=""*/}
-                        {/*                className="w-5 h-auto flex-shrink-0"*/}
-                        {/*            />*/}
-                        {/*            <span className="ml-3 text-sm">Change</span>*/}
-                        {/*            <span className="sr-only">location and currency</span>*/}
-                        {/*        </a>*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                     </div>
                 </div>
             </footer>
