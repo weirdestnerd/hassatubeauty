@@ -10,6 +10,8 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: hassatubeauty
+  username: hassatubeauty
 
 development:
   <<: *default
@@ -71,6 +73,4 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  database: hassatubeauty_production
-  username: hassatubeauty
   password: <%= ENV['DB_PASSWORD'] %>
