@@ -6,7 +6,7 @@ const NotifyMeForm = ({ setConfirmationModal }) => {
     const onSubmit = (values) => {
         axios({
             method: 'POST',
-            url: '/notify_new_email',
+            url: '/api/notify_new_email',
             data: {
                 email: values.email,
             }
