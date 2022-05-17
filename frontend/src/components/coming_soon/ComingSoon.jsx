@@ -93,7 +93,6 @@ const ComingSoon = () => {
                     <nav aria-label="Offers" className="order-last lg:order-first">
                         <div className="max-w-7xl mx-auto lg:px-8">
                             <ul
-                                role="list"
                                 className="grid grid-cols-1 divide-y divide-gray-200 lg:grid-cols-3 lg:divide-y-0 lg:divide-x"
                             >
                                 {offers.map((offer) => (
