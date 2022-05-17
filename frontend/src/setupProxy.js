@@ -4,9 +4,9 @@ module.exports = function(app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: process.env.REACT_ENV === 'prod' ? 'https://hassatubeauty.onrender.com' : 'http://localhost:4000',
+            target: process.env.NODE_ENV === 'production' ? 'https://hassatubeauty.onrender.com' : 'http://localhost:4000',
             changeOrigin: true,
-            secure: process.env.REACT_ENV === 'prod',
+            secure: process.env.NODE_ENV === 'production',
         })
     );
 };
