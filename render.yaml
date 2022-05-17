@@ -7,7 +7,8 @@ services:
   - type: web
     name: hassatubeauty
     env: ruby
-    buildCommand: "./api/bin/render-build.sh"
+    branch: main
+    buildCommand: "cd api && ./bin/render-build.sh"
     startCommand: "cd api && bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
