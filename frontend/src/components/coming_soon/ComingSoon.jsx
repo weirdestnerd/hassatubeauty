@@ -74,7 +74,6 @@ const ComingSoon = () => {
                                         <p className="mt-4 text-xl text-gray-600">
                                             Once our awesomeness is ready for you, we'll email you.
                                         </p>
-                                        <p>n: {process.env.NODE_ENV}</p>
                                         <NotifyMeForm setConfirmationModal={setConfirmationModel}/>
                                         
                                     </div>
@@ -116,7 +115,7 @@ const ComingSoon = () => {
                             <span className="block text-indigo-600">We're on social media!</span>
                         </h2>
                         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-                            <a href="#!" className="mr-6 text-gray-600">
+                            <a href="https://m.facebook.com/Hassatu-Beauty-100304611802432/" className="mr-6 text-gray-600">
                                 <svg
                                     className="w-6 h-6 text-blue-600 fill-current"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +126,7 @@ const ComingSoon = () => {
                                 </svg>
 
                             </a>
-                            <a href="#!" className="mr-6 text-gray-600">
+                            <a href="https://www.instagram.com/hassatu_beauty/" className="mr-6 text-gray-600">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="instagram"
                                      className="w-6 h-6 text-blue-600 fill-current" role="img"
                                      xmlns="http://www.w3.org/2000/svg"
