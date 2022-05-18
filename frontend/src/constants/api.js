@@ -1,0 +1,1 @@
+export const BASE_API_URL = process.env.NODE_ENV === 'production' ? 'https://hassatubeauty.onrender.com/api' : 'http://localhost:4000/api'

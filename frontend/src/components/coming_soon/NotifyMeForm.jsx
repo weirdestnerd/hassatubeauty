@@ -1,12 +1,13 @@
 import {useFormik} from 'formik';
 import axios from "axios";
 import * as Yup from 'yup';
+import {BASE_API_URL} from "../../constants/api";
 
 const NotifyMeForm = ({ setConfirmationModal }) => {
     const onSubmit = (values) => {
         axios({
             method: 'POST',
-            url: '/api/notify_new_email',
+            url: BASE_API_URL + '/notify_new_email',
             data: {
                 email: values.email,
             }
