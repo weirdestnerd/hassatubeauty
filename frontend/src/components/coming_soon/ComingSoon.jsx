@@ -28,7 +28,7 @@ const ComingSoon = () => {
                                             <span className="sr-only">Hassatu Beauty</span>
                                             <img
                                                 className="h-8 w-auto"
-                                                src="https://f004.backblazeb2.com/file/coming-soon-page/logo.PNG"
+                                                src="https://coming-soon-page.s3.us-west-004.backblazeb2.com/logo.PNG"
                                                 alt=""
                                             />
                                         </a>
@@ -38,7 +38,7 @@ const ComingSoon = () => {
                                     <a href="/" className="lg:hidden">
                                         <span className="sr-only">Hassatu Beauty</span>
                                         <img
-                                            src="https://f004.backblazeb2.com/file/coming-soon-page/logo.PNG"
+                                            src="https://coming-soon-page.s3.us-west-004.backblazeb2.com/logo.PNG"
                                             alt=""
                                             className="h-8 w-auto"
                                         />
@@ -82,7 +82,7 @@ const ComingSoon = () => {
                         </div>
                         <div className="hidden w-full h-48 sm:h-64 lg:absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full lg:block">
                             <img
-                                src="https://f004.backblazeb2.com/file/coming-soon-page/coming_soon.jpg"
+                                src="https://coming-soon-page.s3.us-west-004.backblazeb2.com/coming_soon.jpg"
                                 alt=""
                                 className="w-full h-full object-center object-cover"
                             />
