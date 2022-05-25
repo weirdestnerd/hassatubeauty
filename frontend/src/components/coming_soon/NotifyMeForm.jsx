@@ -2,7 +2,7 @@ import React, { useFormik } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
-import { BASE_API_URL } from "../../constants/api";
+import BASE_API_URL from "../../constants/api";
 
 function NotifyMeForm({ setConfirmationModal }) {
   const onSubmit = (values) => {
@@ -13,11 +13,11 @@ function NotifyMeForm({ setConfirmationModal }) {
         email: values.email,
       },
     })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         setConfirmationModal(true);
       })
       .catch((error) => {
+        // eslint-disable-next-line
         console.error(error);
       });
   };
@@ -33,7 +33,6 @@ function NotifyMeForm({ setConfirmationModal }) {
   });
 
   const renderError = (message) => {
-    console.log("error", message);
     return (
       <div className="block">
         <p className="text-base text-red-400">{message}</p>
