@@ -16,5 +16,8 @@ services:
         fromDatabase:
           name: hassatubeauty
           property: connectionString
+envVarGroups:
+  - name: secrets
+    envVars:
       - key: RAILS_MASTER_KEY
         sync: false
