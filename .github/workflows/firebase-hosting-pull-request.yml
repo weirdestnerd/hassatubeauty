@@ -7,12 +7,14 @@ jobs:
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
+    env:
+      NODE_ENV: preview
+      RENDER_BASE_API_URL: https://hassatubeauty-pr-${{ github.event.pull_request.number }}.onrender.com
     steps:
       - uses: actions/checkout@v2
       - run: cd frontend && npm install && npm run build
-        env:
-          NODE_ENV: preview
-          RENDER_BASE_API_URL: https://hassatubeauty-pr-${{ github.event.pull_request.number }}.onrender.com
+      - run: echo $NODE_ENV
+      - run: echo $RENDER_BASE_API_URL
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
