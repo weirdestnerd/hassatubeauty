@@ -6,7 +6,10 @@ import BASE_API_URL from "../../constants/api";
 
 function NotifyMeForm({ setConfirmationModal }) {
   const onSubmit = (values) => {
-    console.log(process.env.NODE_ENV, process.env.RENDER_BASE_API_URL);
+    console.log(
+      process.env.REACT_APP_IN_PREVIEW,
+      process.env.REACT_APP_RENDER_BASE_API_URL
+    );
     axios({
       method: "POST",
       url: `${BASE_API_URL}/notify_new_email`,
