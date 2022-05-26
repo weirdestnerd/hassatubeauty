@@ -7,7 +7,11 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'https://hassatubeauty.web.app', 'http://localhost:3001'
+    origins do |source, env|
+      (env == 'production' && source == 'https://hassatubeauty.web.app') ||
+        (env == 'development' && source == 'http://localhost:3001') ||
+        (env == 'preview' && source == 'https:\/\/hassatubeauty--pr[a-z0-9-]+.web.app')
+    end
 
     resource '*',
       headers: :any,
