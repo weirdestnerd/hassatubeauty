@@ -5,11 +5,13 @@ import ShopAll from "./components/shopping/ShopAll";
 import NotFound from "./components/NotFound";
 import ShopContainer from "./components/shopping/ShopContainer";
 import MyStory from "./components/MyStory";
+import ComingSoon from "./components/coming_soon/ComingSoon";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
+      <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/shop-all" element={<ShopAll />} />
       <Route path="/shop/:wig" element={<ShopContainer />} />
       <Route path="/shop-patricia" element={<ShopAll />} />
