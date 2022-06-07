@@ -47,14 +47,10 @@ function ShopAll() {
                     </div>
                     <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
                       <h3>{product.name}</h3>
-                      <p>{product.price}</p>
+                      <p>{product.starting_price}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">
-                      Colors:
-                      <span> </span>
-                      <span>
-                        {product.colors.map((color) => color.name).join(", ")}
-                      </span>
+                      As low as {product.starting_price}
                     </p>
                   </a>
                 ))}

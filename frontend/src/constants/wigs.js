@@ -3,7 +3,7 @@ const wigs = {
     id: 1,
     key: "deep-wave",
     name: "Deep Wave",
-    price: "$140",
+    starting_price: "$18",
     href: "/shop/deep-wave",
     // Must have at least 3 images
     images: [
@@ -24,23 +24,6 @@ const wigs = {
         src: "https://f004.backblazeb2.com/file/deep-wave/trina1.jpg",
         alt: "",
         styling: { objectPosition: "top" },
-      },
-    ],
-    colors: [
-      {
-        name: "Black",
-        bgColor: "bg-black",
-        selectedColor: "ring-gray-700",
-      },
-      {
-        name: "Brown",
-        bgColor: "bg-stone-400",
-        selectedColor: "ring-stone-500",
-      },
-      {
-        name: "Blonde",
-        bgColor: "bg-yellow-300",
-        selectedColor: "ring-yellow-400",
       },
     ],
     description:
@@ -111,10 +94,10 @@ const wigs = {
     ],
   },
   "loose-wave": {
-    id: 1,
+    id: 2,
     key: "loose-wave",
     name: "Loose Wave",
-    price: "$140",
+    starting_price: "$18",
     href: "/shop/loose-wave",
     images: [
       {
@@ -141,23 +124,6 @@ const wigs = {
         id: 5,
         src: "https://f004.backblazeb2.com/file/loose-wave/e28ceacb-29dc-4e88-8ea6-272958638c2a.jpg",
         alt: "",
-      },
-    ],
-    colors: [
-      {
-        name: "Black",
-        bgColor: "bg-black",
-        selectedColor: "ring-gray-700",
-      },
-      {
-        name: "Brown",
-        bgColor: "bg-stone-400",
-        selectedColor: "ring-stone-500",
-      },
-      {
-        name: "Blonde",
-        bgColor: "bg-yellow-300",
-        selectedColor: "ring-yellow-400",
       },
     ],
     description:
@@ -228,10 +194,10 @@ const wigs = {
     ],
   },
   "body-wave": {
-    id: 1,
+    id: 3,
     key: "body-wave",
     name: "Body Wave",
-    price: "$140",
+    starting_price: "$18",
     href: "/shop/body-wave",
     images: [
       {
@@ -268,23 +234,6 @@ const wigs = {
         id: 7,
         src: "https://body-wave.s3.us-west-004.backblazeb2.com/d5a08869-3218-469a-af54-5477c2af3833.jpeg",
         alt: "",
-      },
-    ],
-    colors: [
-      {
-        name: "Black",
-        bgColor: "bg-black",
-        selectedColor: "ring-gray-700",
-      },
-      {
-        name: "Brown",
-        bgColor: "bg-stone-400",
-        selectedColor: "ring-stone-500",
-      },
-      {
-        name: "Blonde",
-        bgColor: "bg-yellow-300",
-        selectedColor: "ring-yellow-400",
       },
     ],
     description:
@@ -355,10 +304,10 @@ const wigs = {
     ],
   },
   "brazilian-deep-wave": {
-    id: 1,
+    id: 4,
     key: "brazilian-deep-wave",
     name: "Brazilian Deep Wave",
-    price: "$140",
+    starting_price: "$18",
     href: "/shop/brazilian-deep-wave",
     images: [
       {
@@ -405,23 +354,6 @@ const wigs = {
         id: 9,
         src: "https://brazilian-body-wave.s3.us-west-004.backblazeb2.com/fef197d3-a1d0-4a7c-b611-674e491aae89.jpeg",
         alt: "",
-      },
-    ],
-    colors: [
-      {
-        name: "Black",
-        bgColor: "bg-black",
-        selectedColor: "ring-gray-700",
-      },
-      {
-        name: "Brown",
-        bgColor: "bg-stone-400",
-        selectedColor: "ring-stone-500",
-      },
-      {
-        name: "Blonde",
-        bgColor: "bg-yellow-300",
-        selectedColor: "ring-yellow-400",
       },
     ],
     description:
@@ -492,10 +424,10 @@ const wigs = {
     ],
   },
   straight: {
-    id: 1,
+    id: 5,
     key: "straight",
     name: "Straight",
-    price: "$140",
+    starting_price: "$18",
     href: "/shop/straight",
     images: [
       {
@@ -504,56 +436,39 @@ const wigs = {
         alt: "",
       },
       {
-        id: 1,
+        id: 2,
         src: "https://straight.s3.us-west-004.backblazeb2.com/11acc90c-88d9-42b8-b86b-46ef0ecb8735.jpeg",
         alt: "",
       },
       {
-        id: 1,
+        id: 3,
         src: "https://straight.s3.us-west-004.backblazeb2.com/36a5340c-e6d5-4353-b286-97d64e3dad66.jpeg",
         alt: "",
       },
       {
-        id: 1,
+        id: 4,
         src: "https://straight.s3.us-west-004.backblazeb2.com/86da2b6c-5f37-4071-957f-ca26a829dfed.jpeg",
         alt: "",
       },
       {
-        id: 1,
+        id: 5,
         src: "https://straight.s3.us-west-004.backblazeb2.com/112b1fa8-e58c-4fd4-9f15-d72e9ab02844.jpeg",
         alt: "",
       },
       {
-        id: 1,
+        id: 6,
         src: "https://straight.s3.us-west-004.backblazeb2.com/6829e437-4b7e-44b5-adda-f49b7a17f487.jpeg",
         alt: "",
       },
       {
-        id: 1,
+        id: 7,
         src: "https://straight.s3.us-west-004.backblazeb2.com/54069c5b-32df-4b1c-a338-bb43c52a0c1b.jpeg",
         alt: "",
       },
       {
-        id: 1,
+        id: 8,
         src: "https://straight.s3.us-west-004.backblazeb2.com/cd434636-af4c-4544-a18c-0b44a54e2636.jpeg",
         alt: "",
-      },
-    ],
-    colors: [
-      {
-        name: "Black",
-        bgColor: "bg-black",
-        selectedColor: "ring-gray-700",
-      },
-      {
-        name: "Brown",
-        bgColor: "bg-stone-400",
-        selectedColor: "ring-stone-500",
-      },
-      {
-        name: "Blonde",
-        bgColor: "bg-yellow-300",
-        selectedColor: "ring-yellow-400",
       },
     ],
     description:
