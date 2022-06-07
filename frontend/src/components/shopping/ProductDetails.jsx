@@ -3,7 +3,6 @@ import { Disclosure } from "@headlessui/react";
 import classNames from "classnames";
 import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
 import productType from "../../proptypes/productType";
-import ProductFeatures from "./ProductFeatures";
 
 function ProductDetails({ product }) {
   return (
