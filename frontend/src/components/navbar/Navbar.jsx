@@ -132,13 +132,16 @@ function Navbar() {
       // },
     ],
     pages: [
-      { name: "Wigs", href: "/shop-all" },
+      { name: "Wigs", href: "/shop-wigs" },
+      { name: "Bundles", href: "/shop-bundles" },
+      { name: "Frontals", href: "/shop-frontals" },
       { name: "My Story", href: "/my-story" },
+      { name: "Shipping Policy", href: "/shipping-policy" },
     ],
   };
 
   return (
-    <>
+    <header className="relative bg-white">
       {/* Mobile menu */}
       <Transition.Root show={mobileNavOpen} as={Fragment}>
         <Dialog
@@ -424,7 +427,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-    </>
+    </header>
   );
 }
 

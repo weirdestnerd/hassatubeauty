@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import productType from "../../../proptypes/productType";
+import { productType } from "../../../proptypes/productType";
 import HairTextureInput from "./HairTextureInput";
 import HairLengthInput from "./HairLengthInput";
 
