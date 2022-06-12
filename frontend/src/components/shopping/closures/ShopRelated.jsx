@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import frontals from "../../../constants/frontals";
+import closures from "../../../constants/closures";
 import calculatePriceRange from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 
-function ShopRelated({ frontalKey }) {
-  const otherFrontals = () => {
-    const availableFrontals = Object.keys(frontals);
-    return availableFrontals
-      .filter((availableFrontal) => availableFrontal !== frontalKey)
+function ShopRelated({ closureKey }) {
+  const otherClosures = () => {
+    const availableClosures = Object.keys(closures);
+    return availableClosures
+      .filter((availableClosure) => availableClosure !== closureKey)
       .slice(0, 4)
-      .map((otherFrontal) => frontals[otherFrontal]);
+      .map((otherClosure) => closures[otherClosure]);
   };
 
   return (
@@ -19,22 +19,22 @@ function ShopRelated({ frontalKey }) {
       className="mt-10 border-t border-gray-200 py-16 px-4 sm:px-0"
     >
       <h2 id="related-heading" className="text-xl font-bold text-gray-900">
-        Other frontals we have
+        Other closures we have
       </h2>
 
       <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-        {otherFrontals().map((frontal) => (
-          <div key={frontal.id}>
+        {otherClosures().map((closure) => (
+          <div key={closure.id}>
             <div className="relative">
               <div className="relative w-full h-72 rounded-lg overflow-hidden">
-                <ProductImage productImages={frontal.images} />
+                <ProductImage productImages={closure.images} />
               </div>
               <div className="relative mt-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                  {frontal.name}
+                  {closure.name}
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  {calculatePriceRange(frontal.pricing)}
+                  {calculatePriceRange(closure.pricing)}
                 </p>
               </div>
               <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
@@ -46,11 +46,11 @@ function ShopRelated({ frontalKey }) {
             </div>
             <div className="mt-6">
               <a
-                href={frontal.href}
+                href={closure.href}
                 className="relative flex bg-gray-100 border border-transparent rounded-md py-2 px-8 items-center justify-center text-sm font-medium text-gray-900 hover:bg-gray-200"
               >
                 Shop
-                <span className="sr-only">, {frontal.name}</span>
+                <span className="sr-only">, {closure.name}</span>
               </a>
             </div>
           </div>
@@ -61,7 +61,7 @@ function ShopRelated({ frontalKey }) {
 }
 
 ShopRelated.propTypes = {
-  frontalKey: PropTypes.string.isRequired,
+  closureKey: PropTypes.string.isRequired,
 };
 
 export default ShopRelated;

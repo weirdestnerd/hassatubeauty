@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
-import frontals from "../../../constants/frontals";
 import calculatePriceRange from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import closures from "../../../constants/closures";
 
-function ShopAllFrontals() {
+function ShopAllClosures() {
   return (
     <div className="bg-gray-50">
       <Navbar />
@@ -28,7 +28,7 @@ function ShopAllFrontals() {
             <section className="relative mb-10 max-w-7xl mx-auto pt-10 px-4 flex flex-col items-center text-center sm:px-6 lg:px-8">
               <div className="py-32 text-center">
                 <h1 className="text-6xl font-extrabold tracking-tight text-gray-900">
-                  Frontals
+                  Closures
                 </h1>
                 <p className="mt-4 max-w-3xl mx-auto text-base text-gray-500">
                   Our thoughtfully curated, masterfully created wigs. Imported
@@ -43,17 +43,17 @@ function ShopAllFrontals() {
               className="border-t border-gray-200 mt-8 pt-6"
             >
               <h2 id="products-heading" className="sr-only">
-                Frontals
+                Closures
               </h2>
 
               <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
-                {Object.values(frontals).map((frontal) => (
-                  <a key={frontal.id} href={frontal.href} className="group">
-                    <ProductImage productImages={frontal.images} />
+                {Object.values(closures).map((closure) => (
+                  <a key={closure.id} href={closure.href} className="group">
+                    <ProductImage productImages={closure.images} />
 
                     <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
-                      <h3>{frontal.name}</h3>
-                      <p>{calculatePriceRange(frontal.pricing)}</p>
+                      <h3>{closure.name}</h3>
+                      <p>{calculatePriceRange(closure.pricing)}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">
                       Fully customizable
@@ -71,4 +71,4 @@ function ShopAllFrontals() {
   );
 }
 
-export default ShopAllFrontals;
+export default ShopAllClosures;

@@ -207,9 +207,9 @@ function Landing() {
                 <div className="p-6 flex items-end sm:absolute sm:inset-0">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop-bundles">
+                      <a href="/shop-closures">
                         <span className="absolute inset-0" />
-                        Bundles collection
+                        Closures collection
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">

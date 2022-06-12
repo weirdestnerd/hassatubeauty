@@ -1,26 +1,39 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { frontalType } from "../../../../proptypes/frontalType";
-import TextureInput from "./TextureInput";
-import LaceInput from "./LaceInput";
-import HairLengthInput from "./HairLengthInput";
+import PropTypes from "prop-types";
+import { productType } from "../../proptypes/productType";
+import TextureInput from "./inputs/TextureInput";
+import LaceInput from "./inputs/LaceInput";
+import HairLengthInput from "./inputs/HairLengthInput";
 
-function Customization({ frontal }) {
+function ProductCustomization({ product, priceCheckTexture }) {
   const [texture, setTexture] = useState(null);
-  const [lace, setLace] = useState(null);
+  const laces = Object.keys(product.laces);
+  const [lace, setLace] = useState(laces.length === 1 ? laces[0] : null);
   const [hairLength, setHairLength] = useState(null);
 
   const addToCart = () => {
     // eslint-disable-next-line no-console
-    console.log(frontal.name);
+    console.log(product.name);
   };
 
   const showPrice = () => {
-    return texture !== null && lace !== null && hairLength !== null;
+    const checkLace = Object.keys(product.laces).length !== 0;
+    return (
+      texture !== null &&
+      (checkLace ? lace !== null : true) &&
+      hairLength !== null
+    );
   };
 
   const calculatePrice = () => {
-    return frontal.pricing[lace][hairLength];
+    const price =
+      Object.keys(product.laces).length === 0
+        ? product.pricing
+        : product.pricing[lace];
+
+    if (priceCheckTexture) return price[texture][hairLength];
+    return price[hairLength];
   };
 
   const renderCTAButton = () => {
@@ -46,15 +59,15 @@ function Customization({ frontal }) {
       <TextureInput
         texture={texture}
         setTexture={setTexture}
-        options={frontal.texture}
+        options={product.texture}
       />
 
-      <LaceInput lace={lace} setLace={setLace} options={frontal.laces} />
+      <LaceInput lace={lace} setLace={setLace} options={product.laces} />
 
       <HairLengthInput
         hairLength={hairLength}
         setHairLength={setHairLength}
-        options={frontal.lengths}
+        options={product.lengths}
       />
 
       <div className="mt-10 flex sm:flex-col1">{renderCTAButton()}</div>
@@ -62,8 +75,13 @@ function Customization({ frontal }) {
   );
 }
 
-Customization.propTypes = {
-  frontal: frontalType.isRequired,
+ProductCustomization.propTypes = {
+  product: productType.isRequired,
+  priceCheckTexture: PropTypes.bool,
 };
 
-export default Customization;
+ProductCustomization.defaultProps = {
+  priceCheckTexture: false,
+};
+
+export default ProductCustomization;

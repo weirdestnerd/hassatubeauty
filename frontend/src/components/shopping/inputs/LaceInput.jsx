@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { RadioGroup } from "@headlessui/react";
 
 function LaceInput({ lace, setLace, options }) {
+  if (Object.keys(options).length === 0) return null;
+
   return (
     <div className="mt-10">
       <h3 className="text-sm text-gray-600">Choose lace</h3>

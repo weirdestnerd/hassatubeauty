@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import wigs from "../../constants/wigs";
+import wigs from "../../../constants/wigs";
+import ProductImage from "../ProductImage";
+import calculatePriceRange from "../../../helpers/utils";
 
-function ShopRelated({ productKey }) {
+function ShopRelated({ wigKey }) {
   const otherWigs = () => {
     const availableWigs = Object.keys(wigs);
     return availableWigs
-      .filter((availableWig) => availableWig !== productKey)
+      .filter((availableWig) => availableWig !== wigKey)
       .slice(0, 4)
       .map((otherWig) => wigs[otherWig]);
   };
@@ -21,23 +23,18 @@ function ShopRelated({ productKey }) {
       </h2>
 
       <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-        {otherWigs().map((relatedProduct) => (
-          <div key={relatedProduct.id}>
+        {otherWigs().map((wig) => (
+          <div key={wig.id}>
             <div className="relative">
               <div className="relative w-full h-72 rounded-lg overflow-hidden">
-                <img
-                  src={relatedProduct.images[0].src}
-                  alt={relatedProduct.images[0].alt}
-                  className="w-full h-full object-center object-cover"
-                  style={relatedProduct.images[0].styling}
-                />
+                <ProductImage productImages={wig.images} />
               </div>
               <div className="relative mt-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                  {relatedProduct.name}
+                  {wig.name}
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  As low as {relatedProduct.starting_price}
+                  {calculatePriceRange(wig.pricing)}
                 </p>
               </div>
               <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
@@ -49,11 +46,11 @@ function ShopRelated({ productKey }) {
             </div>
             <div className="mt-6">
               <a
-                href={relatedProduct.href}
+                href={wig.href}
                 className="relative flex bg-gray-100 border border-transparent rounded-md py-2 px-8 items-center justify-center text-sm font-medium text-gray-900 hover:bg-gray-200"
               >
                 Shop
-                <span className="sr-only">, {relatedProduct.name}</span>
+                <span className="sr-only">, {wig.name}</span>
               </a>
             </div>
           </div>
@@ -64,7 +61,7 @@ function ShopRelated({ productKey }) {
 }
 
 ShopRelated.propTypes = {
-  productKey: PropTypes.string.isRequired,
+  wigKey: PropTypes.string.isRequired,
 };
 
 export default ShopRelated;
