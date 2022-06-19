@@ -1,16 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import closures from "../../../constants/closures";
+import bundles from "../../../constants/bundles";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 
-function ShopRelated({ closureKey }) {
+function ShopRelated({ bundleKey }) {
   const otherClosures = () => {
-    const availableClosures = Object.keys(closures);
+    const availableClosures = Object.keys(bundles);
     return availableClosures
-      .filter((availableClosure) => availableClosure !== closureKey)
+      .filter((availableClosure) => availableClosure !== bundleKey)
       .slice(0, 4)
-      .map((otherClosure) => closures[otherClosure]);
+      .map((otherClosure) => bundles[otherClosure]);
   };
 
   return (
@@ -19,22 +19,22 @@ function ShopRelated({ closureKey }) {
       className="mt-10 border-t border-gray-200 py-16 px-4 sm:px-0"
     >
       <h2 id="related-heading" className="text-xl font-bold text-gray-900">
-        Other closures we have
+        Other bundles we have
       </h2>
 
       <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-        {otherClosures().map((closure) => (
-          <div key={closure.id}>
+        {otherClosures().map((bundle) => (
+          <div key={bundle.id}>
             <div className="relative">
               <div className="relative w-full h-72 rounded-lg overflow-hidden">
-                <ProductImage productImages={closure.images} />
+                <ProductImage productImages={bundle.images} />
               </div>
               <div className="relative mt-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                  {closure.name}
+                  {bundle.name}
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  {calculatePriceRange(closure)}
+                  {calculatePriceRange(bundle)}
                 </p>
               </div>
               <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
@@ -46,11 +46,11 @@ function ShopRelated({ closureKey }) {
             </div>
             <div className="mt-6">
               <a
-                href={closure.href}
+                href={bundle.href}
                 className="relative flex bg-gray-100 border border-transparent rounded-md py-2 px-8 items-center justify-center text-sm font-medium text-gray-900 hover:bg-gray-200"
               >
                 Shop
-                <span className="sr-only">, {closure.name}</span>
+                <span className="sr-only">, {bundle.name}</span>
               </a>
             </div>
           </div>
@@ -61,7 +61,7 @@ function ShopRelated({ closureKey }) {
 }
 
 ShopRelated.propTypes = {
-  closureKey: PropTypes.string.isRequired,
+  bundleKey: PropTypes.string.isRequired,
 };
 
 export default ShopRelated;

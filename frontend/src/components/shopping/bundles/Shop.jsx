@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-import ShopRelated from "./ShopRelated";
-import ProductCustomization from "../ProductCustomization";
-import { calculatePriceRange, selectedImages } from "../../../helpers/utils";
 import Navbar from "../../navbar/Navbar";
+import Footer from "../../footer/Footer";
+import { bundleType } from "../../../proptypes/bundleType";
 import ProductFeatures from "../ProductFeatures";
 import ProductDetails from "../ProductDetails";
-import Footer from "../../footer/Footer";
-import { wigType } from "../../../proptypes/wigType";
+import { calculatePriceRange, selectedImages } from "../../../helpers/utils";
+import ShopRelated from "./ShopRelated";
+import ProductCustomization from "../ProductCustomization";
 import ProductImageGallery from "../ProductImageGallery";
 
-function Shop({ wig }) {
+function Shop({ bundle }) {
   const [texture, setTexture] = useState(null);
-  const [imageGallery, setImageGallery] = useState(selectedImages(wig, null));
+  const [imageGallery, setImageGallery] = useState(
+    selectedImages(bundle, null)
+  );
 
   const onTextureChange = (selectedTexture) => {
     setTexture(selectedTexture);
-    setImageGallery(selectedImages(wig, selectedTexture));
+    setImageGallery(selectedImages(bundle, selectedTexture));
   };
 
   return (
@@ -25,18 +27,18 @@ function Shop({ wig }) {
       <main className="max-w-7xl mx-auto sm:pt-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto lg:max-w-none">
           <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
-            <ProductImageGallery product={wig} images={imageGallery} />
+            <ProductImageGallery product={bundle} images={imageGallery} />
 
             {/* Product info */}
             <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
               <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                {wig.name}
+                {bundle.name}
               </h1>
 
               <div className="mt-3">
                 <h2 className="sr-only">Product information</h2>
                 <p className="text-3xl text-gray-900">
-                  {calculatePriceRange(wig)}
+                  {calculatePriceRange(bundle)} per bundle
                 </p>
               </div>
 
@@ -44,23 +46,23 @@ function Shop({ wig }) {
                 <h3 className="sr-only">Description</h3>
 
                 <div className="text-base text-gray-700 space-y-6">
-                  <p>{wig.description}</p>
+                  <p>{bundle.description}</p>
                 </div>
               </div>
 
               <ProductCustomization
-                product={wig}
+                product={bundle}
                 texture={texture}
                 setTexture={onTextureChange}
               />
 
-              <ProductDetails product={wig} />
+              <ProductDetails product={bundle} />
             </div>
           </div>
 
-          <ProductFeatures product={wig} />
+          <ProductFeatures product={bundle} />
 
-          <ShopRelated wigKey={wig.key} />
+          <ShopRelated bundleKey={bundle.key} />
         </div>
       </main>
 
@@ -70,7 +72,7 @@ function Shop({ wig }) {
 }
 
 Shop.propTypes = {
-  wig: wigType.isRequired,
+  bundle: bundleType.isRequired,
 };
 
 export default Shop;

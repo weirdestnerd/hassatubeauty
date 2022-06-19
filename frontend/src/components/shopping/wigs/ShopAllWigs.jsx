@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
 import wigs from "../../../constants/wigs";
-import calculatePriceRange from "../../../helpers/utils";
+import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 
 function ShopAllWigs() {
@@ -54,10 +54,7 @@ function ShopAllWigs() {
                     <div className="mt-4 flex items-center item-start justify-between text-base font-medium text-gray-900">
                       <h3 className="self-start basis-2/3">{wig.name}</h3>
                       <p className="self-start basis-1/8">
-                        {calculatePriceRange(
-                          wig.pricing,
-                          wig.priceCheckTexture
-                        )}
+                        {calculatePriceRange(wig)}
                       </p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">

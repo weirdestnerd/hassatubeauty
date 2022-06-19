@@ -6,34 +6,27 @@ import TextureInput from "./inputs/TextureInput";
 import LaceInput from "./inputs/LaceInput";
 import HairLengthInput from "./inputs/HairLengthInput";
 
-function ProductCustomization({ product, priceCheckTexture }) {
-  const [texture, setTexture] = useState(null);
+function ProductCustomization({ product, texture, setTexture }) {
   const laces = Object.keys(product.laces);
   const [lace, setLace] = useState(laces.length === 1 ? laces[0] : null);
   const [hairLength, setHairLength] = useState(null);
+
+  const lacesExists = () => Object.keys(product.laces).length > 0;
 
   const addToCart = () => {
     // eslint-disable-next-line no-console
     console.log(product.name);
   };
 
-  const showPrice = () => {
-    const checkLace = Object.keys(product.laces).length !== 0;
-    return (
-      texture !== null &&
-      (checkLace ? lace !== null : true) &&
-      hairLength !== null
-    );
-  };
+  const showPrice = () =>
+    texture !== null &&
+    (lacesExists() ? lace !== null : true) &&
+    hairLength !== null;
 
   const calculatePrice = () => {
-    const price =
-      Object.keys(product.laces).length === 0
-        ? product.pricing
-        : product.pricing[lace];
+    const price = lacesExists() ? product.pricing[lace] : product.pricing;
 
-    if (priceCheckTexture) return price[texture][hairLength];
-    return price[hairLength];
+    return price[texture][hairLength];
   };
 
   const renderCTAButton = () => {
@@ -54,6 +47,26 @@ function ProductCustomization({ product, priceCheckTexture }) {
     );
   };
 
+  const hairLengthOptions = () => {
+    let options = {};
+
+    if (texture === null) return options;
+
+    if (lacesExists() && lace === null) return options;
+    options = lacesExists()
+      ? Object.keys(product.pricing[lace][texture])
+      : Object.keys(product.pricing[texture]);
+
+    const optionsAsMap = new Map(
+      options.map((hairLengthOption) => [
+        hairLengthOption,
+        hairLengthOption.toString(),
+      ])
+    );
+
+    return Object.fromEntries(optionsAsMap);
+  };
+
   return (
     <form className="mt-6">
       <TextureInput
@@ -67,7 +80,7 @@ function ProductCustomization({ product, priceCheckTexture }) {
       <HairLengthInput
         hairLength={hairLength}
         setHairLength={setHairLength}
-        options={product.lengths}
+        options={hairLengthOptions()}
       />
 
       <div className="mt-10 flex sm:flex-col1">{renderCTAButton()}</div>
@@ -77,11 +90,12 @@ function ProductCustomization({ product, priceCheckTexture }) {
 
 ProductCustomization.propTypes = {
   product: productType.isRequired,
-  priceCheckTexture: PropTypes.bool,
+  texture: PropTypes.string,
+  setTexture: PropTypes.func.isRequired,
 };
 
 ProductCustomization.defaultProps = {
-  priceCheckTexture: false,
+  texture: null,
 };
 
 export default ProductCustomization;

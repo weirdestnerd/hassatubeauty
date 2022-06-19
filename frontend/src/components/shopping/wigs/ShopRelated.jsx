@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import wigs from "../../../constants/wigs";
 import ProductImage from "../ProductImage";
-import calculatePriceRange from "../../../helpers/utils";
+import { calculatePriceRange } from "../../../helpers/utils";
 
 function ShopRelated({ wigKey }) {
   const otherWigs = () => {
@@ -34,7 +34,7 @@ function ShopRelated({ wigKey }) {
                   {wig.name}
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  {calculatePriceRange(wig.pricing)}
+                  {calculatePriceRange(wig)}
                 </p>
               </div>
               <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">

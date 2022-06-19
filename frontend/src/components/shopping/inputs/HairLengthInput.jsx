@@ -8,7 +8,11 @@ function HairLengthInput({ hairLength, setHairLength, options }) {
   return (
     <div className="mt-10">
       <h3 className="text-sm text-gray-600">Choose hair length</h3>
-      <Listbox value={hairLength} onChange={setHairLength}>
+      <Listbox
+        value={hairLength}
+        onChange={setHairLength}
+        disabled={Object.keys(options).length === 0}
+      >
         {({ open }) => (
           <>
             <Listbox.Label className="sr-only block text-sm font-medium text-gray-700">

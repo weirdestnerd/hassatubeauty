@@ -3,7 +3,7 @@ import { frontalImagesType } from "../../proptypes/frontalType";
 
 function ProductImage({ productImages }) {
   const firstImageKey = Object.keys(productImages)[0];
-  const firstImage = productImages[firstImageKey];
+  const firstImage = productImages[firstImageKey][0];
 
   return (
     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
