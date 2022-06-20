@@ -24,9 +24,7 @@ function EmailInput({ formik }) {
         </div>
       </label>
 
-      {formik.errors.email && formik.touched.email && (
-        <InputError message={formik.errors.email} />
-      )}
+      {formik.errors.email && <InputError message={formik.errors.email} />}
     </div>
   );
 }
