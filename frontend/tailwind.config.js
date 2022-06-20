@@ -8,5 +8,7 @@ module.exports = {
     require("@tailwindcss/forms"),
     // eslint-disable-next-line global-require,import/no-extraneous-dependencies
     require("@tailwindcss/aspect-ratio"),
+    // eslint-disable-next-line global-require,import/no-extraneous-dependencies
+    require("@tailwindcss/typography"),
   ],
 };

@@ -1,35 +1,22 @@
 import React from "react";
+import { isMobileOnly } from "react-device-detect";
 import Navbar from "../navbar/Navbar";
+import Footer from "../footer/Footer";
 
-// TODO: review w/ Trina
 const perks = [
   {
-    name: "Free returns",
-    imageUrl:
-      "https://tailwindui.com/img/ecommerce/icons/icon-returns-light.svg",
-    description:
-      "Not what you expected? Place it back in the parcel and attach the pre-paid postage stamp.",
-  },
-  {
-    name: "Same day delivery",
+    name: "Packaging & Shipping",
     imageUrl:
       "https://tailwindui.com/img/ecommerce/icons/icon-calendar-light.svg",
     description:
-      "We offer a delivery service that has never been done before. Checkout today and receive your products within hours.",
+      "Our packaging process is as quick as two weeks. While shipping could take a little as one week",
   },
   {
     name: "All year discount",
     imageUrl:
       "https://tailwindui.com/img/ecommerce/icons/icon-gift-card-light.svg",
     description:
-      'Looking for a deal? You can use the code "ALLYEAR" at checkout and get money off all year round.',
-  },
-  {
-    name: "For the planet",
-    imageUrl:
-      "https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg",
-    description:
-      "We’ve pledged 1% of sales to the preservation and restoration of the natural environment.",
+      "Looking for a deal? Checkout out sales collection for deals on most products",
   },
 ];
 
@@ -119,11 +106,12 @@ function Landing() {
                   </div>
                 </div>
 
+                {/* TODO: update to /shop-all */}
                 <a
-                  href="/shop_all"
+                  href="#collections"
                   className="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700"
                 >
-                  Order your wig
+                  Shop collections
                 </a>
               </div>
             </div>
@@ -132,23 +120,27 @@ function Landing() {
       </header>
 
       <main>
-        {/* Category section */}
-        <section aria-labelledby="category-heading" className="bg-gray-50">
+        {/* Collections section */}
+        <section
+          id="collections"
+          aria-labelledby="category-heading"
+          className="bg-gray-50"
+        >
           <div className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-baseline sm:justify-between">
               <h2
                 id="category-heading"
                 className="text-2xl font-extrabold tracking-tight text-gray-900"
               >
-                Shop our wigs
+                Shop our collections
               </h2>
-              <a
-                href="/"
-                className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
-              >
-                Browse all wigs
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
+              {/* <a */}
+              {/*  href="/shop-all" */}
+              {/*  className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block" */}
+              {/* > */}
+              {/*  Browse all wigs */}
+              {/*  <span aria-hidden="true"> &rarr;</span> */}
+              {/* </a> */}
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
@@ -165,13 +157,13 @@ function Landing() {
                 <div className="p-6 flex items-end">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop_all">
+                      <a href="/shop-wigs">
                         <span className="absolute inset-0" />
-                        Body wave wig
+                        Wig collection
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Get it now
+                      Shop now
                     </p>
                   </div>
                 </div>
@@ -190,13 +182,13 @@ function Landing() {
                 <div className="p-6 flex items-end sm:absolute sm:inset-0">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop_all">
+                      <a href="/shop-frontals">
                         <span className="absolute inset-0" />
-                        Loose wave wig
+                        Frontal collections
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Get it now
+                      Shop now
                     </p>
                   </div>
                 </div>
@@ -215,68 +207,71 @@ function Landing() {
                 <div className="p-6 flex items-end sm:absolute sm:inset-0">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop_all">
+                      <a href="/shop-closures">
                         <span className="absolute inset-0" />
-                        Deep wave wig
+                        Closures collection
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Get it now
+                      Shop now
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 sm:hidden">
-              <a
-                href="/shop_all"
-                className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-              >
-                Browse all wigs
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
+            {/*  <div className="mt-6 sm:hidden"> */}
+            {/*    <a */}
+            {/*      href="/shop-all" */}
+            {/*      className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500" */}
+            {/*    > */}
+            {/*      Browse all wigs */}
+            {/*      <span aria-hidden="true"> &rarr;</span> */}
+            {/*    </a> */}
+            {/*  </div> */}
           </div>
         </section>
 
-        {/* Featured section */}
-        <section aria-labelledby="cause-heading">
-          <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-            <div className="absolute inset-0 overflow-hidden">
+        {/* Promo section */}
+        <div className="bg-white relative overflow-hidden">
+          {/* Decorative background image and gradient */}
+          <div aria-hidden="true" className="absolute inset-0">
+            <div className="absolute inset-0 max-w-7xl mx-auto overflow-hidden xl:px-8">
               <img
-                src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina8+(1).jpeg"
+                src="https://tailwindui.com/img/ecommerce-images/home-page-02-sale-full-width.jpg"
                 alt=""
                 className="w-full h-full object-center object-cover"
-                style={{ objectPosition: "0 35%" }}
               />
             </div>
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gray-900 bg-opacity-50"
-            />
-            <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
+            <div className="absolute inset-0 bg-white bg-opacity-75" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
+          </div>
+
+          {/* Callout */}
+          <section
+            aria-labelledby="sale-heading"
+            className="relative mb-32 max-w-7xl mx-auto pt-32 px-4 flex flex-col items-center text-center sm:px-6 lg:px-8"
+          >
+            <div className="max-w-2xl mx-auto lg:max-w-none">
               <h2
-                id="cause-heading"
-                className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
+                id="sale-heading"
+                className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
               >
-                Making wigs from my heart
+                Enjoy our year-round deals
               </h2>
-              <p className="mt-3 text-xl text-white">
-                Something something I&apos;m passionate about making wigs.
-                I&apos;ve being making them for so long. I&apos;m a genius at
-                making wigs. It all started when ... Wigs is my life. So and so
-                can vouch for me
+              <p className="mt-4 max-w-xl mx-auto text-xl text-gray-600">
+                Most of our products are limited releases that won&apos;t come
+                back. Get your favorite items while they&apos;re in stock.
               </p>
               <a
-                href="/read_our_story"
-                className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
+                href="/shop-sales"
+                className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto"
               >
-                Read my story
+                Get access to our one-time sale
               </a>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
 
         {/* Perks section */}
         <section
@@ -288,7 +283,7 @@ function Landing() {
           </h2>
 
           <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:px-8">
-            <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-0">
+            <div className="grid grid-cols-2 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-2 lg:gap-x-2 lg:gap-y-0">
               {perks.map((perk) => (
                 <div
                   key={perk.name}
@@ -317,6 +312,90 @@ function Landing() {
           </div>
         </section>
 
+        {/* Read My Story section */}
+        <section aria-labelledby="cause-heading">
+          <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
+            <div className="absolute inset-0 overflow-hidden">
+              {isMobileOnly ? (
+                <img
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina3.jpeg"
+                  alt=""
+                  className="w-full h-full object-center object-cover"
+                  style={{ objectPosition: "-1 35%" }}
+                />
+              ) : (
+                <img
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina8+(1).jpeg"
+                  alt=""
+                  className="w-full h-full object-center object-cover"
+                  style={{ objectPosition: "0 42%" }}
+                />
+              )}
+            </div>
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-gray-900 bg-opacity-50"
+            />
+            <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
+              <h2
+                id="cause-heading"
+                className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
+              >
+                Making wigs from my heart
+              </h2>
+              <p className="mt-3 text-xl text-white">
+                Something something I&apos;m passionate about making wigs.
+                I&apos;ve being making them for so long. I&apos;m a genius at
+                making wigs. It all started when ... Wigs is my life. So and so
+                can vouch for me
+              </p>
+              <a
+                href="/read_our_story"
+                className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
+              >
+                Read my story
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Patricia section */}
+        <section
+          aria-labelledby="featured-heading"
+          className="relative my-16 mx-10 rounded-lg overflow-hidden lg:h-96"
+        >
+          <div className="absolute inset-0">
+            <img
+              src="https://shopping-page.s3.us-west-004.backblazeb2.com/sonia-roselli-tWng4d9Njxo-unsplash.jpeg"
+              alt=""
+              className="w-full h-full object-center object-cover"
+            />
+          </div>
+          <div aria-hidden="true" className="relative w-full h-96 lg:hidden" />
+          <div aria-hidden="true" className="relative w-full h-32 lg:hidden" />
+          <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 p-6 rounded-bl-lg rounded-br-lg backdrop-filter backdrop-blur sm:flex sm:items-center sm:justify-between lg:inset-y-0 lg:inset-x-auto lg:w-96 lg:rounded-tl-lg lg:rounded-br-none lg:flex-col lg:items-start">
+            <div>
+              <h2
+                id="featured-heading"
+                className="text-xl font-bold text-white"
+              >
+                TNC Lovely
+              </h2>
+              <p className="mt-1 text-sm text-gray-300">
+                We&apos;ve partnered with TNC Lovely Company to bring you
+                essential oils for your daily needs. Something something
+                something buy them
+              </p>
+            </div>
+            <a
+              href="/shop-patricia"
+              className="mt-6 flex-shrink-0 flex bg-white bg-opacity-0 py-3 px-4 border border-white border-opacity-25 rounded-md items-center justify-center text-base font-medium text-white hover:bg-opacity-10 sm:mt-0 sm:ml-8 lg:ml-0 lg:w-full"
+            >
+              View the collection
+            </a>
+          </div>
+        </section>
+
         {/* CTA section */}
         <section aria-labelledby="sale-heading">
           <div className="pt-32 overflow-hidden sm:pt-14">
@@ -333,7 +412,7 @@ function Landing() {
                       Nothing less.
                     </h2>
                     <div className="mt-6 text-base">
-                      <a href="/shop_all" className="font-semibold text-white">
+                      <a href="/shop-all" className="font-semibold text-white">
                         Shop wigs
                         <span aria-hidden="true"> &rarr;</span>
                       </a>
@@ -405,159 +484,7 @@ function Landing() {
         </section>
       </main>
 
-      <footer aria-labelledby="footer-heading" className="bg-white">
-        <h2 id="footer-heading" className="sr-only">
-          Footer
-        </h2>
-        <div className="bg-gray-50">
-          <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              <span className="block text-indigo-600">
-                We&apos;re on social media!
-              </span>
-            </h2>
-            <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-              <a
-                href="https://m.facebook.com/Hassatu-Beauty-100304611802432/"
-                className="mr-6 text-gray-600"
-              >
-                <svg
-                  className="w-6 h-6 text-blue-600 fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </a>
-              <a
-                href="https://www.instagram.com/hassatu_beauty/"
-                className="mr-6 text-gray-600"
-              >
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  data-prefix="fab"
-                  data-icon="instagram"
-                  className="w-6 h-6 text-blue-600 fill-current"
-                  role="img"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* <div className="py-20 xl:grid xl:grid-cols-3 xl:gap-8"> */}
-          {/*  <div className="grid grid-cols-2 gap-8 xl:col-span-2"> */}
-          {/*     <div className="space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-8"> */}
-          {/*      <div> */}
-          {/*        <h3 className="text-sm font-medium text-gray-900">Shop</h3> */}
-          {/*        <ul className="mt-6 space-y-6"> */}
-          {/*          {footerNavigation.shop.map((item) => ( */}
-          {/*            <li key={item.name} className="text-sm"> */}
-          {/*              <a */}
-          {/*                href={item.href} */}
-          {/*                className="text-gray-500 hover:text-gray-600" */}
-          {/*              > */}
-          {/*                {item.name} */}
-          {/*              </a> */}
-          {/*            </li> */}
-          {/*          ))} */}
-          {/*        </ul> */}
-          {/*      </div> */}
-          {/*      <div> */}
-          {/*        <h3 className="text-sm font-medium text-gray-900">Company</h3> */}
-          {/*        <ul className="mt-6 space-y-6"> */}
-          {/*          {footerNavigation.company.map((item) => ( */}
-          {/*            <li key={item.name} className="text-sm"> */}
-          {/*              <a */}
-          {/*                href={item.href} */}
-          {/*                className="text-gray-500 hover:text-gray-600" */}
-          {/*              > */}
-          {/*                {item.name} */}
-          {/*              </a> */}
-          {/*            </li> */}
-          {/*          ))} */}
-          {/*        </ul> */}
-          {/*      </div> */}
-          {/*     </div> */}
-          {/*     <div className="space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-8"> */}
-          {/*      <div> */}
-          {/*        <h3 className="text-sm font-medium text-gray-900">Account</h3> */}
-          {/*        <ul role="list" className="mt-6 space-y-6"> */}
-          {/*          {footerNavigation.account.map((item) => ( */}
-          {/*            <li key={item.name} className="text-sm"> */}
-          {/*              <a */}
-          {/*                href={item.href} */}
-          {/*                className="text-gray-500 hover:text-gray-600" */}
-          {/*              > */}
-          {/*                {item.name} */}
-          {/*              </a> */}
-          {/*            </li> */}
-          {/*          ))} */}
-          {/*        </ul> */}
-          {/*      </div> */}
-          {/*      <div> */}
-          {/*        <h3 className="text-sm font-medium text-gray-900">Connect</h3> */}
-          {/*        <ul role="list" className="mt-6 space-y-6"> */}
-          {/*          {footerNavigation.connect.map((item) => ( */}
-          {/*            <li key={item.name} className="text-sm"> */}
-          {/*              <a */}
-          {/*                href={item.href} */}
-          {/*                className="text-gray-500 hover:text-gray-600" */}
-          {/*              > */}
-          {/*                {item.name} */}
-          {/*              </a> */}
-          {/*            </li> */}
-          {/*          ))} */}
-          {/*        </ul> */}
-          {/*      </div> */}
-          {/*     </div> */}
-          {/*  </div> */}
-          {/*  <div className="mt-16 md:mt-16 xl:mt-0"> */}
-          {/*    <h3 className="text-sm font-medium text-gray-900"> */}
-          {/*      Sign up for our newsletter */}
-          {/*    </h3> */}
-          {/*    <p className="mt-6 text-sm text-gray-500"> */}
-          {/*      The latest deals and savings, sent to your inbox weekly. */}
-          {/*    </p> */}
-          {/*    <form className="mt-2 flex sm:max-w-md"> */}
-          {/*      /!* eslint-disable-next-line jsx-a11y/label-has-associated-control *!/ */}
-          {/*      <label htmlFor="email-address" className="sr-only"> */}
-          {/*        Email address */}
-          {/*      </label> */}
-          {/*      <input */}
-          {/*        id="email-address" */}
-          {/*        type="text" */}
-          {/*        autoComplete="email" */}
-          {/*        required */}
-          {/*        className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-indigo-500 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" */}
-          {/*      /> */}
-          {/*      <div className="ml-4 flex-shrink-0"> */}
-          {/*        <button */}
-          {/*          type="submit" */}
-          {/*          className="w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" */}
-          {/*        > */}
-          {/*          Sign up */}
-          {/*        </button> */}
-          {/*      </div> */}
-          {/*    </form> */}
-          {/*  </div> */}
-          {/* </div> */}
-
-          <div className="border-t border-gray-200 py-10">
-            <p className="text-sm text-gray-500">
-              Copyright &copy; 2021 Hassatu Beauty.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
