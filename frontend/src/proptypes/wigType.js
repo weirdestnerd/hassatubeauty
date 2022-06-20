@@ -14,7 +14,6 @@ export const wigType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   laces: PropTypes.objectOf(PropTypes.string).isRequired,
-  lengths: PropTypes.objectOf(PropTypes.string).isRequired,
   pricing: PropTypes.objectOf(
     PropTypes.oneOfType([
       PropTypes.objectOf(PropTypes.number),

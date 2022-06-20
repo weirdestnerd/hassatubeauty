@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import frontals from "../../../constants/frontals";
-import calculatePriceRange from "../../../helpers/utils";
+import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 
 function ShopRelated({ frontalKey }) {
@@ -34,7 +34,7 @@ function ShopRelated({ frontalKey }) {
                   {frontal.name}
                 </h3>
                 <p className="mt-1 text-sm text-gray-500">
-                  {calculatePriceRange(frontal.pricing)}
+                  {calculatePriceRange(frontal)}
                 </p>
               </div>
               <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">

@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
-import calculatePriceRange from "../../../helpers/utils";
+import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 import closures from "../../../constants/closures";
 
@@ -53,7 +53,7 @@ function ShopAllClosures() {
 
                     <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
                       <h3>{closure.name}</h3>
-                      <p>{calculatePriceRange(closure.pricing)}</p>
+                      <p>{calculatePriceRange(closure)}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">
                       Fully customizable

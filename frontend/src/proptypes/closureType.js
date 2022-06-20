@@ -14,7 +14,6 @@ export const closureType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   laces: PropTypes.objectOf(PropTypes.string).isRequired,
-  lengths: PropTypes.objectOf(PropTypes.string).isRequired,
   pricing: PropTypes.objectOf(PropTypes.objectOf(PropTypes.number)).isRequired,
   texture: PropTypes.objectOf(PropTypes.string).isRequired,
   images: closureImagesType.isRequired,

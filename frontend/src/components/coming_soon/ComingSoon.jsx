@@ -26,7 +26,11 @@ function ComingSoon() {
   return (
     <div className="bg-white">
       {confirmationModal && (
-        <Modal onClose={() => setConfirmationModel(false)} />
+        <Modal
+          message="Great!"
+          description="We'll email you as soon as we launch!"
+          onClose={() => setConfirmationModel(false)}
+        />
       )}
 
       <header className="relative z-10">

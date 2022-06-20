@@ -6,7 +6,7 @@ function ProductFeatures({ product }) {
     const allKeys = Object.keys(productImages);
     const imageKey =
       index < allKeys.length ? allKeys[index] : allKeys[allKeys.length - 1];
-    const image = productImages[imageKey];
+    const image = productImages[imageKey][0];
 
     return (
       <img

@@ -1,30 +1,36 @@
-const calculatePriceRangeUnformatted = (
-  productPrices,
-  priceCheckTexture = false
-) => {
-  const laceMinMaxPrices = Object.keys(productPrices)
-    .map((lace) => {
-      let pricesByLength = Object.values(productPrices[lace]);
-      if (priceCheckTexture) {
-        pricesByLength = calculatePriceRangeUnformatted(productPrices[lace]);
-      }
-      return [Math.min(...pricesByLength), Math.max(...pricesByLength)];
-    })
-    .flat();
+const calculatePriceRange = (product) => {
+  const lacesExists = Object.keys(product.laces).length > 0;
 
-  const startingPrice = Math.min(...laceMinMaxPrices);
-  const highestPrice = Math.max(...laceMinMaxPrices);
+  let minMaxPrices = null;
 
-  return [startingPrice, highestPrice];
-};
+  if (lacesExists) {
+    minMaxPrices = Object.keys(product.pricing)
+      .map((lace) => {
+        return Object.keys(product.pricing[lace]).map((texture) => {
+          const texturePrices = Object.values(product.pricing[lace][texture]);
+          return [Math.min(...texturePrices), Math.max(...texturePrices)];
+        });
+      })
+      .flat(2);
+  } else {
+    minMaxPrices = Object.keys(product.pricing)
+      .map((texture) => {
+        const texturePrices = Object.values(product.pricing[texture]);
+        return [Math.min(...texturePrices), Math.max(...texturePrices)];
+      })
+      .flat();
+  }
 
-const calculatePriceRange = (productPrices, priceCheckTexture = false) => {
-  const [startingPrice, highestPrice] = calculatePriceRangeUnformatted(
-    productPrices,
-    priceCheckTexture
-  );
+  const startingPrice = Math.min(...minMaxPrices);
+  const highestPrice = Math.max(...minMaxPrices);
 
   return `$${startingPrice} - $${highestPrice}`;
 };
 
-export default calculatePriceRange;
+const selectedImages = (product, selectedTexture) => {
+  return selectedTexture === null
+    ? Object.keys(product.images).map((texture) => product.images[texture][0])
+    : product.images[selectedTexture];
+};
+
+export { calculatePriceRange, selectedImages };
