@@ -439,7 +439,6 @@ const frontals = {
       "loose-curls": "Loose Curls (LC)",
       "kinky-curls": "Kinky Curls (KC)",
       "curly-waves": "Curly Waves (CW)",
-      "pineapple-waves": "Pineapple Waves (PW)",
     },
     images: {
       "body-wave": [

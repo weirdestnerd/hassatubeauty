@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 
-function Modal({ onClose }) {
+function Modal({ message, description, onClose }) {
   const cancelButtonRef = useRef(null);
 
   return (
@@ -57,12 +57,10 @@ function Modal({ onClose }) {
                       as="h3"
                       className="text-lg leading-6 font-medium text-gray-900"
                     >
-                      Great!
+                      {message}
                     </Dialog.Title>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        We&apos;ll email you as soon as we launch!
-                      </p>
+                      <p className="text-sm text-gray-500">{description}</p>
                     </div>
                   </div>
                 </div>
@@ -85,7 +83,13 @@ function Modal({ onClose }) {
 }
 
 Modal.propTypes = {
+  message: PropTypes.string.isRequired,
+  description: PropTypes.string,
   onClose: PropTypes.func.isRequired,
+};
+
+Modal.defaultProps = {
+  description: null,
 };
 
 export default Modal;

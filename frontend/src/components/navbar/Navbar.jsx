@@ -4,6 +4,8 @@ import { MenuIcon, ShoppingBagIcon, XIcon } from "@heroicons/react/outline";
 import classNames from "classnames";
 import MobileLogin from "./mobile/MobileLogin";
 import Menu from "./mobile/Menu";
+import Logo from "../Logo";
+import LoginNav from "./LoginNav";
 
 function Navbar() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -222,23 +224,7 @@ function Navbar() {
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </button>
 
-            {/* Logo */}
-            <div className="ml-4 flex lg:ml-0">
-              <a href="/">
-                <span className="sr-only">Hassatu Beauty</span>
-                <img
-                  className="h-8 w-auto"
-                  src="https://coming-soon-page.s3.us-west-004.backblazeb2.com/logo.PNG"
-                  alt=""
-                />
-              </a>
-            </div>
-
-            <a href="/">
-              <p className="text-base text-center font-extrabold tracking-tight text-gray-900 sm:text-sm xl:text-3xl ml-2">
-                Hassatu Beauty
-              </p>
-            </a>
+            <Logo />
 
             {/* Flyout menus */}
             <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
@@ -373,36 +359,7 @@ function Navbar() {
             </Popover.Group>
 
             <div className="ml-auto flex items-center">
-              {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"> */}
-              {/* <a */}
-              {/*   href="#" */}
-              {/*   className="text-sm font-medium text-gray-700 hover:text-gray-800" */}
-              {/* > */}
-              {/*   Sign in */}
-              {/* </a> */}
-              {/* <span className="h-6 w-px bg-gray-200" aria-hidden="true" /> */}
-              {/* <a */}
-              {/*   href="#" */}
-              {/*   className="text-sm font-medium text-gray-700 hover:text-gray-800" */}
-              {/* > */}
-              {/*   Create account */}
-              {/* </a> */}
-              {/* </div> */}
-
-              {/* <div className="hidden lg:ml-8 lg:flex"> */}
-              {/* <a */}
-              {/*   href="#" */}
-              {/*   className="text-gray-700 hover:text-gray-800 flex items-center" */}
-              {/* > */}
-              {/*   <img */}
-              {/*     src="https://tailwindui.com/img/flags/flag-canada.svg" */}
-              {/*     alt="" */}
-              {/*     className="w-5 h-auto block flex-shrink-0" */}
-              {/*   /> */}
-              {/*   <span className="ml-3 block text-sm font-medium">CAD</span> */}
-              {/*   <span className="sr-only">, change currency</span> */}
-              {/* </a> */}
-              {/* </div> */}
+              <LoginNav />
 
               {/* /!*Search *!/ */}
               {/* <div className="flex lg:ml-6"> */}

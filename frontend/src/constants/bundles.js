@@ -136,7 +136,7 @@ const bundles = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/1B-straight.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-straight.jpeg",
           alt: "",
           styling: {},
         },
@@ -144,7 +144,7 @@ const bundles = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/1B-body-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -152,13 +152,13 @@ const bundles = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/1B-deep-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/1B-deep-wave-1.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-deep-wave-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -166,7 +166,7 @@ const bundles = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/1B-loose-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -174,7 +174,7 @@ const bundles = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/1B-loose-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -204,14 +204,6 @@ const bundles = {
         },
       ],
     },
-    additionalImages: [
-      {
-        id: 1,
-        src: "https://f004.backblazeb2.com/file/loose-wave/638ed139-e1d9-41fd-b820-3789d38352cf.jpg",
-        alt: "",
-        styling: {},
-      },
-    ],
     description:
       "The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.",
     quickDescription: "Elegant simplicity",
@@ -335,7 +327,7 @@ const bundles = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/613-straight.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
           alt: "",
           styling: {},
         },
@@ -343,7 +335,7 @@ const bundles = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/613-body-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -351,13 +343,13 @@ const bundles = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/613-deep-wave-1.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/613-deep-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-deep-wave-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -365,7 +357,7 @@ const bundles = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/613-loose-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -373,7 +365,7 @@ const bundles = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/bundle-ss/613-loose-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },

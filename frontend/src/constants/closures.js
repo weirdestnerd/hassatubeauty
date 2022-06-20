@@ -152,18 +152,17 @@ const closures = {
       "curly-waves": "Curly Waves (CW)",
       "pineapple-waves": "Pineapple Waves (PW)",
     },
-    // images must match texture
     images: {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/1B-straight.jpg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-straight.jpg",
           alt: "",
           styling: {},
         },
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/1B-straight-1.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-straight-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -171,7 +170,7 @@ const closures = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/closures/1B-body-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -179,7 +178,7 @@ const closures = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/closures/1B-deep-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -187,13 +186,13 @@ const closures = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave-1.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -201,13 +200,13 @@ const closures = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave-1.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -462,7 +461,7 @@ const closures = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/closures/1B-body-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -470,13 +469,13 @@ const closures = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/1B-straight.jpg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-straight.jpg",
           alt: "",
           styling: {},
         },
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/1B-straight-1.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-straight-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -484,7 +483,7 @@ const closures = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/closures/1B-deep-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -492,13 +491,13 @@ const closures = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave-1.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -506,13 +505,13 @@ const closures = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/1B-loose-wave-1.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/1B-loose-wave-1.jpeg",
           alt: "",
           styling: {},
         },
@@ -703,12 +702,11 @@ const closures = {
       "curly-waves": "Curly Waves (CW)",
       "pineapple-waves": "Pineapple Waves (PW)",
     },
-    // images must match texture
     images: {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/613-straight.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
           alt: "",
           styling: {},
         },
@@ -716,7 +714,7 @@ const closures = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/closures/613-body-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -724,7 +722,7 @@ const closures = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/closures/613-deep-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -732,7 +730,7 @@ const closures = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -740,7 +738,7 @@ const closures = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -936,7 +934,7 @@ const closures = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/closures/613-body-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -944,7 +942,7 @@ const closures = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/613-straight.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
           alt: "",
           styling: {},
         },
@@ -952,7 +950,7 @@ const closures = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/closures/613-deep-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -960,7 +958,7 @@ const closures = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -968,7 +966,7 @@ const closures = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1164,7 +1162,7 @@ const closures = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/closures/613-deep-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1172,7 +1170,7 @@ const closures = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/613-straight.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
           alt: "",
           styling: {},
         },
@@ -1180,7 +1178,7 @@ const closures = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/closures/613-body-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1188,7 +1186,7 @@ const closures = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1196,7 +1194,7 @@ const closures = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1376,7 +1374,7 @@ const closures = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1384,7 +1382,7 @@ const closures = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/closures/613-straight.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
           alt: "",
           styling: {},
         },
@@ -1392,7 +1390,7 @@ const closures = {
       "body-wave": [
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/closures/613-body-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1400,7 +1398,7 @@ const closures = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/closures/613-deep-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
@@ -1408,7 +1406,7 @@ const closures = {
       "loose-curls": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/closures/613-loose-wave.jpeg",
+          src: "https://closures.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
         },

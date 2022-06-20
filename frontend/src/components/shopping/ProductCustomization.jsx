@@ -14,6 +14,7 @@ function ProductCustomization({ product, texture, setTexture }) {
   const lacesExists = () => Object.keys(product.laces).length > 0;
 
   const addToCart = () => {
+    // TODO: must be signed in to "add to cart"
     // eslint-disable-next-line no-console
     console.log(product.name);
   };
