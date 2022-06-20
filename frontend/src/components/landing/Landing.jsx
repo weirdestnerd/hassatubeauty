@@ -1,36 +1,22 @@
 import React from "react";
+import { isMobileOnly } from "react-device-detect";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 
-// TODO: review w/ Trina
 const perks = [
   {
-    name: "Free returns",
-    imageUrl:
-      "https://tailwindui.com/img/ecommerce/icons/icon-returns-light.svg",
-    description:
-      "Not what you expected? Place it back in the parcel and attach the pre-paid postage stamp.",
-  },
-  {
-    name: "Same day delivery",
+    name: "Packaging & Shipping",
     imageUrl:
       "https://tailwindui.com/img/ecommerce/icons/icon-calendar-light.svg",
     description:
-      "We offer a delivery service that has never been done before. Checkout today and receive your products within hours.",
+      "Our packaging process is as quick as two weeks. While shipping could take a little as one week",
   },
   {
     name: "All year discount",
     imageUrl:
       "https://tailwindui.com/img/ecommerce/icons/icon-gift-card-light.svg",
     description:
-      'Looking for a deal? You can use the code "ALLYEAR" at checkout and get money off all year round.',
-  },
-  {
-    name: "For the planet",
-    imageUrl:
-      "https://tailwindui.com/img/ecommerce/icons/icon-planet-light.svg",
-    description:
-      "We’ve pledged 1% of sales to the preservation and restoration of the natural environment.",
+      "Looking for a deal? Checkout out sales collection for deals on most products",
   },
 ];
 
@@ -120,11 +106,12 @@ function Landing() {
                   </div>
                 </div>
 
+                {/* TODO: update to /shop-all */}
                 <a
-                  href="/shop-all"
+                  href="#collections"
                   className="inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700"
                 >
-                  Order your wig
+                  Shop collections
                 </a>
               </div>
             </div>
@@ -133,23 +120,27 @@ function Landing() {
       </header>
 
       <main>
-        {/* Category section */}
-        <section aria-labelledby="category-heading" className="bg-gray-50">
+        {/* Collections section */}
+        <section
+          id="collections"
+          aria-labelledby="category-heading"
+          className="bg-gray-50"
+        >
           <div className="max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
             <div className="sm:flex sm:items-baseline sm:justify-between">
               <h2
                 id="category-heading"
                 className="text-2xl font-extrabold tracking-tight text-gray-900"
               >
-                Shop our wigs
+                Shop our collections
               </h2>
-              <a
-                href="/shop-all"
-                className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
-              >
-                Browse all wigs
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
+              {/* <a */}
+              {/*  href="/shop-all" */}
+              {/*  className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block" */}
+              {/* > */}
+              {/*  Browse all wigs */}
+              {/*  <span aria-hidden="true"> &rarr;</span> */}
+              {/* </a> */}
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
@@ -166,13 +157,13 @@ function Landing() {
                 <div className="p-6 flex items-end">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop/body-wave">
+                      <a href="/shop-wigs">
                         <span className="absolute inset-0" />
-                        Body wave wig
+                        Wig collection
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Get it now
+                      Shop now
                     </p>
                   </div>
                 </div>
@@ -191,13 +182,13 @@ function Landing() {
                 <div className="p-6 flex items-end sm:absolute sm:inset-0">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop/loose-wave">
+                      <a href="/shop-frontals">
                         <span className="absolute inset-0" />
-                        Loose wave wig
+                        Frontal collections
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Get it now
+                      Shop now
                     </p>
                   </div>
                 </div>
@@ -216,41 +207,130 @@ function Landing() {
                 <div className="p-6 flex items-end sm:absolute sm:inset-0">
                   <div>
                     <h3 className="font-semibold text-white">
-                      <a href="/shop/deep-wave">
+                      <a href="/shop-closures">
                         <span className="absolute inset-0" />
-                        Deep wave wig
+                        Closures collection
                       </a>
                     </h3>
                     <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Get it now
+                      Shop now
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 sm:hidden">
-              <a
-                href="/shop-all"
-                className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
+            {/*  <div className="mt-6 sm:hidden"> */}
+            {/*    <a */}
+            {/*      href="/shop-all" */}
+            {/*      className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500" */}
+            {/*    > */}
+            {/*      Browse all wigs */}
+            {/*      <span aria-hidden="true"> &rarr;</span> */}
+            {/*    </a> */}
+            {/*  </div> */}
+          </div>
+        </section>
+
+        {/* Promo section */}
+        <div className="bg-white relative overflow-hidden">
+          {/* Decorative background image and gradient */}
+          <div aria-hidden="true" className="absolute inset-0">
+            <div className="absolute inset-0 max-w-7xl mx-auto overflow-hidden xl:px-8">
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/home-page-02-sale-full-width.jpg"
+                alt=""
+                className="w-full h-full object-center object-cover"
+              />
+            </div>
+            <div className="absolute inset-0 bg-white bg-opacity-75" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
+          </div>
+
+          {/* Callout */}
+          <section
+            aria-labelledby="sale-heading"
+            className="relative mb-32 max-w-7xl mx-auto pt-32 px-4 flex flex-col items-center text-center sm:px-6 lg:px-8"
+          >
+            <div className="max-w-2xl mx-auto lg:max-w-none">
+              <h2
+                id="sale-heading"
+                className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
               >
-                Browse all wigs
-                <span aria-hidden="true"> &rarr;</span>
+                Enjoy our year-round deals
+              </h2>
+              <p className="mt-4 max-w-xl mx-auto text-xl text-gray-600">
+                Most of our products are limited releases that won&apos;t come
+                back. Get your favorite items while they&apos;re in stock.
+              </p>
+              <a
+                href="/shop-sales"
+                className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto"
+              >
+                Get access to our one-time sale
               </a>
+            </div>
+          </section>
+        </div>
+
+        {/* Perks section */}
+        <section
+          aria-labelledby="perks-heading"
+          className="bg-gray-50 border-t border-gray-200"
+        >
+          <h2 id="perks-heading" className="sr-only">
+            Our perks
+          </h2>
+
+          <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:px-8">
+            <div className="grid grid-cols-2 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-2 lg:gap-x-2 lg:gap-y-0">
+              {perks.map((perk) => (
+                <div
+                  key={perk.name}
+                  className="text-center md:flex md:items-start md:text-left lg:block lg:text-center"
+                >
+                  <div className="md:flex-shrink-0">
+                    <div className="flow-root">
+                      <img
+                        className="-my-1 h-24 w-auto mx-auto"
+                        src={perk.imageUrl}
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-6 md:mt-0 md:ml-4 lg:mt-6 lg:ml-0">
+                    <h3 className="text-sm font-semibold tracking-wide uppercase text-gray-900">
+                      {perk.name}
+                    </h3>
+                    <p className="mt-3 text-sm text-gray-500">
+                      {perk.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Featured section */}
+        {/* Read My Story section */}
         <section aria-labelledby="cause-heading">
           <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
             <div className="absolute inset-0 overflow-hidden">
-              <img
-                src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina8+(1).jpeg"
-                alt=""
-                className="w-full h-full object-center object-cover"
-                style={{ objectPosition: "0 35%" }}
-              />
+              {isMobileOnly ? (
+                <img
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina3.jpeg"
+                  alt=""
+                  className="w-full h-full object-center object-cover"
+                  style={{ objectPosition: "-1 35%" }}
+                />
+              ) : (
+                <img
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina8+(1).jpeg"
+                  alt=""
+                  className="w-full h-full object-center object-cover"
+                  style={{ objectPosition: "0 42%" }}
+                />
+              )}
             </div>
             <div
               aria-hidden="true"
@@ -279,42 +359,40 @@ function Landing() {
           </div>
         </section>
 
-        {/* Perks section */}
+        {/* Patricia section */}
         <section
-          aria-labelledby="perks-heading"
-          className="bg-gray-50 border-t border-gray-200"
+          aria-labelledby="featured-heading"
+          className="relative my-16 mx-10 rounded-lg overflow-hidden lg:h-96"
         >
-          <h2 id="perks-heading" className="sr-only">
-            Our perks
-          </h2>
-
-          <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 sm:py-32 lg:px-8">
-            <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-0">
-              {perks.map((perk) => (
-                <div
-                  key={perk.name}
-                  className="text-center md:flex md:items-start md:text-left lg:block lg:text-center"
-                >
-                  <div className="md:flex-shrink-0">
-                    <div className="flow-root">
-                      <img
-                        className="-my-1 h-24 w-auto mx-auto"
-                        src={perk.imageUrl}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-6 md:mt-0 md:ml-4 lg:mt-6 lg:ml-0">
-                    <h3 className="text-sm font-semibold tracking-wide uppercase text-gray-900">
-                      {perk.name}
-                    </h3>
-                    <p className="mt-3 text-sm text-gray-500">
-                      {perk.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+          <div className="absolute inset-0">
+            <img
+              src="https://shopping-page.s3.us-west-004.backblazeb2.com/sonia-roselli-tWng4d9Njxo-unsplash.jpeg"
+              alt=""
+              className="w-full h-full object-center object-cover"
+            />
+          </div>
+          <div aria-hidden="true" className="relative w-full h-96 lg:hidden" />
+          <div aria-hidden="true" className="relative w-full h-32 lg:hidden" />
+          <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 p-6 rounded-bl-lg rounded-br-lg backdrop-filter backdrop-blur sm:flex sm:items-center sm:justify-between lg:inset-y-0 lg:inset-x-auto lg:w-96 lg:rounded-tl-lg lg:rounded-br-none lg:flex-col lg:items-start">
+            <div>
+              <h2
+                id="featured-heading"
+                className="text-xl font-bold text-white"
+              >
+                TNC Lovely
+              </h2>
+              <p className="mt-1 text-sm text-gray-300">
+                We&apos;ve partnered with TNC Lovely Company to bring you
+                essential oils for your daily needs. Something something
+                something buy them
+              </p>
             </div>
+            <a
+              href="/shop-patricia"
+              className="mt-6 flex-shrink-0 flex bg-white bg-opacity-0 py-3 px-4 border border-white border-opacity-25 rounded-md items-center justify-center text-base font-medium text-white hover:bg-opacity-10 sm:mt-0 sm:ml-8 lg:ml-0 lg:w-full"
+            >
+              View the collection
+            </a>
           </div>
         </section>
 

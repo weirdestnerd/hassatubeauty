@@ -2,7 +2,7 @@ import React from "react";
 import { Disclosure } from "@headlessui/react";
 import classNames from "classnames";
 import { MinusSmIcon, PlusSmIcon } from "@heroicons/react/outline";
-import productType from "../../proptypes/productType";
+import { productType } from "../../proptypes/productType";
 
 function ProductDetails({ product }) {
   return (

@@ -1,7 +1,23 @@
 import React from "react";
-import productType from "../../proptypes/productType";
+import { productFeatureType } from "../../proptypes/productType";
 
 function ProductFeatures({ product }) {
+  const renderProductImageAt = (productImages, index) => {
+    const allKeys = Object.keys(productImages);
+    const imageKey =
+      index < allKeys.length ? allKeys[index] : allKeys[allKeys.length - 1];
+    const image = productImages[imageKey][0];
+
+    return (
+      <img
+        src={image.src}
+        alt={image.alt}
+        style={image.styling}
+        className="w-full h-full object-center object-cover"
+      />
+    );
+  };
+
   return (
     <div className="max-w-2xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:max-w-7xl lg:px-8">
       <div className="grid items-center grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-2">
@@ -27,31 +43,17 @@ function ProductFeatures({ product }) {
           </dl>
         </div>
 
+        {/* TODO: update images; it would be an object instead */}
         <div>
           <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-            <img
-              src={product.images[0].src}
-              alt={product.images[0].alt}
-              style={product.images[0].styling}
-              className="w-full h-full object-center object-cover"
-            />
+            {renderProductImageAt(product.images, 0)}
           </div>
           <div className="grid grid-cols-2 gap-4 mt-4 sm:gap-6 sm:mt-6 lg:gap-8 lg:mt-8">
             <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-              <img
-                src={product.images[1].src}
-                alt={product.images[1].alt}
-                style={product.images[1].styling}
-                className="w-full h-full object-center object-cover"
-              />
+              {renderProductImageAt(product.images, 1)}
             </div>
             <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
-              <img
-                src={product.images[2].src}
-                alt={product.images[2].alt}
-                style={product.images[2].styling}
-                className="w-full h-full object-center object-cover"
-              />
+              {renderProductImageAt(product.images, 2)}
             </div>
           </div>
         </div>
@@ -61,7 +63,7 @@ function ProductFeatures({ product }) {
 }
 
 ProductFeatures.propTypes = {
-  product: productType.isRequired,
+  product: productFeatureType.isRequired,
 };
 
 export default ProductFeatures;
