@@ -16,6 +16,9 @@ services:
         fromDatabase:
           name: hassatubeauty
           property: connectionString
+      - key: RAILS_ENV
+        value: production
+        previewValue: preview
 envVarGroups:
   - name: secrets
     envVars:

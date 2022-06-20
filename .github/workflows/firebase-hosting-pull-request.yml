@@ -10,6 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd frontend && npm install && npm run build
+        env:
+          REACT_APP_IN_PREVIEW: true
+          REACT_APP_RENDER_BASE_API_URL: https://hassatubeauty-pr-${{ github.event.pull_request.number }}.onrender.com
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
