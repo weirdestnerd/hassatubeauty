@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 
 export const wigImagesType = PropTypes.objectOf(
-  PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  })
+  PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    })
+  )
 );
 
 export const wigType = PropTypes.shape({
