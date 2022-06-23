@@ -206,7 +206,7 @@ const frontals = {
       ],
     },
     description:
-      "The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.",
+      "Lace frontal wig human hair 13x4 HD lace frontal wigs human hair pre plucked 180% density brazilian virgin hair",
     quickDescription: "Elegant simplicity",
     details: [
       {

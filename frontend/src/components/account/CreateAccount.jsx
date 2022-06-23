@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import YupPassword from "yup-password";
@@ -17,11 +17,17 @@ YupPassword(Yup);
 function CreateAccount() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const user = useSignedInUser();
 
   useEffect(() => {
-    if (user) navigate(-1);
+    const redirect =
+      Object.keys(searchParams).length === 0
+        ? searchParams.get("redirect")
+        : -1;
+    if (user) navigate(redirect);
   }, [user]);
 
   const SignUpSchema = Yup.object().shape({
@@ -97,6 +103,10 @@ function CreateAccount() {
     return errorsExists && valuesNotFilled;
   };
 
+  const redirectToSignIn = () => {
+    return navigate(`/sign-in?redirect=${searchParams.get("redirect")}`);
+  };
+
   const buttonClassName = classNames(
     "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
     {
@@ -138,12 +148,13 @@ function CreateAccount() {
             <div className="mt-6">
               <div className="flex items-center justify-center">
                 <div className="text-sm">
-                  <a
-                    href="/sign-in"
+                  <button
+                    type="submit"
+                    onClick={redirectToSignIn}
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Sign in instead
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

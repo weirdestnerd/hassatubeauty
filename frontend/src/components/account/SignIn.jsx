@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import classNames from "classnames";
 import { signIn, googleSignIn } from "../../firebase";
-// import EmailInput from "../form/EmailInput";
-// import PasswordInput from "../form/PasswordInput";
 import LoadingOverlay from "../loading/LoadingOverlay";
 import Notification from "../alerts/Notification";
 import { useSignedInUser } from "../../hooks/UserHook";
@@ -16,11 +14,17 @@ import PasswordInput from "../form/PasswordInput";
 function SignIn() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const user = useSignedInUser();
 
   useEffect(() => {
-    if (user) navigate(-1);
+    const redirect =
+      Object.keys(searchParams).length === 0
+        ? searchParams.get("redirect")
+        : -1;
+    if (user) navigate(redirect);
   }, [user]);
 
   const SignInSchema = Yup.object().shape({
@@ -92,6 +96,10 @@ function SignIn() {
     return errorsExists && valuesNotFilled;
   };
 
+  const redirectToCreateAccount = () => {
+    return navigate(`/create-account?redirect=${searchParams.get("redirect")}`);
+  };
+
   const buttonClassName = classNames(
     "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
     {
@@ -142,12 +150,13 @@ function SignIn() {
             <div className="mt-6">
               <div className="flex items-center justify-center">
                 <div className="text-sm">
-                  <a
-                    href="/create-account"
+                  <button
+                    type="submit"
+                    onClick={redirectToCreateAccount}
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     Create an account instead
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

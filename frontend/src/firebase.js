@@ -11,6 +11,16 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  doc,
+  deleteDoc,
+  onSnapshot,
+  serverTimestamp,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAn6yBGJfpnm6tbVwv-j79V19GLrd6cKqA",
@@ -28,6 +38,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const signIn = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
@@ -43,6 +54,21 @@ const createUser = (email, password) =>
 
 const logOut = () => signOut(auth);
 
+const addToCart = (userUid, data) => {
+  return addDoc(collection(db, "shopping-carts", userUid, "cart"), {
+    ...data,
+    timestamp: serverTimestamp(),
+  });
+};
+
+const liveCart = (userUid, observer) => {
+  const cart = collection(db, "shopping-carts", userUid, "cart");
+  onSnapshot(query(cart), observer);
+};
+
+const removeFromCart = (userUid, id) =>
+  deleteDoc(doc(db, "shopping-carts", userUid, "cart", id));
+
 export {
   signIn,
   googleSignIn,
@@ -50,4 +76,7 @@ export {
   passwordReset,
   createUser,
   logOut,
+  addToCart,
+  liveCart,
+  removeFromCart,
 };

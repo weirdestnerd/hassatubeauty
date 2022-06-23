@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from "react";
 import { Dialog, Popover, Transition } from "@headlessui/react";
-import { MenuIcon, ShoppingBagIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import classNames from "classnames";
 import MobileLogin from "./mobile/MobileLogin";
 import Menu from "./mobile/Menu";
 import Logo from "../Logo";
 import LoginNav from "./LoginNav";
+import CartIcon from "./CartIcon";
 
 function Navbar() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -369,18 +370,7 @@ function Navbar() {
               {/* </a> */}
               {/* </div> */}
 
-              {/* Cart */}
-              <div className="ml-4 flow-root lg:ml-6">
-                <a
-                  href="/shopping-cart"
-                  className="group -m-2 p-2 flex items-center"
-                >
-                  <ShoppingBagIcon
-                    className="flex-shrink-0 h-6 w-6 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                </a>
-              </div>
+              <CartIcon />
             </div>
           </div>
         </div>

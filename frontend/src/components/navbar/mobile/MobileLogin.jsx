@@ -20,7 +20,7 @@ function MobileLogin() {
             onClick={onLogOut}
             className="-m-2 p-2 block font-medium text-gray-900"
           >
-            Sign in
+            Sign out
           </button>
         </div>
       );
