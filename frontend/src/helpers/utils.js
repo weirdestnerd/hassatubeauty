@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 const calculatePriceRange = (product) => {
   const lacesExists = Object.keys(product.laces).length > 0;
 
@@ -33,4 +35,16 @@ const selectedImages = (product, selectedTexture) => {
     : product.images[selectedTexture];
 };
 
-export { calculatePriceRange, selectedImages };
+const lacesExists = (product) => Object.keys(product.laces).length > 0;
+
+const disabledButtonClassName = (classname, disabled) =>
+  classNames(classname, {
+    "disabled:opacity-50": disabled,
+  });
+
+export {
+  calculatePriceRange,
+  selectedImages,
+  lacesExists,
+  disabledButtonClassName,
+};

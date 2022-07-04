@@ -21,6 +21,7 @@ import {
   onSnapshot,
   serverTimestamp,
 } from "firebase/firestore";
+import { getFunctions, httpsCallable } from "firebase/functions";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAn6yBGJfpnm6tbVwv-j79V19GLrd6cKqA",
@@ -39,6 +40,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const functions = getFunctions(app);
 
 const signIn = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
@@ -69,6 +71,8 @@ const liveCart = (userUid, observer) => {
 const removeFromCart = (userUid, id) =>
   deleteDoc(doc(db, "shopping-carts", userUid, "cart", id));
 
+const getStripeCheckoutUrl = httpsCallable(functions, "getStripeCheckoutUrl");
+
 export {
   signIn,
   googleSignIn,
@@ -79,4 +83,5 @@ export {
   addToCart,
   liveCart,
   removeFromCart,
+  getStripeCheckoutUrl,
 };

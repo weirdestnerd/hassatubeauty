@@ -43,7 +43,6 @@ function ProductFeatures({ product }) {
           </dl>
         </div>
 
-        {/* TODO: update images; it would be an object instead */}
         <div>
           <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
             {renderProductImageAt(product.images, 0)}
