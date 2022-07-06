@@ -3,6 +3,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 import getBaseUrl from "../../constants/api";
+import RollbarError from "../../helpers/Rollbar";
 
 function NotifyMeForm({ setConfirmationModal }) {
   const onSubmit = (values) => {
@@ -16,10 +17,7 @@ function NotifyMeForm({ setConfirmationModal }) {
       .then(() => {
         setConfirmationModal(true);
       })
-      .catch((error) => {
-        // eslint-disable-next-line
-        console.error(error);
-      });
+      .catch(RollbarError);
   };
 
   const validationSchema = Yup.object().shape({

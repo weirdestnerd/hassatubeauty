@@ -10,6 +10,7 @@ import { useSignedInUser } from "../../hooks/UserHook";
 import CondensedNotification from "../alerts/CondensedNotification";
 import { addToCart } from "../../firebase";
 import Notification from "../alerts/Notification";
+import { lacesExists } from "../../helpers/utils";
 
 function ProductCustomization({ product, texture, setTexture }) {
   const laces = Object.keys(product.laces);
@@ -23,17 +24,17 @@ function ProductCustomization({ product, texture, setTexture }) {
   const user = useSignedInUser();
   const navigate = useNavigate();
 
-  const lacesExists = () => Object.keys(product.laces).length > 0;
-
   const showPrice = () =>
     texture !== null &&
-    (lacesExists() ? lace !== null : true) &&
+    (lacesExists(product) ? lace !== null : true) &&
     hairLength !== null;
 
   useEffect(() => {
     if (!showPrice()) return;
 
-    const price = lacesExists() ? product.pricing[lace] : product.pricing;
+    const price = lacesExists(product)
+      ? product.pricing[lace]
+      : product.pricing;
     setCustomPrice(price[texture][hairLength]);
   }, [texture, lace, hairLength]);
 
@@ -105,8 +106,8 @@ function ProductCustomization({ product, texture, setTexture }) {
 
     if (texture === null) return options;
 
-    if (lacesExists() && lace === null) return options;
-    options = lacesExists()
+    if (lacesExists(product) && lace === null) return options;
+    options = lacesExists(product)
       ? Object.keys(product.pricing[lace][texture])
       : Object.keys(product.pricing[texture]);
 
@@ -125,7 +126,7 @@ function ProductCustomization({ product, texture, setTexture }) {
 
     const description = [
       product.texture[texture],
-      lacesExists() && product.laces[lace],
+      lacesExists(product) && product.laces[lace],
       `${hairLength}"`,
     ].join(" - ");
 

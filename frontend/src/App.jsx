@@ -15,6 +15,7 @@ import ShopBundleContainer from "./components/shopping/bundles/ShopBundleContain
 import SignIn from "./components/account/SignIn";
 import ForgotPassword from "./components/account/ForgotPassword";
 import CreateAccount from "./components/account/CreateAccount";
+import OrderDetails from "./components/shopping/OrderDetails";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/create-account" element={<CreateAccount />} />
+      <Route path="/ordered" element={<OrderDetails />} />
       {/*  TODO: create these pages */}
       {/* <Route path="/shop-sales" element={<Landing />} /> */}
       {/* <Route path="/shipping-policy" element={<Landing />} /> */}
