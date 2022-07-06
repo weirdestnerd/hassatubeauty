@@ -16,6 +16,7 @@ import {
   lacesExists,
 } from "../../helpers/utils";
 import SingleProductImage from "./SingleProductImage";
+import RollbarError from "../../helpers/Rollbar";
 
 function Cart({ userUid, open, setOpen }) {
   const [loading, setLoading] = useState(false);
@@ -54,7 +55,7 @@ function Cart({ userUid, open, setOpen }) {
         // eslint-disable-next-line no-undef
         window.location = data.checkoutUrl;
       })
-      .catch(console.error);
+      .catch(RollbarError);
   };
 
   const startStripeCheckout = () => {
@@ -91,7 +92,7 @@ function Cart({ userUid, open, setOpen }) {
         const { data } = result;
         handleStripeSessionCreated(data);
       })
-      .catch(console.error)
+      .catch(RollbarError)
       .finally(() => setLoading(false));
   };
 
