@@ -3,9 +3,10 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp();
 
+const stripe = require("stripe")(functions.config().stripe.sdk);
+
 const handleStripeCheckout = async (data, context) => {
-  const stripe = require("stripe")(functions.config().stripe.sdk);
-  const stripeItems = data.products((product) => {
+  const stripeItems = data.products.map((product) => {
     return {
       price_data: {
         currency: "USD",
@@ -14,7 +15,7 @@ const handleStripeCheckout = async (data, context) => {
           description: product.description,
           images: [product.image],
         },
-        unit_amount: `${product.price}00`, // to cents
+        unit_amount: product.price * 100, // to cents
       },
       quantity: 1,
     };
@@ -25,6 +26,7 @@ const handleStripeCheckout = async (data, context) => {
     mode: "payment",
     success_url: data.successPage,
     cancel_url: data.cancelPage,
+    billing_address_collection: 'auto',
     shipping_address_collection: {
       allowed_countries: ['US'],
     },
@@ -89,4 +91,13 @@ const handleStripeCheckout = async (data, context) => {
   return {checkoutUrl: session.url, sessionId: session.id};
 };
 
+const getSession = async (data, context) => {
+  const session = await stripe.checkout.sessions.retrieve(
+      data.sessionId
+  );
+
+  return { session }
+}
+
 exports.getStripeCheckoutUrl = functions.https.onCall(handleStripeCheckout);
+exports.getSession = functions.https.onCall(getSession);

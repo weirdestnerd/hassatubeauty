@@ -1,5 +1,5 @@
 import React from "react";
-import { frontalImagesType } from "../../proptypes/frontalType";
+import { productImageType } from "../../proptypes/productType";
 
 function ProductImage({ productImages }) {
   const firstImageKey = Object.keys(productImages)[0];
@@ -18,7 +18,7 @@ function ProductImage({ productImages }) {
 }
 
 ProductImage.propTypes = {
-  productImages: frontalImagesType.isRequired,
+  productImages: productImageType.isRequired,
 };
 
 export default ProductImage;

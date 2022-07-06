@@ -20,8 +20,13 @@ import {
   deleteDoc,
   onSnapshot,
   serverTimestamp,
+  where,
+  getDocs,
+  writeBatch,
+  getDoc,
 } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import rn from "random-number";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAn6yBGJfpnm6tbVwv-j79V19GLrd6cKqA",
@@ -59,19 +64,73 @@ const logOut = () => signOut(auth);
 const addToCart = (userUid, data) => {
   return addDoc(collection(db, "shopping-carts", userUid, "cart"), {
     ...data,
+    active: true,
     timestamp: serverTimestamp(),
   });
 };
 
 const liveCart = (userUid, observer) => {
   const cart = collection(db, "shopping-carts", userUid, "cart");
-  onSnapshot(query(cart), observer);
+  onSnapshot(query(cart, where("active", "==", true)), observer);
 };
 
 const removeFromCart = (userUid, id) =>
   deleteDoc(doc(db, "shopping-carts", userUid, "cart", id));
 
+const makeExistingOrdersInactive = async (userUid) => {
+  const batch = writeBatch(db);
+  const orders = collection(db, "orders", userUid, "orders");
+  const q = query(orders, where("active", "==", true));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((queryDoc) => {
+    const docRef = doc(db, "orders", userUid, "orders", queryDoc.id);
+    batch.update(docRef, { active: false });
+  });
+
+  await batch.commit();
+};
+
+const createNewOrder = async (userUid, data) => {
+  await makeExistingOrdersInactive(userUid);
+  const batch = writeBatch(db);
+  data.cart.forEach((cartId) => {
+    const docRef = doc(db, "shopping-carts", userUid, "cart", cartId);
+    batch.update(docRef, { active: false });
+  });
+
+  await batch.commit();
+
+  return addDoc(collection(db, "orders", userUid, "orders"), {
+    sessionId: data.sessionId,
+    cart: data.cart,
+    orderId: rn({
+      min: 10000,
+      max: 10000000,
+      integer: true,
+    }),
+    active: true,
+    timestamp: serverTimestamp(),
+  });
+};
+
+const getActiveOrders = async (userUid) => {
+  const orders = collection(db, "orders", userUid, "orders");
+  const q = query(orders, where("active", "==", true));
+  return getDocs(q);
+};
+
+const getCartProducts = (userUid, cartIds) => {
+  const products = [];
+  cartIds.forEach(async (cartId) => {
+    const docRef = doc(db, "shopping-carts", userUid, "cart", cartId);
+    const docSnap = await getDoc(docRef);
+    products.push(docSnap.data());
+  });
+  return products;
+};
+
 const getStripeCheckoutUrl = httpsCallable(functions, "getStripeCheckoutUrl");
+const getSession = httpsCallable(functions, "getSession");
 
 export {
   signIn,
@@ -83,5 +142,10 @@ export {
   addToCart,
   liveCart,
   removeFromCart,
+  createNewOrder,
+  makeExistingOrdersInactive,
+  getActiveOrders,
+  getCartProducts,
+  getSession,
   getStripeCheckoutUrl,
 };

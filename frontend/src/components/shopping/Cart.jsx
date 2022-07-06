@@ -3,15 +3,19 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 import rn from "random-number";
-import { getStripeCheckoutUrl, liveCart, removeFromCart } from "../../firebase";
-import frontals from "../../constants/frontals";
-import closures from "../../constants/closures";
-import bundles from "../../constants/bundles";
-import wigs from "../../constants/wigs";
-import ProductImage from "./ProductImage";
-import PRODUCT_TYPES from "../../constants";
+import {
+  createNewOrder,
+  getStripeCheckoutUrl,
+  liveCart,
+  removeFromCart,
+} from "../../firebase";
 import LoadingOverlay from "../loading/LoadingOverlay";
-import { disabledButtonClassName, lacesExists } from "../../helpers/utils";
+import {
+  disabledButtonClassName,
+  getProduct,
+  lacesExists,
+} from "../../helpers/utils";
+import SingleProductImage from "./SingleProductImage";
 
 function Cart({ userUid, open, setOpen }) {
   const [loading, setLoading] = useState(false);
@@ -41,19 +45,16 @@ function Cart({ userUid, open, setOpen }) {
     setLoading(false);
   }, [open, loading, confirmRemove]);
 
-  const getProduct = (key, type) => {
-    switch (type) {
-      case PRODUCT_TYPES.FRONTAL:
-        return frontals[key];
-      case PRODUCT_TYPES.CLOSURE:
-        return closures[key];
-      case PRODUCT_TYPES.BUNDLE:
-        return bundles[key];
-      case PRODUCT_TYPES.WIG:
-        return wigs[key];
-      default:
-        return null;
-    }
+  const handleStripeSessionCreated = (data) => {
+    createNewOrder(userUid, {
+      sessionId: data.sessionId,
+      cart: shoppingCart.map((productInfo) => productInfo.id),
+    })
+      .then(() => {
+        // eslint-disable-next-line no-undef
+        window.location = data.checkoutUrl;
+      })
+      .catch(console.error);
   };
 
   const startStripeCheckout = () => {
@@ -69,8 +70,7 @@ function Cart({ userUid, open, setOpen }) {
         `${productInfo.hairLength}"`,
       ].join(" - ");
 
-      const firstImageKey = Object.keys(product.images)[0];
-      const image = product.images[firstImageKey][0];
+      const image = product.images[productInfo.texture][0].src;
 
       return {
         name: product.name,
@@ -82,15 +82,14 @@ function Cart({ userUid, open, setOpen }) {
 
     getStripeCheckoutUrl({
       products,
-      successPage: "/ordered?stripe_session_id=",
+      // eslint-disable-next-line no-undef
+      successPage: `${window.location.origin}/ordered`,
       // eslint-disable-next-line no-undef
       cancelPage: window.location.href,
     })
       .then((result) => {
         const { data } = result;
-
-        // eslint-disable-next-line no-undef
-        window.location = data.checkoutUrl;
+        handleStripeSessionCreated(data);
       })
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -159,7 +158,9 @@ function Cart({ userUid, open, setOpen }) {
       return (
         <li key={rn()} className="flex py-6">
           <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-            <ProductImage productImages={product.images} />
+            <SingleProductImage
+              image={product.images[productInfo.texture][0]}
+            />
           </div>
 
           <div className="ml-4 flex flex-1 flex-col">
@@ -173,8 +174,6 @@ function Cart({ userUid, open, setOpen }) {
               {renderCustomization(productInfo, product)}
             </div>
             <div className="flex flex-1 items-end justify-between text-sm">
-              <p className="text-gray-500">Qty {product.quantity}</p>
-
               <div className="flex">{renderProductRemoveCTA(productInfo)}</div>
             </div>
           </div>
@@ -253,12 +252,12 @@ function Cart({ userUid, open, setOpen }) {
                         <p className="mt-0.5 text-sm text-gray-500">
                           Shipping and taxes calculated at checkout.
                         </p>
-                        <div className="mt-6">
+                        <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                           <button
                             type="submit"
                             onClick={startStripeCheckout}
                             className={disabledButtonClassName(
-                              "flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700",
+                              "flex-auto items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700",
                               shoppingCart.length === 0
                             )}
                             disabled={shoppingCart.length === 0}

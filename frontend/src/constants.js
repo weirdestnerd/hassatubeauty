@@ -2,7 +2,7 @@ const PRODUCT_TYPES = {
   FRONTAL: "frontal",
   BUNDLE: "bundle",
   CLOSURE: "closure",
-  WIGS: "wigs",
+  WIG: "wig",
 };
 
 export default PRODUCT_TYPES;
