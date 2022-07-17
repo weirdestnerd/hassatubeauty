@@ -214,7 +214,7 @@ const closures = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -222,7 +222,7 @@ const closures = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -230,7 +230,7 @@ const closures = {
       "pineapple-waves": [
         {
           id: 8,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -519,7 +519,7 @@ const closures = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -527,7 +527,7 @@ const closures = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -535,20 +535,12 @@ const closures = {
       "pineapple-waves": [
         {
           id: 8,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
       ],
     },
-    additionalImages: [
-      {
-        id: 1,
-        src: "https://f004.backblazeb2.com/file/loose-wave/638ed139-e1d9-41fd-b820-3789d38352cf.jpg",
-        alt: "",
-        styling: {},
-      },
-    ],
     description:
       "The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.",
     quickDescription: "Elegant simplicity",
@@ -746,7 +738,7 @@ const closures = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -754,7 +746,7 @@ const closures = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -762,7 +754,7 @@ const closures = {
       "pineapple-waves": [
         {
           id: 8,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -974,7 +966,7 @@ const closures = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -982,7 +974,7 @@ const closures = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -990,7 +982,7 @@ const closures = {
       "pineapple-waves": [
         {
           id: 8,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -1202,7 +1194,7 @@ const closures = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -1210,7 +1202,7 @@ const closures = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -1218,7 +1210,7 @@ const closures = {
       "pineapple-waves": [
         {
           id: 8,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -1414,7 +1406,7 @@ const closures = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -1422,7 +1414,7 @@ const closures = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -1430,7 +1422,7 @@ const closures = {
       "pineapple-waves": [
         {
           id: 8,
-          src: "https://f004.backblazeb2.com/file/landing-page-images/No_image_available.svg.png",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },

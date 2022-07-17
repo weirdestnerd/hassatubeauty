@@ -139,13 +139,13 @@ const frontals = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4792.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4792.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4793.jpg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4793.jpg",
           alt: "",
           styling: {},
         },
@@ -153,13 +153,13 @@ const frontals = {
       "body-wave": [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4766.jpg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4766.jpg",
           alt: "",
           styling: {},
         },
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4765.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4765.jpeg",
           alt: "",
           styling: {},
         },
@@ -167,7 +167,7 @@ const frontals = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4760.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4760.jpeg",
           alt: "",
           styling: {},
         },
@@ -175,7 +175,7 @@ const frontals = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4752.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4752.jpeg",
           alt: "",
           styling: {},
         },
@@ -183,7 +183,7 @@ const frontals = {
       "loose-curls": [
         {
           id: 5,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4752.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4752.jpeg",
           alt: "",
           styling: {},
         },
@@ -191,7 +191,7 @@ const frontals = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/loose-wave/638ed139-e1d9-41fd-b820-3789d38352cf.jpg",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -199,7 +199,7 @@ const frontals = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/loose-wave/638ed139-e1d9-41fd-b820-3789d38352cf.jpg",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -444,13 +444,13 @@ const frontals = {
       "body-wave": [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4766.jpg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4766.jpg",
           alt: "",
           styling: {},
         },
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4765.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4765.jpeg",
           alt: "",
           styling: {},
         },
@@ -458,13 +458,13 @@ const frontals = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4792.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4792.jpeg",
           alt: "",
           styling: {},
         },
         {
           id: 2,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4793.jpg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4793.jpg",
           alt: "",
           styling: {},
         },
@@ -472,7 +472,7 @@ const frontals = {
       "deep-wave": [
         {
           id: 3,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4760.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4760.jpeg",
           alt: "",
           styling: {},
         },
@@ -480,7 +480,7 @@ const frontals = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4752.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4752.jpeg",
           alt: "",
           styling: {},
         },
@@ -488,7 +488,7 @@ const frontals = {
       "loose-curls": [
         {
           id: 5,
-          src: "https://f004.backblazeb2.com/file/frontals/1B/IMG_4752.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4752.jpeg",
           alt: "",
           styling: {},
         },
@@ -496,7 +496,7 @@ const frontals = {
       "kinky-curls": [
         {
           id: 6,
-          src: "https://f004.backblazeb2.com/file/loose-wave/638ed139-e1d9-41fd-b820-3789d38352cf.jpg",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -504,7 +504,7 @@ const frontals = {
       "curly-waves": [
         {
           id: 7,
-          src: "https://f004.backblazeb2.com/file/loose-wave/638ed139-e1d9-41fd-b820-3789d38352cf.jpg",
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -616,7 +616,7 @@ const frontals = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/613/IMG_4747.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/613/IMG_4747.jpeg",
           alt: "",
           styling: {},
         },
@@ -624,7 +624,7 @@ const frontals = {
       "body-wave": [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/613/IMG_4748.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/613/IMG_4748.jpeg",
           alt: "",
           styling: {},
         },
@@ -736,7 +736,7 @@ const frontals = {
       "body-wave": [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/613/IMG_4748.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/613/IMG_4748.jpeg",
           alt: "",
           styling: {},
         },
@@ -744,7 +744,7 @@ const frontals = {
       straight: [
         {
           id: 1,
-          src: "https://f004.backblazeb2.com/file/frontals/613/IMG_4747.jpeg",
+          src: "https://frontals.s3.us-west-004.backblazeb2.com/613/IMG_4747.jpeg",
           alt: "",
           styling: {},
         },
