@@ -199,13 +199,19 @@ const wigs = {
       "kinky-curls": "Kinky Curls (KC)",
       "curly-waves": "Curly Waves (CW)",
       yaki: "Yaki",
-      "pineapple-curl": "",
+      "pineapple-curl": "Pineapple Curl (PC)",
     },
     images: {
       straight: [
         {
           id: 1,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig_straight-1.JPG",
+          alt: "",
+          styling: { objectPosition: "top" },
+        },
+        {
+          id: 2,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig_straight-2.JPG",
           alt: "",
           styling: {},
         },
@@ -229,7 +235,13 @@ const wigs = {
       "loose-wave": [
         {
           id: 4,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-loose-wave.JPG",
+          alt: "",
+          styling: {},
+        },
+        {
+          id: 4,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-loose-wave-2.JPG",
           alt: "",
           styling: {},
         },
@@ -237,7 +249,31 @@ const wigs = {
       "loose-curls": [
         {
           id: 5,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-deep-curl.JPG",
+          alt: "",
+          styling: {},
+        },
+        {
+          id: 5,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-deep-curl-1.JPG",
+          alt: "",
+          styling: {},
+        },
+        {
+          id: 5,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-deep-curl-2.JPG",
+          alt: "",
+          styling: {},
+        },
+        {
+          id: 5,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-deep-curl-3.JPG",
+          alt: "",
+          styling: {},
+        },
+        {
+          id: 5,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-deep-curl-4.JPG",
           alt: "",
           styling: {},
         },
@@ -261,13 +297,27 @@ const wigs = {
       yaki: [
         {
           id: 8,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/yaki-1B.jpg",
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-yaki.JPG",
           alt: "",
           styling: {},
         },
         {
           id: 9,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/yaki-1b-1.jpeg",
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wig-yaki-1.JPG",
+          alt: "",
+          styling: {},
+        },
+        {
+          id: 9,
+          src: "https://wig-wigs.s3.us-west-004.backblazeb2.com/wg-yaki-2.JPG",
+          alt: "",
+          styling: {},
+        },
+      ],
+      "pineapple-curl": [
+        {
+          id: 8,
+          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },

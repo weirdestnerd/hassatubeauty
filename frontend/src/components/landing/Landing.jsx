@@ -1,4 +1,5 @@
 import React from "react";
+// import { isMobileOnly } from "react-device-detect";
 import { isMobileOnly } from "react-device-detect";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
@@ -27,7 +28,10 @@ function Landing() {
         <Navbar />
 
         {/* Hero section */}
-        <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+        <div
+          className="pt-16 pb-80 sm:pt-24 sm:pb-28 lg:pt-40 lg:pb-48"
+          style={isMobileOnly ? { paddingBottom: "31rem" } : {}}
+        >
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
             <div className="sm:max-w-lg">
               <h1 className="text-4xl font font-extrabold tracking-tight text-gray-900 sm:text-6xl">
@@ -50,14 +54,15 @@ function Landing() {
                       <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/deep-wave.jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5835.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
+                            style={{ objectPosition: "top" }}
                           />
                         </div>
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina2.jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5793.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
                           />
@@ -66,14 +71,15 @@ function Landing() {
                       <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina4.jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/9092B985-8E3F-40C1-B088-9EA002B18E6F.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
+                            style={{ objectPosition: "-1em 6em" }}
                           />
                         </div>
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina1.jpg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5849.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
                           />
@@ -96,7 +102,7 @@ function Landing() {
                         </div>
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina5+(1).jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/84529386-550E-4BB5-B949-65CB4075E29F.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
                           />
@@ -146,9 +152,10 @@ function Landing() {
             <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
                 <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/body_wave.jpg"
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5831.JPG"
                   alt=""
                   className="object-center object-cover group-hover:opacity-75"
+                  style={{ objectPosition: "0 10%" }}
                 />
                 <div
                   aria-hidden="true"
@@ -170,10 +177,10 @@ function Landing() {
               </div>
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full">
                 <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina2.jpeg"
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5810.JPG"
                   alt=""
                   className="object-center object-cover group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full"
-                  style={{ objectPosition: "0 25%" }}
+                  style={{ objectPosition: "0 10%" }}
                 />
                 <div
                   aria-hidden="true"
@@ -195,7 +202,7 @@ function Landing() {
               </div>
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full">
                 <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina1.jpg"
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5828.JPG"
                   alt=""
                   className="object-center object-cover group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full"
                   style={{ objectPosition: "top" }}
@@ -316,21 +323,21 @@ function Landing() {
         <section aria-labelledby="cause-heading">
           <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
             <div className="absolute inset-0 overflow-hidden">
-              {isMobileOnly ? (
-                <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina3.jpeg"
-                  alt=""
-                  className="w-full h-full object-center object-cover"
-                  style={{ objectPosition: "-1 35%" }}
-                />
-              ) : (
-                <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina8+(1).jpeg"
-                  alt=""
-                  className="w-full h-full object-center object-cover"
-                  style={{ objectPosition: "0 42%" }}
-                />
-              )}
+              {/* {isMobileOnly ? ( */}
+              {/*  <img */}
+              {/*    src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG" */}
+              {/*    alt="" */}
+              {/*    className="w-full h-full object-center object-cover" */}
+              {/*    style={{ objectPosition: "-1 35%" }} */}
+              {/*  /> */}
+              {/* ) : ( */}
+              {/* )} */}
+              <img
+                src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG"
+                alt=""
+                className="w-full h-full object-center object-cover"
+                style={{ objectPosition: "0 3em" }}
+              />
             </div>
             <div
               aria-hidden="true"
