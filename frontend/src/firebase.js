@@ -180,7 +180,8 @@ const getProduct = async (id, type) => {
 };
 
 const getAllProducts = async (type) => {
-  const querySnapshot = await getDocs(collection(db, type));
+  const q = query(collection(db, type), where("show", "==", true));
+  const querySnapshot = await getDocs(q);
   const result = {};
   querySnapshot.forEach((qDoc) => {
     result[qDoc.id] = { ...qDoc.data(), id: qDoc.id, type };

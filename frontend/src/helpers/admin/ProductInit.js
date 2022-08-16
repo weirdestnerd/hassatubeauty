@@ -22,27 +22,27 @@ export const initTextures = (product) => {
 export const initPricing = (product) => {
   const initialPricing = {};
   if (!product || product === {}) return initialPricing;
-  // eslint-disable-next-line no-unused-expressions
-  !!product.pricing && product.laces.length === 0
-    ? Object.keys(product.pricing).forEach((k) => {
-        initialPricing[k] = Object.keys(product.pricing[k]).map((l) => ({
+
+  if (Object.keys(product.laces).length === 0) {
+    Object.keys(product.pricing).forEach((k) => {
+      initialPricing[k] = Object.keys(product.pricing[k]).map((l) => ({
+        id: rn(),
+        length: l,
+        price: product.pricing[k][l],
+      }));
+    });
+  } else {
+    Object.keys(product.pricing).forEach((k) => {
+      Object.keys(product.pricing[k]).forEach((t) => {
+        if (!initialPricing[k]) initialPricing[k] = {};
+        initialPricing[k][t] = Object.keys(product.pricing[k][t]).map((l) => ({
           id: rn(),
           length: l,
-          price: product.pricing[k][l],
+          price: product.pricing[k][t][l],
         }));
-      })
-    : Object.keys(product.pricing).forEach((k) => {
-        Object.keys(product.pricing[k]).forEach((t) => {
-          if (!initialPricing[k]) initialPricing[k] = {};
-          initialPricing[k][t] = Object.keys(product.pricing[k][t]).map(
-            (l) => ({
-              id: rn(),
-              length: l,
-              price: product.pricing[k][t][l],
-            })
-          );
-        });
       });
+    });
+  }
 
   return initialPricing;
 };

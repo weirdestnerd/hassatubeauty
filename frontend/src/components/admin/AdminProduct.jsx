@@ -51,9 +51,15 @@ function AdminProduct({ isEdit, product }) {
 
   const [pricing, setPricing] = useState(initPricing(product));
   const [images, setImages] = useState((!!product && product.images) || {});
-  const [pricingLace, setPricingLace] = useState(laces[0] || null);
-  const [pricingTexture, setPricingTexture] = useState(textures[0] || null);
-  const [imagesTexture, setImagesTexture] = useState(textures[0] || null);
+  const [pricingLace, setPricingLace] = useState(
+    laces.length !== 0 ? laces[0] : null
+  );
+  const [pricingTexture, setPricingTexture] = useState(
+    textures.length !== 0 ? textures[0] : null
+  );
+  const [imagesTexture, setImagesTexture] = useState(
+    textures.length !== 0 ? textures[0] : null
+  );
   const [showOnSite, setShowOnSite] = useState(
     !!product && product.show ? showOnSiteOptions[0] : showOnSiteOptions[1]
   );
@@ -330,8 +336,9 @@ function AdminProduct({ isEdit, product }) {
 
   const renderPricingSection = () => {
     if (textures.length === 0) return null;
-    const pLace = pricingLace.value;
-    const pTexture = pricingTexture.value;
+    const pLace = (!!pricingLace && pricingLace.value) || null;
+    const pTexture = pricingTexture.value || null;
+    if (!pLace && !pTexture) return null;
     const prices =
       // eslint-disable-next-line no-nested-ternary
       (noLace()

@@ -26,6 +26,23 @@ function Landing() {
       <header className="relative overflow-hidden">
         <Navbar />
 
+        {/* <button */}
+        {/*  type="button" */}
+        {/*  onClick={() => { */}
+        {/*    // Object.keys(wigs).forEach((k) => { */}
+        {/*    addInventoryProduct({ */}
+        {/*      ...bundles["bundle-12A-blond-99j-color"], */}
+        {/*      type: "bundles", */}
+        {/*      show: true, */}
+        {/*    }) */}
+        {/*      .then(() => console.log("Uploaded")) */}
+        {/*      .catch(console.error); */}
+        {/*    // }); */}
+        {/*  }} */}
+        {/* > */}
+        {/*  yoasud */}
+        {/* </button> */}
+
         {/* Hero section */}
         <div
           className="pt-0 pb-80 sm:pt-24 sm:pb-28 lg:pt-40 lg:pb-48"
