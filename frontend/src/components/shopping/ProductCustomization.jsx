@@ -125,7 +125,7 @@ function ProductCustomization({ product, texture, setTexture }) {
     if (!showSuccessToast) return null;
 
     const description = [
-      product.texture[texture],
+      product.textures[texture],
       lacesExists(product) && product.laces[lace],
       `${hairLength}"`,
     ].join(" - ");
@@ -154,7 +154,7 @@ function ProductCustomization({ product, texture, setTexture }) {
         <TextureInput
           texture={texture}
           setTexture={setTexture}
-          options={product.texture}
+          options={product.textures}
         />
 
         <LaceInput lace={lace} setLace={setLace} options={product.laces} />

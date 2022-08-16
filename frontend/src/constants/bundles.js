@@ -1,6 +1,5 @@
 const bundles = {
   "bundle-12A-1B-color": {
-    id: 1,
     key: "bundle-12A-1B-color",
     name: "Bundles 12A 1B color",
     href: "/shop/bundles/bundle-12A-1B-color",
@@ -121,21 +120,17 @@ const bundles = {
         30: 110,
       },
     },
-    texture: {
+    textures: {
       straight: "Straight (STR)",
       "body-wave": "Body Wave (BW)",
       "deep-wave": "Deep Wave (DW)",
       "loose-wave": "Loose Wave (LW)",
       "loose-curls": "Loose Curls (LC)",
-      "kinky-curls": "Kinky Curls (KC)",
-      "curly-waves": "Curly Waves (CW)",
-      "pineapple-waves": "Pineapple Waves (PW)",
     },
     // images must match texture
     images: {
       straight: [
         {
-          id: 1,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-straight.jpeg",
           alt: "",
           styling: {},
@@ -143,7 +138,6 @@ const bundles = {
       ],
       "body-wave": [
         {
-          id: 2,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-body-wave.jpeg",
           alt: "",
           styling: {},
@@ -151,13 +145,11 @@ const bundles = {
       ],
       "deep-wave": [
         {
-          id: 3,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
-          id: 3,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-deep-wave-1.jpeg",
           alt: "",
           styling: {},
@@ -165,7 +157,6 @@ const bundles = {
       ],
       "loose-wave": [
         {
-          id: 4,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
           alt: "",
           styling: {},
@@ -173,32 +164,7 @@ const bundles = {
       ],
       "loose-curls": [
         {
-          id: 4,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/1B-loose-wave.jpeg",
-          alt: "",
-          styling: {},
-        },
-      ],
-      "kinky-curls": [
-        {
-          id: 6,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
-          alt: "",
-          styling: {},
-        },
-      ],
-      "curly-waves": [
-        {
-          id: 7,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
-          alt: "",
-          styling: {},
-        },
-      ],
-      "pineapple-waves": [
-        {
-          id: 8,
-          src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
           alt: "",
           styling: {},
         },
@@ -272,7 +238,6 @@ const bundles = {
     ],
   },
   "bundle-12A-blond-613-color": {
-    id: 2,
     key: "bundle-12A-blond-613-color",
     name: "Bundles 12A blond 613 color",
     href: "/shop/bundles/bundle-12A-blond-613-color",
@@ -329,7 +294,7 @@ const bundles = {
         28: 135,
       },
     },
-    texture: {
+    textures: {
       straight: "Straight (STR)",
       "body-wave": "Body Wave (BW)",
       "deep-wave": "Deep Wave (DW)",
@@ -339,7 +304,6 @@ const bundles = {
     images: {
       straight: [
         {
-          id: 1,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
           alt: "",
           styling: {},
@@ -347,7 +311,6 @@ const bundles = {
       ],
       "body-wave": [
         {
-          id: 2,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
           alt: "",
           styling: {},
@@ -355,13 +318,11 @@ const bundles = {
       ],
       "deep-wave": [
         {
-          id: 3,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
           alt: "",
           styling: {},
         },
         {
-          id: 3,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-deep-wave-1.jpeg",
           alt: "",
           styling: {},
@@ -369,7 +330,6 @@ const bundles = {
       ],
       "loose-wave": [
         {
-          id: 4,
           src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
           alt: "",
           styling: {},
@@ -443,11 +403,10 @@ const bundles = {
       },
     ],
   },
-  "bundle-12A-blond-p4-27-99j-color": {
-    id: 2,
-    key: "bundle-12A-p4-27-99j-color",
-    name: "Bundles 12A p4/27 99j color",
-    href: "/shop/bundles/bundle-12A-blond-p4-27-99j-color",
+  "bundle-12A-blond-99j-color": {
+    key: "bundle-12A-99j-color",
+    name: "Bundles 12A 99j color",
+    href: "/shop/bundles/bundle-12A-blond-99j-color",
     laces: {},
     pricing: {
       straight: {
@@ -476,47 +435,44 @@ const bundles = {
         28: 130,
         30: 145,
       },
+      "loose-wave": {
+        10: 40,
+        12: 40,
+        14: 40,
+        16: 45,
+        18: 55,
+        20: 70,
+        22: 85,
+        24: 100,
+        26: 115,
+        28: 130,
+        30: 145,
+      },
     },
-    texture: {
+    textures: {
       straight: "Straight (STR)",
       "body-wave": "Body Wave (BW)",
+      "loose-wave": "Loose Wave (LW)",
     },
     // images must match texture
     images: {
       straight: [
         {
-          id: 1,
-          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-straight.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/bund-str.JPG",
           alt: "",
           styling: {},
         },
       ],
       "body-wave": [
         {
-          id: 2,
-          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-body-wave.jpeg",
-          alt: "",
-          styling: {},
-        },
-      ],
-      "deep-wave": [
-        {
-          id: 3,
-          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-deep-wave.jpeg",
-          alt: "",
-          styling: {},
-        },
-        {
-          id: 3,
-          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-deep-wave-1.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/bund-body.JPG",
           alt: "",
           styling: {},
         },
       ],
       "loose-wave": [
         {
-          id: 4,
-          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/613-loose-wave.jpeg",
+          src: "https://bundle-ss.s3.us-west-004.backblazeb2.com/bund-loose.jpg",
           alt: "",
           styling: {},
         },

@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import frontals from "../../../constants/frontals";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopRelated({ frontalKey }) {
+  const [availableFrontals, setAvailableFrontals] = useState(null);
+
+  useEffect(() => {
+    getAllProducts("frontals").then(setAvailableFrontals).catch(RollbarError);
+  }, []);
+
   const otherFrontals = () => {
-    const availableFrontals = Object.keys(frontals);
-    return availableFrontals
+    return Object.keys(availableFrontals)
       .filter((availableFrontal) => availableFrontal !== frontalKey)
       .slice(0, 4)
-      .map((otherFrontal) => frontals[otherFrontal]);
+      .map((otherFrontal) => availableFrontals[otherFrontal]);
   };
+
+  if (!availableFrontals) return null;
 
   return (
     <section

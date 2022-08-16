@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
-import wigs from "../../../constants/wigs";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
+import LoadingPage from "../../LoadingPage";
+import NotFound from "../../NotFound";
 
 function ShopAllWigs() {
+  const [wigs, setWigs] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getAllProducts("wigs")
+      .then(setWigs)
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <LoadingPage />;
+  if (!loading && !wigs) return <NotFound />;
+
   return (
     <div className="bg-gray-50">
       <Navbar />

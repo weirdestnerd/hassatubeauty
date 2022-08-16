@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import closures from "../../../constants/closures";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopRelated({ closureKey }) {
+  const [availableClosures, setAvailableClosures] = useState(null);
+
+  useEffect(() => {
+    getAllProducts("closures").then(setAvailableClosures).catch(RollbarError);
+  }, []);
+
   const otherClosures = () => {
-    const availableClosures = Object.keys(closures);
-    return availableClosures
+    return Object.keys(availableClosures)
       .filter((availableClosure) => availableClosure !== closureKey)
       .slice(0, 4)
-      .map((otherClosure) => closures[otherClosure]);
+      .map((otherClosure) => availableClosures[otherClosure]);
   };
+
+  if (!availableClosures) return null;
 
   return (
     <section

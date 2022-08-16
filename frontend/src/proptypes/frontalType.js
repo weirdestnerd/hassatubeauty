@@ -14,6 +14,8 @@ export const frontalType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   key: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
   href: PropTypes.string.isRequired,
   laces: PropTypes.objectOf(PropTypes.string).isRequired,
   pricing: PropTypes.objectOf(

@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import wigs from "../../../constants/wigs";
 import ProductImage from "../ProductImage";
 import { calculatePriceRange } from "../../../helpers/utils";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopRelated({ wigKey }) {
+  const [availableWigs, setAvailableWigs] = useState(null);
+
+  useEffect(() => {
+    getAllProducts("wigs").then(setAvailableWigs).catch(RollbarError);
+  }, []);
+
   const otherWigs = () => {
-    const availableWigs = Object.keys(wigs);
-    return availableWigs
+    return Object.keys(availableWigs)
       .filter((availableWig) => availableWig !== wigKey)
       .slice(0, 4)
-      .map((otherWig) => wigs[otherWig]);
+      .map((otherWig) => availableWigs[otherWig]);
   };
+
+  if (!availableWigs) return null;
 
   return (
     <section

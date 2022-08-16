@@ -4,6 +4,14 @@ import { productFeatureType } from "../../proptypes/productType";
 function ProductFeatures({ product }) {
   const renderProductImageAt = (productImages, index) => {
     const allKeys = Object.keys(productImages);
+    if (allKeys.length === 0)
+      return (
+        <img
+          src="https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png"
+          alt=""
+          className="w-full h-full object-center object-cover"
+        />
+      );
     const imageKey =
       index < allKeys.length ? allKeys[index] : allKeys[allKeys.length - 1];
     const image = productImages[imageKey][0];

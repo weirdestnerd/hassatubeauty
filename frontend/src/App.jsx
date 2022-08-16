@@ -16,6 +16,9 @@ import SignIn from "./components/account/SignIn";
 import ForgotPassword from "./components/account/ForgotPassword";
 import CreateAccount from "./components/account/CreateAccount";
 import OrderDetails from "./components/shopping/OrderDetails";
+import Inventory from "./components/admin/Inventory";
+import AdminProduct from "./components/admin/AdminProduct";
+import AdminProductContainer from "./components/admin/AdminProductContainer";
 
 function App() {
   return (
@@ -40,6 +43,13 @@ function App() {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/create-account" element={<CreateAccount />} />
       <Route path="/ordered" element={<OrderDetails />} />
+      <Route path="/admin" element={<Inventory />} />
+      <Route path="/admin/inventory" element={<Inventory />} />
+      <Route path="/admin/:type/:id" element={<AdminProductContainer />} />
+      <Route
+        path="/admin/products/new"
+        element={<AdminProduct isEdit={false} product={null} />}
+      />
       {/*  TODO: create these pages */}
       {/* <Route path="/shop-sales" element={<Landing />} /> */}
       {/* <Route path="/shipping-policy" element={<Landing />} /> */}

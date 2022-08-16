@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import bundles from "../../../constants/bundles";
 import LoadingPage from "../../LoadingPage";
 import NotFound from "../../NotFound";
 import Shop from "./Shop";
+import { getProduct } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopBundleContainer() {
   const { bundle } = useParams();
@@ -11,10 +12,10 @@ function ShopBundleContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (Object.keys(bundles).includes(bundle)) {
-      setProduct(bundles[bundle]);
-      setLoading(false);
-    }
+    getProduct(bundle, "bundles")
+      .then(setProduct)
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
   }, [bundle]);
 
   if (loading) return <LoadingPage />;

@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
-import bundles from "../../../constants/bundles";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
+import LoadingPage from "../../LoadingPage";
+import NotFound from "../../NotFound";
 
 function ShopAllBundles() {
+  const [bundles, setBundles] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getAllProducts("bundles")
+      .then(setBundles)
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <LoadingPage />;
+  if (!loading && !bundles) return <NotFound />;
+
   return (
     <div className="bg-gray-50">
       <Navbar />

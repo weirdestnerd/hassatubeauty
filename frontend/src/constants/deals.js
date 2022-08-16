@@ -16,7 +16,7 @@ const deals = {
         },
       },
     },
-    texture: {
+    textures: {
       straight: "Straight (STR)",
       "body-wave": "Body Wave (BW)",
     },

@@ -32,7 +32,7 @@ function OrderDetails() {
 
   const renderCustomization = (productInfo, product) => {
     const content = [
-      product.texture[productInfo.texture],
+      product.textures[productInfo.texture],
       lacesExists(product) && product.laces[productInfo.lace],
       `${productInfo.hairLength}"`,
     ].join(" - ");

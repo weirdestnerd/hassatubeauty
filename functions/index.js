@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 
 const admin = require("firebase-admin");
+const axios = require("axios");
 admin.initializeApp();
 
 const stripe = require("stripe")(functions.config().stripe.sdk);
@@ -99,5 +100,40 @@ const getSession = async (data, context) => {
   return { session }
 }
 
+const uploadFile = async (data, context) => {
+  const file = {
+    lastModified: 1659587314000,
+    // lastModifiedDate: Wed Aug 03 2022 21:28:34 GMT-0700 (Mountain Standard Time) {}
+    name: "9092B985-8E3F-40C1-B088-9EA002B18E6F.JPG",
+    size: 198357,
+    type: "image/jpeg",
+    webkitRelativePath: ""
+  }
+  axios.get("https://api.backblazeb2.com/b2api/v2/b2_authorize_account", {
+    headers: { Authorization: "BasicMDA0MzVlNmJjNjIwY2NiMDAwMDAwMDAwMTpLMDA0NjZ2bDY2ZjE3SVNwdTFVeTZkeWtlNittZGxR" },
+  })
+      .then(response => {
+        const apiUrl = response.data.apiUrl
+        axios.get(`${apiUrl}/b2api/v2/b2_get_upload_url`, {
+          headers: { Authorization: functions.config().ACCOUNT_AUTHORIZATION_TOKEN },
+          data: { bucketId: "2335ee169bccf642800c0c1b" }
+        })
+            .then(r => {
+              const uploadUrl = r.data.uploadUrl
+              axios.post(uploadUrl, {}, {
+                headers: { 
+                  Authorization: functions.config().ACCOUNT_AUTHORIZATION_TOKEN,
+                  "X-Bz-File-Name": data.filename,
+                  "Content-Type": "b2/x-auto",
+                  "Content-Length": data.content_length,
+                  "X-Bz-Content-Sha1": "",
+                },
+                
+              })
+            })
+      })
+}
+
 exports.getStripeCheckoutUrl = functions.https.onCall(handleStripeCheckout);
 exports.getSession = functions.https.onCall(getSession);
+exports.uploadFile = functions.https.onCall(uploadFile)

@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import bundles from "../../../constants/bundles";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopRelated({ bundleKey }) {
-  const otherClosures = () => {
-    const availableClosures = Object.keys(bundles);
-    return availableClosures
-      .filter((availableClosure) => availableClosure !== bundleKey)
+  const [availableBundles, setAvailableBundles] = useState(null);
+
+  useEffect(() => {
+    getAllProducts("bundles").then(setAvailableBundles).catch(RollbarError);
+  }, []);
+
+  const otherBundles = () => {
+    return Object.keys(availableBundles)
+      .filter((availableBundle) => availableBundle !== bundleKey)
       .slice(0, 4)
-      .map((otherClosure) => bundles[otherClosure]);
+      .map((otherBundle) => availableBundles[otherBundle]);
   };
+
+  if (!availableBundles) return null;
 
   return (
     <section
@@ -23,7 +31,7 @@ function ShopRelated({ bundleKey }) {
       </h2>
 
       <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-        {otherClosures().map((bundle) => (
+        {otherBundles().map((bundle) => (
           <div key={bundle.id}>
             <div className="relative">
               <div className="relative w-full h-72 rounded-lg overflow-hidden">

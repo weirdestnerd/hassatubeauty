@@ -66,7 +66,7 @@ function Cart({ userUid, open, setOpen }) {
     const products = shoppingCart.map((productInfo) => {
       const product = getProduct(productInfo.key, productInfo.type);
       const description = [
-        product.texture[productInfo.texture],
+        product.textures[productInfo.texture],
         lacesExists(product) && product.laces[productInfo.lace],
         `${productInfo.hairLength}"`,
       ].join(" - ");
@@ -98,7 +98,7 @@ function Cart({ userUid, open, setOpen }) {
 
   const renderCustomization = (productInfo, product) => {
     const content = [
-      product.texture[productInfo.texture],
+      product.textures[productInfo.texture],
       lacesExists(product) && product.laces[productInfo.lace],
       `${productInfo.hairLength}"`,
     ].join(" - ");
@@ -189,7 +189,7 @@ function Cart({ userUid, open, setOpen }) {
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-10"
+          className="relative z-40"
           onClose={() => setOpen(false)}
         >
           <Transition.Child

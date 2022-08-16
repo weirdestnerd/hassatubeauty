@@ -35,6 +35,16 @@ const calculatePriceRange = (product) => {
 };
 
 const selectedImages = (product, selectedTexture) => {
+  if (Object.keys(product.images).length === 0) {
+    return [
+      {
+        src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+        alt: "",
+        styling: {},
+      },
+    ];
+  }
+
   return selectedTexture === null
     ? Object.keys(product.images).map((texture) => product.images[texture][0])
     : product.images[selectedTexture];
