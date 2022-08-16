@@ -9,6 +9,7 @@ export const initType = (product) => {
 
 export const initLaces = (product) => {
   if (!product || product === {}) return [LACES[0]];
+  if (Object.keys(product.laces).length === 0) return [];
   return LACES.filter((l) => Object.keys(product.laces).includes(l.value));
 };
 

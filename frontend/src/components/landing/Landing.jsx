@@ -29,15 +29,15 @@ function Landing() {
         {/* <button */}
         {/*  type="button" */}
         {/*  onClick={() => { */}
-        {/*    // Object.keys(wigs).forEach((k) => { */}
-        {/*    addInventoryProduct({ */}
-        {/*      ...bundles["bundle-12A-blond-99j-color"], */}
-        {/*      type: "bundles", */}
-        {/*      show: true, */}
-        {/*    }) */}
-        {/*      .then(() => console.log("Uploaded")) */}
-        {/*      .catch(console.error); */}
-        {/*    // }); */}
+        {/*    Object.keys(wigs).forEach((k) => { */}
+        {/*      addInventoryProduct({ */}
+        {/*        ...wigs[k], */}
+        {/*        type: "wigs", */}
+        {/*        show: true, */}
+        {/*      }) */}
+        {/*        .then(() => console.log("Uploaded", k)) */}
+        {/*        .catch(console.error); */}
+        {/*    }); */}
         {/*  }} */}
         {/* > */}
         {/*  yoasud */}

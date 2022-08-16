@@ -56,7 +56,8 @@ function ListboxSelect({
               <span className={classNames("block", { truncate })}>
                 {multiple
                   ? selectedValue.map((v) => v.label || v.value).join(", ")
-                  : selectedValue.label || selectedValue.value}
+                  : !!selectedValue &&
+                    (selectedValue.label || selectedValue.value)}
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon

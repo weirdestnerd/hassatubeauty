@@ -10,6 +10,7 @@ import rn from "random-number";
 import classNames from "classnames";
 import ImageUploading from "react-images-uploading";
 import { useNavigate } from "react-router-dom";
+import { PlusIcon } from "@heroicons/react/solid";
 import SideNav from "./SideNav";
 import ListboxSelect from "./ListboxSelect";
 import Divider from "../common/Divider";
@@ -212,10 +213,38 @@ function AdminProduct({ isEdit, product }) {
     setDetails(details.slice(0, ind).concat([u], details.slice(ind + 1)));
   };
 
+  const deleteDetailItem = (ind, inde) => {
+    const u = { ...details[ind] };
+    u.items.splice(inde, 1);
+    setDetails(details.slice(0, ind).concat([u], details.slice(ind + 1)));
+  };
+
+  const addDetailItem = (ind) => {
+    const u = { ...details[ind] };
+    u.items.push("");
+    setDetails(details.slice(0, ind).concat([u], details.slice(ind + 1)));
+  };
+
+  const deleteDetail = (ind) => {
+    setDetails(details.slice(0, ind).concat(details.slice(ind + 1)));
+  };
+
+  const addDetail = () => {
+    setDetails([...details, { name: "", items: [""] }]);
+  };
+
   const updateFeatureName = (name, ind) => {
     const u = { ...features[ind] };
     u.name = name;
     setFeatures(features.slice(0, ind).concat([u], features.slice(ind + 1)));
+  };
+
+  const deleteFeature = (ind) => {
+    setFeatures(features.slice(0, ind).concat(features.slice(ind + 1)));
+  };
+
+  const addFeature = () => {
+    setFeatures([...features, { name: "", desc: "" }]);
   };
 
   const updateFeatureDesc = (desc, ind) => {
@@ -628,22 +657,37 @@ function AdminProduct({ isEdit, product }) {
           {details.map((d, ind) => {
             return (
               <div className="space-y-2">
-                <label
-                  htmlFor={d.name}
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name={d.name}
-                      id={d.name}
-                      className="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md"
-                      value={d.name}
-                      onChange={(e) => updateDetailName(e.target.value, ind)}
-                    />
+                <div className="flex items-stretch gap-1">
+                  <label
+                    htmlFor={d.name}
+                    className="basis-full block text-sm font-medium text-gray-700"
+                  >
+                    Name
+                    <div className="mt-1">
+                      <input
+                        type="text"
+                        name={d.name}
+                        id={d.name}
+                        className="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md"
+                        value={d.name}
+                        onChange={(e) => updateDetailName(e.target.value, ind)}
+                      />
+                    </div>
+                  </label>
+                  <div className="mt-auto basis-1/6 self-stretch">
+                    <button
+                      type="button"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => deleteDetail(ind)}
+                    >
+                      <TrashIcon
+                        className="-ml-0.5 mr-2 h-4 w-4"
+                        aria-hidden="true"
+                      />
+                      Remove
+                    </button>
                   </div>
-                </label>
+                </div>
                 <div>
                   <p className="block text-sm font-medium text-gray-700">
                     Details
@@ -651,28 +695,65 @@ function AdminProduct({ isEdit, product }) {
                 </div>
                 {d.items.map((item, inde) => {
                   return (
-                    <label
-                      htmlFor={item}
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name={item}
-                          id={item}
-                          className="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md"
-                          value={item}
-                          onChange={(e) =>
-                            updateDetailItem(e.target.value, ind, inde)
-                          }
-                        />
+                    <div className="flex items-stretch gap-1">
+                      <label
+                        htmlFor={item}
+                        className="block text-sm font-medium text-gray-700 basis-full self-stretch"
+                      >
+                        <div className="mt-1">
+                          <input
+                            type="text"
+                            name={item}
+                            id={item}
+                            className="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md"
+                            value={item}
+                            onChange={(e) =>
+                              updateDetailItem(e.target.value, ind, inde)
+                            }
+                          />
+                        </div>
+                      </label>
+                      <div className="mt-auto basis-1/6 self-stretch">
+                        <button
+                          type="button"
+                          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          onClick={() => deleteDetailItem(ind, inde)}
+                        >
+                          <TrashIcon
+                            className="-ml-0.5 mr-2 h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </button>
                       </div>
-                    </label>
+                    </div>
                   );
                 })}
+                <div className="flex items-stretch">
+                  <button
+                    type="button"
+                    className="basis-full inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={() => addDetailItem(ind)}
+                  >
+                    <PlusIcon
+                      className="-ml-0.5 mr-2 h-4 w-4"
+                      aria-hidden="true"
+                    />
+                    Add row
+                  </button>
+                </div>
               </div>
             );
           })}
+          <div className="flex basis-full self-stretch">
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={addDetail}
+            >
+              <PlusIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true" />
+              Add Detail
+            </button>
+          </div>
 
           <Divider />
 
@@ -684,22 +765,37 @@ function AdminProduct({ isEdit, product }) {
           {features.map((f, ind) => {
             return (
               <div className="space-y-2">
-                <label
-                  htmlFor={f.name}
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name={f.name}
-                      id={f.name}
-                      className="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md"
-                      value={f.name}
-                      onChange={(e) => updateFeatureName(e.target.value, ind)}
-                    />
+                <div className="flex items-stretch gap-1">
+                  <label
+                    htmlFor={f.name}
+                    className="basis-full block text-sm font-medium text-gray-700"
+                  >
+                    Name
+                    <div className="mt-1">
+                      <input
+                        type="text"
+                        name={f.name}
+                        id={f.name}
+                        className="block w-full shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm border-gray-300 rounded-md"
+                        value={f.name}
+                        onChange={(e) => updateFeatureName(e.target.value, ind)}
+                      />
+                    </div>
+                  </label>
+                  <div className="mt-auto basis-1/6 self-stretch">
+                    <button
+                      type="button"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => deleteFeature(ind)}
+                    >
+                      <TrashIcon
+                        className="-ml-0.5 mr-2 h-4 w-4"
+                        aria-hidden="true"
+                      />
+                      Remove
+                    </button>
                   </div>
-                </label>
+                </div>
                 <label
                   htmlFor={f.name}
                   className="block text-sm font-medium text-gray-700"
@@ -719,6 +815,16 @@ function AdminProduct({ isEdit, product }) {
               </div>
             );
           })}
+          <div className="flex basis-full self-stretch">
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              onClick={addFeature}
+            >
+              <PlusIcon className="-ml-0.5 mr-2 h-4 w-4" aria-hidden="true" />
+              Add Feature
+            </button>
+          </div>
 
           <Divider />
 

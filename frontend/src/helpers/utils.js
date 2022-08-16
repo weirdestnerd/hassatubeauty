@@ -6,6 +6,7 @@ import bundles from "../constants/bundles";
 import wigs from "../constants/wigs";
 
 const calculatePriceRange = (product) => {
+  console.log(product);
   const lacesExists = Object.keys(product.laces).length > 0;
 
   let minMaxPrices = null;
