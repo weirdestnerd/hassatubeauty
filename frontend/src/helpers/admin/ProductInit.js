@@ -21,7 +21,13 @@ export const initTextures = (product) => {
 };
 
 export const initPricing = (product) => {
-  const initialPricing = {};
+  const initialPricing = {
+    hd: {
+      straight: {
+        10: 0,
+      },
+    },
+  };
   if (!product || product === {}) return initialPricing;
 
   if (Object.keys(product.laces).length === 0) {
