@@ -1,11 +1,13 @@
 import PropTypes from "prop-types";
 
 export const closureImagesType = PropTypes.objectOf(
-  PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  })
+  PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    })
+  )
 );
 
 export const closureType = PropTypes.shape({
@@ -14,7 +16,9 @@ export const closureType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   laces: PropTypes.objectOf(PropTypes.string).isRequired,
-  pricing: PropTypes.objectOf(PropTypes.objectOf(PropTypes.number)).isRequired,
+  pricing: PropTypes.objectOf(
+    PropTypes.objectOf(PropTypes.objectOf(PropTypes.number))
+  ).isRequired,
   texture: PropTypes.objectOf(PropTypes.string).isRequired,
   images: closureImagesType.isRequired,
   additionalImages: PropTypes.arrayOf(

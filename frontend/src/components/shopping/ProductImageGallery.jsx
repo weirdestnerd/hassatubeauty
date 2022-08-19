@@ -21,8 +21,8 @@ function ProductImageGallery({ images }) {
                     <img
                       src={image.src}
                       alt=""
-                      className="w-full h-full object-center object-cover"
-                      style={image.styling}
+                      className="w-full h-full object-top object-cover"
+                      style={image.styling || { objectPosition: "top" }}
                     />
                   </span>
                   <span
@@ -45,7 +45,7 @@ function ProductImageGallery({ images }) {
             <img
               src={image.src}
               alt={image.alt}
-              className="w-full h-full object-center object-cover sm:rounded-lg"
+              className="w-full h-full object-top object-cover sm:rounded-lg"
               style={image.styling}
             />
           </Tab.Panel>

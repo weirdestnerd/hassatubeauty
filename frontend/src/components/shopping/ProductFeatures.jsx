@@ -2,8 +2,17 @@ import React from "react";
 import { productFeatureType } from "../../proptypes/productType";
 
 function ProductFeatures({ product }) {
+  if (Object.keys(product.features).length === 0) return null;
   const renderProductImageAt = (productImages, index) => {
     const allKeys = Object.keys(productImages);
+    if (allKeys.length === 0)
+      return (
+        <img
+          src="https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png"
+          alt=""
+          className="w-full h-full object-center object-cover"
+        />
+      );
     const imageKey =
       index < allKeys.length ? allKeys[index] : allKeys[allKeys.length - 1];
     const image = productImages[imageKey][0];
@@ -43,7 +52,6 @@ function ProductFeatures({ product }) {
           </dl>
         </div>
 
-        {/* TODO: update images; it would be an object instead */}
         <div>
           <div className="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden">
             {renderProductImageAt(product.images, 0)}

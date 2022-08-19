@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import bundles from "../../../constants/bundles";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopRelated({ bundleKey }) {
-  const otherClosures = () => {
-    const availableClosures = Object.keys(bundles);
-    return availableClosures
-      .filter((availableClosure) => availableClosure !== bundleKey)
+  const [availableBundles, setAvailableBundles] = useState(null);
+
+  useEffect(() => {
+    getAllProducts("bundles").then(setAvailableBundles).catch(RollbarError);
+  }, []);
+
+  const otherBundles = () => {
+    return Object.keys(availableBundles)
+      .filter((availableBundle) => availableBundle !== bundleKey)
       .slice(0, 4)
-      .map((otherClosure) => bundles[otherClosure]);
+      .map((otherBundle) => availableBundles[otherBundle]);
   };
+
+  if (!availableBundles) return null;
 
   return (
     <section
@@ -23,37 +31,36 @@ function ShopRelated({ bundleKey }) {
       </h2>
 
       <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
-        {otherClosures().map((bundle) => (
-          <div key={bundle.id}>
-            <div className="relative">
-              <div className="relative w-full h-72 rounded-lg overflow-hidden">
-                <ProductImage productImages={bundle.images} />
+        {otherBundles().map((bundle) => (
+          <a href={bundle.href} key={bundle.id}>
+            <div>
+              <div className="relative">
+                <div className="relative w-full h-72 rounded-lg overflow-hidden">
+                  <ProductImage productImages={bundle.images} />
+                </div>
+                <div className="relative mt-4">
+                  <h3 className="text-sm font-medium text-gray-900">
+                    {bundle.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-gray-500">
+                    {calculatePriceRange(bundle)}
+                  </p>
+                </div>
+                <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"
+                  />
+                </div>
               </div>
-              <div className="relative mt-4">
-                <h3 className="text-sm font-medium text-gray-900">
-                  {bundle.name}
-                </h3>
-                <p className="mt-1 text-sm text-gray-500">
-                  {calculatePriceRange(bundle)}
-                </p>
-              </div>
-              <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black opacity-50"
-                />
+              <div className="mt-6">
+                <div className="relative flex bg-gray-100 border border-transparent rounded-md py-2 px-8 items-center justify-center text-sm font-medium text-gray-900 hover:bg-gray-200">
+                  Shop
+                  <span className="sr-only">, {bundle.name}</span>
+                </div>
               </div>
             </div>
-            <div className="mt-6">
-              <a
-                href={bundle.href}
-                className="relative flex bg-gray-100 border border-transparent rounded-md py-2 px-8 items-center justify-center text-sm font-medium text-gray-900 hover:bg-gray-200"
-              >
-                Shop
-                <span className="sr-only">, {bundle.name}</span>
-              </a>
-            </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>
