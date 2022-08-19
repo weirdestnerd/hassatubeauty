@@ -51,6 +51,7 @@ function ProductCustomization({ product, texture, setTexture }) {
     setAddingToCart(true);
 
     addToCart(user.uid, {
+      productId: product.id,
       key: product.key,
       type: product.key.split("-")[0],
       price: customPrice,

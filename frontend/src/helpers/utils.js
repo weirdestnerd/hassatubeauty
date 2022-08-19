@@ -1,9 +1,4 @@
 import classNames from "classnames";
-import PRODUCT_TYPES from "../constants";
-import frontals from "../constants/frontals";
-import closures from "../constants/closures";
-import bundles from "../constants/bundles";
-import wigs from "../constants/wigs";
 
 const calculatePriceRange = (product) => {
   const lacesExists = Object.keys(product.laces).length > 0;
@@ -59,25 +54,9 @@ const disabledButtonClassName = (classname, disabled) =>
     "disabled:opacity-50": disabled,
   });
 
-const getProduct = (key, type) => {
-  switch (type) {
-    case PRODUCT_TYPES.FRONTAL:
-      return frontals[key];
-    case PRODUCT_TYPES.CLOSURE:
-      return closures[key];
-    case PRODUCT_TYPES.BUNDLE:
-      return bundles[key];
-    case PRODUCT_TYPES.WIG:
-      return wigs[key];
-    default:
-      return null;
-  }
-};
-
 export {
   calculatePriceRange,
   selectedImages,
   lacesExists,
   disabledButtonClassName,
-  getProduct,
 };

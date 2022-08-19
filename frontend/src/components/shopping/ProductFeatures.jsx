@@ -2,6 +2,7 @@ import React from "react";
 import { productFeatureType } from "../../proptypes/productType";
 
 function ProductFeatures({ product }) {
+  if (Object.keys(product.features).length === 0) return null;
   const renderProductImageAt = (productImages, index) => {
     const allKeys = Object.keys(productImages);
     if (allKeys.length === 0)

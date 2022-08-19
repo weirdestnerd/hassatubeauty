@@ -3,9 +3,14 @@ import rn from "random-number";
 import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import LoadingOverlay from "../loading/LoadingOverlay";
-import { getActiveOrders, getCartProducts, getSession } from "../../firebase";
+import {
+  getActiveOrders,
+  getCartProducts,
+  getProduct,
+  getSession,
+} from "../../firebase";
 import { useSignedInUser } from "../../hooks/UserHook";
-import { getProduct, lacesExists } from "../../helpers/utils";
+import { lacesExists } from "../../helpers/utils";
 
 function OrderDetails() {
   const [loading, setLoading] = useState(true);
@@ -42,7 +47,7 @@ function OrderDetails() {
 
   const renderProducts = () => {
     return fulfilledCart.map((productInfo) => {
-      const product = getProduct(productInfo.key, productInfo.type);
+      const product = getProduct(productInfo.productId, productInfo.type);
       const firstImageKey = Object.keys(product.images)[0];
       const productImage = product.images[firstImageKey][0];
 

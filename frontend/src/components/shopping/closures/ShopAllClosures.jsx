@@ -47,8 +47,8 @@ function ShopAllClosures() {
                   Closures
                 </h1>
                 <p className="mt-4 max-w-3xl mx-auto text-base text-gray-500">
-                  Our thoughtfully curated, masterfully created wigs. Imported
-                  from the best sellers around the world.
+                  Our thoughtfully curated, masterfully created closures.
+                  Imported from the best sellers around the world.
                 </p>
               </div>
             </section>

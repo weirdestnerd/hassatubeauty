@@ -24,7 +24,11 @@ import {
   TYPES,
 } from "../../constants/admin/types";
 import { productType as ProductType } from "../../proptypes/productType";
-import { addInventoryProduct, updateInventoryProduct } from "../../firebase";
+import {
+  addInventoryProduct,
+  deleteInventoryProduct,
+  updateInventoryProduct,
+} from "../../firebase";
 import RollbarError from "../../helpers/Rollbar";
 import Notification from "../alerts/Notification";
 import {
@@ -183,12 +187,21 @@ function AdminProduct({ isEdit, product }) {
   const saveProduct = () => {
     setLoading(true);
     const data = asProduct();
+    let actions;
 
-    const action = isEdit
-      ? updateInventoryProduct(product, data)
-      : addInventoryProduct(data);
+    if (product.type !== data.type) {
+      delete data.id;
+      actions = [
+        deleteInventoryProduct(data.id, product.type),
+        addInventoryProduct(data),
+      ];
+    } else {
+      actions = isEdit
+        ? [updateInventoryProduct(product, data)]
+        : [addInventoryProduct(data)];
+    }
 
-    action
+    Promise.all(actions)
       .then(() => navigate("/admin?showProductActionToast=true"))
       .catch((error) => {
         RollbarError(error);

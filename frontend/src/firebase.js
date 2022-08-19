@@ -146,6 +146,8 @@ const getInventoryProduct = async (id, type) => {
   return { ...docSnap.data(), id: docSnap.id, type };
 };
 
+const deleteInventoryProduct = (id, type) => deleteDoc(doc(db, type, id));
+
 const updateInventoryProduct = (product, data) => {
   const docRef = doc(db, product.type, product.id);
 
@@ -208,6 +210,7 @@ export {
   getActiveOrders,
   getCartProducts,
   getInventory,
+  deleteInventoryProduct,
   getInventoryProduct,
   updateInventoryProduct,
   addInventoryProduct,

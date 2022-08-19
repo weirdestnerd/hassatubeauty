@@ -5,6 +5,7 @@ const TYPES = [
   { id: rn(), value: "wigs", label: "Wig" },
   { id: rn(), value: "bundles", label: "Bundle" },
   { id: rn(), value: "closures", label: "Closure" },
+  { id: rn(), value: "accessories", label: "Accessories" },
 ];
 
 const LACES = [

@@ -19,6 +19,8 @@ import OrderDetails from "./components/shopping/OrderDetails";
 import Inventory from "./components/admin/Inventory";
 import AdminProduct from "./components/admin/AdminProduct";
 import AdminProductContainer from "./components/admin/AdminProductContainer";
+import ShopAllAccessories from "./components/shopping/accessories/ShopAllAccessories";
+import ShopAccessoryContainer from "./components/shopping/accessories/ShopAccessoryContainer";
 
 function App() {
   return (
@@ -27,6 +29,11 @@ function App() {
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/shop-wigs" element={<ShopAllWigs />} />
       <Route path="/shop/wigs/:wig" element={<ShopWigContainer />} />
+      <Route path="/shop-accessories" element={<ShopAllAccessories />} />
+      <Route
+        path="/shop/accessories/:accessory"
+        element={<ShopAccessoryContainer />}
+      />
       <Route path="/shop-frontals" element={<ShopAllFrontals />} />
       <Route
         path="/shop/frontals/:frontal"

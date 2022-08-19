@@ -60,6 +60,7 @@ function Inventory() {
           <InventoryList title="Bundles" type="bundles" />
           <InventoryList title="Closure" type="closures" />
           <InventoryList title="Wigs" type="wigs" />
+          <InventoryList title="Accessories" type="accessories" />
         </main>
       </div>
     </div>

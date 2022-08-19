@@ -138,8 +138,8 @@ function Navbar() {
       { name: "Frontals", href: "/shop-frontals" },
       { name: "Closures", href: "/shop-closures" },
       // { name: "Deals", href: "/shop-closures" },
-      { name: "My Story", href: "/my-story" },
-      { name: "Shipping Policy", href: "/shipping-policy" },
+      // { name: "My Story", href: "/my-story" },
+      // { name: "Shipping Policy", href: "/shipping-policy" },
     ],
   };
 

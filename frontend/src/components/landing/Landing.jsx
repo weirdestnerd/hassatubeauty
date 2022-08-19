@@ -58,8 +58,8 @@ function Landing() {
                 Best in wig styles and creation
               </h1>
               <p className="mt-4 text-xl text-gray-500">
-                Something about how good the wigs are and that people should
-                buyyy them
+                There are no boundaries in fashion, and no compromises when it
+                comes to achieving your dreams.
               </p>
             </div>
             <div>
@@ -301,51 +301,51 @@ function Landing() {
         {/* </div> */}
 
         {/* Read My Story section */}
-        <section aria-labelledby="cause-heading">
-          <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-            <div className="absolute inset-0 overflow-hidden">
-              {isMobileOnly ? (
-                <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG"
-                  alt=""
-                  className="w-full h-full object-center object-cover"
-                  style={{ objectPosition: "0 -8em" }}
-                />
-              ) : (
-                <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG"
-                  alt=""
-                  className="w-full h-full object-center object-cover"
-                  style={{ objectPosition: "0 3em" }}
-                />
-              )}
-            </div>
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gray-900 bg-opacity-50"
-            />
-            <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
-              <h2
-                id="cause-heading"
-                className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
-              >
-                Making wigs from my heart
-              </h2>
-              <p className="mt-3 text-xl text-white">
-                Something something I&apos;m passionate about making wigs.
-                I&apos;ve being making them for so long. I&apos;m a genius at
-                making wigs. It all started when ... Wigs is my life. So and so
-                can vouch for me
-              </p>
-              <a
-                href="/read_our_story"
-                className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-              >
-                Read my story
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* <section aria-labelledby="cause-heading"> */}
+        {/*  <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16"> */}
+        {/*    <div className="absolute inset-0 overflow-hidden"> */}
+        {/*      {isMobileOnly ? ( */}
+        {/*        <img */}
+        {/*          src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG" */}
+        {/*          alt="" */}
+        {/*          className="w-full h-full object-center object-cover" */}
+        {/*          style={{ objectPosition: "0 -8em" }} */}
+        {/*        /> */}
+        {/*      ) : ( */}
+        {/*        <img */}
+        {/*          src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG" */}
+        {/*          alt="" */}
+        {/*          className="w-full h-full object-center object-cover" */}
+        {/*          style={{ objectPosition: "0 3em" }} */}
+        {/*        /> */}
+        {/*      )} */}
+        {/*    </div> */}
+        {/*    <div */}
+        {/*      aria-hidden="true" */}
+        {/*      className="absolute inset-0 bg-gray-900 bg-opacity-50" */}
+        {/*    /> */}
+        {/*    <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center"> */}
+        {/*      <h2 */}
+        {/*        id="cause-heading" */}
+        {/*        className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl" */}
+        {/*      > */}
+        {/*        Making wigs from my heart */}
+        {/*      </h2> */}
+        {/*      <p className="mt-3 text-xl text-white"> */}
+        {/*        Something something I&apos;m passionate about making wigs. */}
+        {/*        I&apos;ve being making them for so long. I&apos;m a genius at */}
+        {/*        making wigs. It all started when ... Wigs is my life. So and so */}
+        {/*        can vouch for me */}
+        {/*      </p> */}
+        {/*      <a */}
+        {/*        href="/read_our_story" */}
+        {/*        className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto" */}
+        {/*      > */}
+        {/*        Read my story */}
+        {/*      </a> */}
+        {/*    </div> */}
+        {/*  </div> */}
+        {/* </section> */}
 
         {/* Perks section */}
         <section

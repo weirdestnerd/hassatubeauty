@@ -27,6 +27,9 @@ const handleStripeCheckout = async (data, context) => {
     mode: "payment",
     success_url: data.successPage,
     cancel_url: data.cancelPage,
+    discounts: [{
+      coupon: data.coupon_id,
+    }],
     billing_address_collection: 'auto',
     shipping_address_collection: {
       allowed_countries: ['US'],
