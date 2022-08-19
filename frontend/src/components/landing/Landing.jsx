@@ -439,7 +439,7 @@ function Landing() {
                       Nothing less.
                     </h2>
                     <div className="mt-6 text-base">
-                      <a href="/shop-all" className="font-semibold text-white">
+                      <a href="/shop-wigs" className="font-semibold text-white">
                         Shop wigs
                         <span aria-hidden="true"> &rarr;</span>
                       </a>
