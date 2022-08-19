@@ -11,12 +11,14 @@ import {
 } from "../../firebase";
 import { useSignedInUser } from "../../hooks/UserHook";
 import { lacesExists } from "../../helpers/utils";
+import RollbarError from "../../helpers/Rollbar";
 
 function OrderDetails() {
   const [loading, setLoading] = useState(true);
   const [fulfilledCart, setFulfilledCart] = useState(null);
   const [stripeSession, setStripeSession] = useState(null);
   const [orderId, setOrderId] = useState(null);
+  const [cartProducts, setCartProducts] = useState(null);
 
   const user = useSignedInUser();
 
@@ -35,6 +37,25 @@ function OrderDetails() {
     });
   }, [user, loading, fulfilledCart, stripeSession]);
 
+  useEffect(() => {
+    if (
+      !fulfilledCart ||
+      fulfilledCart.length === 0 ||
+      (cartProducts && cartProducts.length !== 0)
+    )
+      return;
+    setLoading(true);
+    const productPromises = fulfilledCart.map((productInfo) =>
+      getProduct(productInfo.productId, productInfo.type)
+    );
+    Promise.all(productPromises)
+      .then((values) => {
+        setCartProducts(values);
+      })
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
+  }, [fulfilledCart]);
+
   const renderCustomization = (productInfo, product) => {
     const content = [
       product.textures[productInfo.texture],
@@ -46,42 +67,48 @@ function OrderDetails() {
   };
 
   const renderProducts = () => {
-    return fulfilledCart.map((productInfo) => {
-      const product = getProduct(productInfo.productId, productInfo.type);
-      const firstImageKey = Object.keys(product.images)[0];
-      const productImage = product.images[firstImageKey][0];
+    return (
+      cartProducts &&
+      cartProducts.map((product) => {
+        const productInfo = fulfilledCart.find(
+          (sc) => sc.productId === product.id
+        );
+        const firstImageKey = Object.keys(product.images)[0];
+        const productImage = product.images[firstImageKey][0];
 
-      return (
-        <div
-          key={rn()}
-          className="py-10 border-b border-gray-200 flex space-x-6"
-        >
-          <img
-            src={productImage.src}
-            alt={productImage.alt}
-            className="flex-none w-20 h-20 object-center object-cover bg-gray-100 rounded-lg sm:w-40 sm:h-40"
-          />
-          <div className="flex-auto flex flex-col">
-            <div>
-              <h4 className="font-medium text-gray-900">
-                <a href={product.href}>{product.name}</a>
-              </h4>
-              <p className="mt-2 text-sm text-gray-600">
-                {renderCustomization(productInfo, product)}
-              </p>
-            </div>
-            <div className="mt-6 flex-1 flex items-end">
-              <dl className="flex text-sm divide-x divide-gray-200 space-x-4 sm:space-x-6">
-                <div className="flex">
-                  <dt className="font-medium text-gray-900">Price</dt>
-                  <dd className="ml-2 text-gray-700">${productInfo.price}</dd>
-                </div>
-              </dl>
+        return (
+          <div
+            key={rn()}
+            className="py-10 border-b border-gray-200 flex space-x-6"
+          >
+            <img
+              src={productImage.src}
+              alt={productImage.alt}
+              className="flex-none w-20 h-20 object-center object-cover bg-gray-100 rounded-lg sm:w-40 sm:h-40"
+              style={{ objectPosition: "top" }}
+            />
+            <div className="flex-auto flex flex-col">
+              <div>
+                <h4 className="font-medium text-gray-900">
+                  <a href={product.href}>{product.name}</a>
+                </h4>
+                <p className="mt-2 text-sm text-gray-600">
+                  {renderCustomization(productInfo, product)}
+                </p>
+              </div>
+              <div className="mt-6 flex-1 flex items-end">
+                <dl className="flex text-sm divide-x divide-gray-200 space-x-4 sm:space-x-6">
+                  <div className="flex">
+                    <dt className="font-medium text-gray-900">Price</dt>
+                    <dd className="ml-2 text-gray-700">${productInfo.price}</dd>
+                  </div>
+                </dl>
+              </div>
             </div>
           </div>
-        </div>
-      );
-    });
+        );
+      })
+    );
   };
 
   if (loading) return <LoadingOverlay />;
