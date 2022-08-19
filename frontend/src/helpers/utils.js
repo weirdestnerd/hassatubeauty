@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 const calculatePriceRange = (product) => {
   const lacesExists = Object.keys(product.laces).length > 0;
 
@@ -21,6 +23,8 @@ const calculatePriceRange = (product) => {
       .flat();
   }
 
+  if (minMaxPrices.length === 0) return "$0";
+
   const startingPrice = Math.min(...minMaxPrices);
   const highestPrice = Math.max(...minMaxPrices);
 
@@ -28,9 +32,31 @@ const calculatePriceRange = (product) => {
 };
 
 const selectedImages = (product, selectedTexture) => {
+  if (Object.keys(product.images).length === 0) {
+    return [
+      {
+        src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+        alt: "",
+        styling: {},
+      },
+    ];
+  }
+
   return selectedTexture === null
     ? Object.keys(product.images).map((texture) => product.images[texture][0])
     : product.images[selectedTexture];
 };
 
-export { calculatePriceRange, selectedImages };
+const lacesExists = (product) => Object.keys(product.laces).length > 0;
+
+const disabledButtonClassName = (classname, disabled) =>
+  classNames(classname, {
+    "disabled:opacity-50": disabled,
+  });
+
+export {
+  calculatePriceRange,
+  selectedImages,
+  lacesExists,
+  disabledButtonClassName,
+};

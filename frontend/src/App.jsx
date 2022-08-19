@@ -15,6 +15,12 @@ import ShopBundleContainer from "./components/shopping/bundles/ShopBundleContain
 import SignIn from "./components/account/SignIn";
 import ForgotPassword from "./components/account/ForgotPassword";
 import CreateAccount from "./components/account/CreateAccount";
+import OrderDetails from "./components/shopping/OrderDetails";
+import Inventory from "./components/admin/Inventory";
+import AdminProduct from "./components/admin/AdminProduct";
+import AdminProductContainer from "./components/admin/AdminProductContainer";
+import ShopAllAccessories from "./components/shopping/accessories/ShopAllAccessories";
+import ShopAccessoryContainer from "./components/shopping/accessories/ShopAccessoryContainer";
 
 function App() {
   return (
@@ -23,6 +29,11 @@ function App() {
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/shop-wigs" element={<ShopAllWigs />} />
       <Route path="/shop/wigs/:wig" element={<ShopWigContainer />} />
+      <Route path="/shop-accessories" element={<ShopAllAccessories />} />
+      <Route
+        path="/shop/accessories/:accessory"
+        element={<ShopAccessoryContainer />}
+      />
       <Route path="/shop-frontals" element={<ShopAllFrontals />} />
       <Route
         path="/shop/frontals/:frontal"
@@ -38,6 +49,14 @@ function App() {
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/create-account" element={<CreateAccount />} />
+      <Route path="/ordered" element={<OrderDetails />} />
+      <Route path="/admin" element={<Inventory />} />
+      <Route path="/admin/inventory" element={<Inventory />} />
+      <Route path="/admin/:type/:id" element={<AdminProductContainer />} />
+      <Route
+        path="/admin/products/new"
+        element={<AdminProduct isEdit={false} product={null} />}
+      />
       {/*  TODO: create these pages */}
       {/* <Route path="/shop-sales" element={<Landing />} /> */}
       {/* <Route path="/shipping-policy" element={<Landing />} /> */}

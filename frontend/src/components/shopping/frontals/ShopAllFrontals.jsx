@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
-import frontals from "../../../constants/frontals";
 import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
+import { getAllProducts } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
+import LoadingPage from "../../LoadingPage";
+import NotFound from "../../NotFound";
 
 function ShopAllFrontals() {
+  const [frontals, setFrontals] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getAllProducts("frontals")
+      .then(setFrontals)
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <LoadingPage />;
+  if (!loading && !frontals) return <NotFound />;
+
   return (
     <div className="bg-gray-50">
       <Navbar />
@@ -31,8 +47,8 @@ function ShopAllFrontals() {
                   Frontals
                 </h1>
                 <p className="mt-4 max-w-3xl mx-auto text-base text-gray-500">
-                  Our thoughtfully curated, masterfully created wigs. Imported
-                  from the best sellers around the world.
+                  Our thoughtfully curated, masterfully created frontals.
+                  Imported from the best sellers around the world.
                 </p>
               </div>
             </section>

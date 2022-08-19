@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Shop from "./Shop";
-import frontals from "../../../constants/frontals";
 import LoadingPage from "../../LoadingPage";
 import NotFound from "../../NotFound";
+import RollbarError from "../../../helpers/Rollbar";
+import { getProduct } from "../../../firebase";
 
 function ShopContainer() {
   const { frontal } = useParams();
@@ -11,10 +12,10 @@ function ShopContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (Object.keys(frontals).includes(frontal)) {
-      setProduct(frontals[frontal]);
-      setLoading(false);
-    }
+    getProduct(frontal, "frontals")
+      .then(setProduct)
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
   }, [frontal]);
 
   if (loading) return <LoadingPage />;

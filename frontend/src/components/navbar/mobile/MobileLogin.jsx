@@ -22,6 +22,17 @@ function MobileLogin() {
           >
             Sign out
           </button>
+          {["odgbadebo@gmail.com", "dhassatu75@gmail.com"].includes(
+            user.email
+          ) && (
+            <button
+              type="submit"
+              onClick={() => navigate("/admin")}
+              className="-m-2 p-2 block font-medium text-gray-900"
+            >
+              Admin
+            </button>
+          )}
         </div>
       );
     }
