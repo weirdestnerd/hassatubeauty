@@ -5,24 +5,31 @@ import PropTypes from "prop-types";
 import rn from "random-number";
 import {
   createNewOrder,
+  getProduct,
   getStripeCheckoutUrl,
   liveCart,
   removeFromCart,
 } from "../../firebase";
 import LoadingOverlay from "../loading/LoadingOverlay";
-import {
-  disabledButtonClassName,
-  getProduct,
-  lacesExists,
-} from "../../helpers/utils";
+import { disabledButtonClassName, lacesExists } from "../../helpers/utils";
 import SingleProductImage from "./SingleProductImage";
 import RollbarError from "../../helpers/Rollbar";
+
+const discounts = {
+  TRINA10: {
+    percentage: 10,
+    coupon_id: "NL7Q2p8r",
+  },
+};
 
 function Cart({ userUid, open, setOpen }) {
   const [loading, setLoading] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [confirmRemove, setConfirmRemove] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cartProducts, setCartProducts] = useState(null);
+  const [discount, setDiscount] = useState("");
+  const [discountValid, setDiscountValid] = useState(false);
 
   useEffect(() => {
     if (!open || loading || confirmRemove) return;
@@ -46,6 +53,24 @@ function Cart({ userUid, open, setOpen }) {
     setLoading(false);
   }, [open, loading, confirmRemove]);
 
+  useEffect(() => {
+    if (
+      shoppingCart.length === 0 ||
+      (cartProducts && cartProducts.length !== 0)
+    )
+      return;
+    setLoading(true);
+    const productPromises = shoppingCart.map((productInfo) =>
+      getProduct(productInfo.productId, productInfo.type)
+    );
+    Promise.all(productPromises)
+      .then((values) => {
+        setCartProducts(values);
+      })
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
+  }, [shoppingCart]);
+
   const handleStripeSessionCreated = (data) => {
     createNewOrder(userUid, {
       sessionId: data.sessionId,
@@ -63,26 +88,31 @@ function Cart({ userUid, open, setOpen }) {
 
     setLoading(true);
 
-    const products = shoppingCart.map((productInfo) => {
-      const product = getProduct(productInfo.key, productInfo.type);
-      const description = [
-        product.texture[productInfo.texture],
-        lacesExists(product) && product.laces[productInfo.lace],
-        `${productInfo.hairLength}"`,
-      ].join(" - ");
+    const products =
+      cartProducts &&
+      cartProducts.map((product) => {
+        const productInfo = shoppingCart.find(
+          (sc) => sc.productId === product.id
+        );
+        const description = [
+          product.textures[productInfo.texture],
+          lacesExists(product) && product.laces[productInfo.lace],
+          `${productInfo.hairLength}"`,
+        ].join(" - ");
 
-      const image = product.images[productInfo.texture][0].src;
+        const image = product.images[productInfo.texture][0].src;
 
-      return {
-        name: product.name,
-        price: productInfo.price,
-        image,
-        description,
-      };
-    });
+        return {
+          name: product.name,
+          price: productInfo.price,
+          image,
+          description,
+        };
+      });
 
     getStripeCheckoutUrl({
       products,
+      coupon_id: discountValid ? discounts[discount].coupon_id : null,
       // eslint-disable-next-line no-undef
       successPage: `${window.location.origin}/ordered`,
       // eslint-disable-next-line no-undef
@@ -98,7 +128,7 @@ function Cart({ userUid, open, setOpen }) {
 
   const renderCustomization = (productInfo, product) => {
     const content = [
-      product.texture[productInfo.texture],
+      product.textures[productInfo.texture],
       lacesExists(product) && product.laces[productInfo.lace],
       `${productInfo.hairLength}"`,
     ].join(" - ");
@@ -154,33 +184,48 @@ function Cart({ userUid, open, setOpen }) {
         </p>
       );
 
-    return shoppingCart.map((productInfo) => {
-      const product = getProduct(productInfo.key, productInfo.type);
-      return (
-        <li key={rn()} className="flex py-6">
-          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-            <SingleProductImage
-              image={product.images[productInfo.texture][0]}
-            />
-          </div>
+    return (
+      cartProducts &&
+      cartProducts.map((product) => {
+        const productInfo = shoppingCart.find(
+          (sc) => sc.productId === product.id
+        );
+        return (
+          <li key={rn()} className="flex py-6">
+            <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+              <SingleProductImage
+                image={product.images[productInfo.texture][0]}
+              />
+            </div>
 
-          <div className="ml-4 flex flex-1 flex-col">
-            <div>
-              <div className="flex justify-between text-base font-medium text-gray-900">
-                <h3>
-                  <a href={product.href}> {product.name} </a>
-                </h3>
-                <p className="ml-4">${productInfo.price}</p>
+            <div className="ml-4 flex flex-1 flex-col">
+              <div>
+                <div className="flex justify-between text-base font-medium text-gray-900">
+                  <h3>
+                    <a href={product.href}> {product.name} </a>
+                  </h3>
+                  <p className="ml-4">${productInfo.price}</p>
+                </div>
+                {renderCustomization(productInfo, product)}
               </div>
-              {renderCustomization(productInfo, product)}
+              <div className="flex flex-1 items-end justify-between text-sm">
+                <div className="flex">
+                  {renderProductRemoveCTA(productInfo)}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-1 items-end justify-between text-sm">
-              <div className="flex">{renderProductRemoveCTA(productInfo)}</div>
-            </div>
-          </div>
-        </li>
+          </li>
+        );
+      })
+    );
+  };
+
+  const getPrice = () => {
+    if (discountValid)
+      return Math.ceil(
+        totalPrice - totalPrice * (discounts[discount].percentage / 100)
       );
-    });
+    return totalPrice.toFixed();
   };
 
   return (
@@ -189,7 +234,7 @@ function Cart({ userUid, open, setOpen }) {
       <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
-          className="relative z-10"
+          className="relative z-40"
           onClose={() => setOpen(false)}
         >
           <Transition.Child
@@ -245,10 +290,43 @@ function Cart({ userUid, open, setOpen }) {
                         </div>
                       </div>
 
+                      <div className="mx-3 mb-1">
+                        <label
+                          htmlFor="discount-code-mobile"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Discount code
+                          <div className="flex space-x-1 mt-1">
+                            <input
+                              type="text"
+                              id="discount-code-mobile"
+                              name="discount-code-mobile"
+                              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                              onChange={(e) => setDiscount(e.target.value)}
+                            />
+                            <button
+                              type="submit"
+                              onClick={() => {
+                                setDiscountValid(
+                                  Object.keys(discounts).includes(discount)
+                                );
+                              }}
+                              className="bg-indigo-600 text-sm font-medium text-base text-white rounded-md px-4 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                            >
+                              Apply
+                            </button>
+                          </div>
+                        </label>
+                        {discountValid && (
+                          <p>
+                            Discount applied - {discounts[discount].percentage}%
+                          </p>
+                        )}
+                      </div>
                       <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <p>Subtotal</p>
-                          <p>${totalPrice}</p>
+                          <p>${getPrice()}</p>
                         </div>
                         <p className="mt-0.5 text-sm text-gray-500">
                           Shipping and taxes calculated at checkout.

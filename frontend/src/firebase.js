@@ -15,6 +15,7 @@ import {
   getFirestore,
   collection,
   addDoc,
+  updateDoc,
   query,
   doc,
   deleteDoc,
@@ -129,6 +130,68 @@ const getCartProducts = (userUid, cartIds) => {
   return products;
 };
 
+const getInventory = async (type) => {
+  const products = [];
+  const querySnapshot = await getDocs(collection(db, type));
+  querySnapshot.forEach((docSnap) => {
+    products.push({ id: docSnap.id, ...docSnap.data(), type });
+  });
+  return products;
+};
+
+const getInventoryProduct = async (id, type) => {
+  const docRef = doc(db, type, id);
+  const docSnap = await getDoc(docRef);
+
+  return { ...docSnap.data(), id: docSnap.id, type };
+};
+
+const deleteInventoryProduct = (id, type) => deleteDoc(doc(db, type, id));
+
+const updateInventoryProduct = (product, data) => {
+  const docRef = doc(db, product.type, product.id);
+
+  return updateDoc(docRef, {
+    ...product,
+    ...data,
+    timestamp: serverTimestamp(),
+  });
+};
+
+const addInventoryProduct = (data) => {
+  return addDoc(collection(db, data.type), {
+    ...data,
+    timestamp: serverTimestamp(),
+  });
+};
+
+const getProduct = async (id, type) => {
+  const docRef = doc(db, type, id);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) return { ...docSnap.data(), id: docSnap.id, type };
+
+  const q = query(collection(db, type), where("key", "==", id));
+
+  let result = null;
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((qDoc) => {
+    if (!result) result = { ...qDoc.data(), id: qDoc.id, type };
+  });
+
+  return result;
+};
+
+const getAllProducts = async (type) => {
+  const q = query(collection(db, type), where("show", "==", true));
+  const querySnapshot = await getDocs(q);
+  const result = {};
+  querySnapshot.forEach((qDoc) => {
+    result[qDoc.id] = { ...qDoc.data(), id: qDoc.id, type };
+  });
+
+  return result;
+};
+
 const getStripeCheckoutUrl = httpsCallable(functions, "getStripeCheckoutUrl");
 const getSession = httpsCallable(functions, "getSession");
 
@@ -146,6 +209,13 @@ export {
   makeExistingOrdersInactive,
   getActiveOrders,
   getCartProducts,
+  getInventory,
+  deleteInventoryProduct,
+  getInventoryProduct,
+  updateInventoryProduct,
+  addInventoryProduct,
+  getProduct,
+  getAllProducts,
   getSession,
   getStripeCheckoutUrl,
 };

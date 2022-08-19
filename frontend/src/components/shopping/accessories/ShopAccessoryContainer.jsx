@@ -6,21 +6,21 @@ import Shop from "./Shop";
 import { getProduct } from "../../../firebase";
 import RollbarError from "../../../helpers/Rollbar";
 
-function ShopBundleContainer() {
-  const { bundle } = useParams();
+function ShopAccessoryContainer() {
+  const { accessory } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProduct(bundle, "bundles")
+    getProduct(accessory, "accessories")
       .then(setProduct)
       .catch(RollbarError)
       .finally(() => setLoading(false));
-  }, [bundle]);
+  }, [accessory]);
 
   if (loading) return <LoadingPage />;
-  if (!loading && product) return <Shop bundle={product} />;
+  if (!loading && product) return <Shop accessory={product} />;
   if (!loading && !product) return <NotFound />;
 }
 
-export default ShopBundleContainer;
+export default ShopAccessoryContainer;

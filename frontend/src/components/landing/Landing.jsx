@@ -26,16 +26,40 @@ function Landing() {
       <header className="relative overflow-hidden">
         <Navbar />
 
+        {/* <button */}
+        {/*  type="button" */}
+        {/*  onClick={() => { */}
+        {/*    Object.keys(wigs).forEach((k) => { */}
+        {/*      addInventoryProduct({ */}
+        {/*        ...wigs[k], */}
+        {/*        type: "wigs", */}
+        {/*        show: true, */}
+        {/*      }) */}
+        {/*        .then(() => console.log("Uploaded", k)) */}
+        {/*        .catch(console.error); */}
+        {/*    }); */}
+        {/*  }} */}
+        {/* > */}
+        {/*  yoasud */}
+        {/* </button> */}
+
         {/* Hero section */}
-        <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+        <div
+          className="pt-0 pb-80 sm:pt-24 sm:pb-28 lg:pt-40 lg:pb-48"
+          style={
+            isMobileOnly
+              ? { paddingBottom: "31rem" }
+              : { paddingTop: "26.4rem" }
+          }
+        >
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
             <div className="sm:max-w-lg">
               <h1 className="text-4xl font font-extrabold tracking-tight text-gray-900 sm:text-6xl">
                 Best in wig styles and creation
               </h1>
               <p className="mt-4 text-xl text-gray-500">
-                Something about how good the wigs are and that people should
-                buyyy them
+                There are no boundaries in fashion, and no compromises when it
+                comes to achieving your dreams.
               </p>
             </div>
             <div>
@@ -50,14 +74,15 @@ function Landing() {
                       <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/deep-wave.jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5835.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
+                            style={{ objectPosition: "top" }}
                           />
                         </div>
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina2.jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5793.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
                           />
@@ -66,14 +91,15 @@ function Landing() {
                       <div className="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina4.jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/9092B985-8E3F-40C1-B088-9EA002B18E6F.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
+                            style={{ objectPosition: "-1em 6em" }}
                           />
                         </div>
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina1.jpg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5849.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
                           />
@@ -96,7 +122,7 @@ function Landing() {
                         </div>
                         <div className="w-44 h-64 rounded-lg overflow-hidden">
                           <img
-                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina5+(1).jpeg"
+                            src="https://landing-page-images.s3.us-west-004.backblazeb2.com/84529386-550E-4BB5-B949-65CB4075E29F.JPG"
                             alt=""
                             className="w-full h-full object-center object-cover"
                           />
@@ -146,9 +172,10 @@ function Landing() {
             <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2">
                 <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/body_wave.jpg"
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5831.JPG"
                   alt=""
                   className="object-center object-cover group-hover:opacity-75"
+                  style={{ objectPosition: "0 10%" }}
                 />
                 <div
                   aria-hidden="true"
@@ -170,10 +197,10 @@ function Landing() {
               </div>
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full">
                 <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina2.jpeg"
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5810.JPG"
                   alt=""
                   className="object-center object-cover group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full"
-                  style={{ objectPosition: "0 25%" }}
+                  style={{ objectPosition: "0 10%" }}
                 />
                 <div
                   aria-hidden="true"
@@ -195,7 +222,7 @@ function Landing() {
               </div>
               <div className="group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full">
                 <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina1.jpg"
+                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5828.JPG"
                   alt=""
                   className="object-center object-cover group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full"
                   style={{ objectPosition: "top" }}
@@ -233,45 +260,92 @@ function Landing() {
         </section>
 
         {/* Promo section */}
-        <div className="bg-white relative overflow-hidden">
-          {/* Decorative background image and gradient */}
-          <div aria-hidden="true" className="absolute inset-0">
-            <div className="absolute inset-0 max-w-7xl mx-auto overflow-hidden xl:px-8">
-              <img
-                src="https://tailwindui.com/img/ecommerce-images/home-page-02-sale-full-width.jpg"
-                alt=""
-                className="w-full h-full object-center object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 bg-white bg-opacity-75" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-white" />
-          </div>
+        {/* <div className="bg-white relative overflow-hidden"> */}
+        {/*  /!* Decorative background image and gradient *!/ */}
+        {/*  <div aria-hidden="true" className="absolute inset-0"> */}
+        {/*    <div className="absolute inset-0 max-w-7xl mx-auto overflow-hidden xl:px-8"> */}
+        {/*      <img */}
+        {/*        src="https://tailwindui.com/img/ecommerce-images/home-page-02-sale-full-width.jpg" */}
+        {/*        alt="" */}
+        {/*        className="w-full h-full object-center object-cover" */}
+        {/*      /> */}
+        {/*    </div> */}
+        {/*    <div className="absolute inset-0 bg-white bg-opacity-75" /> */}
+        {/*    <div className="absolute inset-0 bg-gradient-to-t from-white via-white" /> */}
+        {/*  </div> */}
 
-          {/* Callout */}
-          <section
-            aria-labelledby="sale-heading"
-            className="relative mb-32 max-w-7xl mx-auto pt-32 px-4 flex flex-col items-center text-center sm:px-6 lg:px-8"
-          >
-            <div className="max-w-2xl mx-auto lg:max-w-none">
-              <h2
-                id="sale-heading"
-                className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl"
-              >
-                Enjoy our year-round deals
-              </h2>
-              <p className="mt-4 max-w-xl mx-auto text-xl text-gray-600">
-                Most of our products are limited releases that won&apos;t come
-                back. Get your favorite items while they&apos;re in stock.
-              </p>
-              <a
-                href="/shop-sales"
-                className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto"
-              >
-                Get access to our one-time sale
-              </a>
-            </div>
-          </section>
-        </div>
+        {/*  /!* Callout *!/ */}
+        {/*  <section */}
+        {/*    aria-labelledby="sale-heading" */}
+        {/*    className="relative mb-32 max-w-7xl mx-auto pt-32 px-4 flex flex-col items-center text-center sm:px-6 lg:px-8" */}
+        {/*  > */}
+        {/*    <div className="max-w-2xl mx-auto lg:max-w-none"> */}
+        {/*      <h2 */}
+        {/*        id="sale-heading" */}
+        {/*        className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl" */}
+        {/*      > */}
+        {/*        Enjoy our year-round deals */}
+        {/*      </h2> */}
+        {/*      <p className="mt-4 max-w-xl mx-auto text-xl text-gray-600"> */}
+        {/*        Most of our products are limited releases that won&apos;t come */}
+        {/*        back. Get your favorite items while they&apos;re in stock. */}
+        {/*      </p> */}
+        {/*      <a */}
+        {/*        href="/shop-sales" */}
+        {/*        className="mt-6 inline-block w-full bg-gray-900 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-gray-800 sm:w-auto" */}
+        {/*      > */}
+        {/*        Get access to our one-time sale */}
+        {/*      </a> */}
+        {/*    </div> */}
+        {/*  </section> */}
+        {/* </div> */}
+
+        {/* Read My Story section */}
+        {/* <section aria-labelledby="cause-heading"> */}
+        {/*  <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16"> */}
+        {/*    <div className="absolute inset-0 overflow-hidden"> */}
+        {/*      {isMobileOnly ? ( */}
+        {/*        <img */}
+        {/*          src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG" */}
+        {/*          alt="" */}
+        {/*          className="w-full h-full object-center object-cover" */}
+        {/*          style={{ objectPosition: "0 -8em" }} */}
+        {/*        /> */}
+        {/*      ) : ( */}
+        {/*        <img */}
+        {/*          src="https://landing-page-images.s3.us-west-004.backblazeb2.com/IMG_5822.JPG" */}
+        {/*          alt="" */}
+        {/*          className="w-full h-full object-center object-cover" */}
+        {/*          style={{ objectPosition: "0 3em" }} */}
+        {/*        /> */}
+        {/*      )} */}
+        {/*    </div> */}
+        {/*    <div */}
+        {/*      aria-hidden="true" */}
+        {/*      className="absolute inset-0 bg-gray-900 bg-opacity-50" */}
+        {/*    /> */}
+        {/*    <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center"> */}
+        {/*      <h2 */}
+        {/*        id="cause-heading" */}
+        {/*        className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl" */}
+        {/*      > */}
+        {/*        Making wigs from my heart */}
+        {/*      </h2> */}
+        {/*      <p className="mt-3 text-xl text-white"> */}
+        {/*        Something something I&apos;m passionate about making wigs. */}
+        {/*        I&apos;ve being making them for so long. I&apos;m a genius at */}
+        {/*        making wigs. It all started when ... Wigs is my life. So and so */}
+        {/*        can vouch for me */}
+        {/*      </p> */}
+        {/*      <a */}
+        {/*        href="/read_our_story" */}
+        {/*        className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto" */}
+        {/*      > */}
+        {/*        Read my story */}
+        {/*      </a> */}
+        {/*    </div> */}
+        {/*  </div> */}
+        {/* </section> */}
 
         {/* Perks section */}
         <section
@@ -312,89 +386,42 @@ function Landing() {
           </div>
         </section>
 
-        {/* Read My Story section */}
-        <section aria-labelledby="cause-heading">
-          <div className="relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16">
-            <div className="absolute inset-0 overflow-hidden">
-              {isMobileOnly ? (
-                <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina3.jpeg"
-                  alt=""
-                  className="w-full h-full object-center object-cover"
-                  style={{ objectPosition: "-1 35%" }}
-                />
-              ) : (
-                <img
-                  src="https://landing-page-images.s3.us-west-004.backblazeb2.com/trina8+(1).jpeg"
-                  alt=""
-                  className="w-full h-full object-center object-cover"
-                  style={{ objectPosition: "0 42%" }}
-                />
-              )}
-            </div>
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gray-900 bg-opacity-50"
-            />
-            <div className="relative max-w-3xl mx-auto flex flex-col items-center text-center">
-              <h2
-                id="cause-heading"
-                className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl"
-              >
-                Making wigs from my heart
-              </h2>
-              <p className="mt-3 text-xl text-white">
-                Something something I&apos;m passionate about making wigs.
-                I&apos;ve being making them for so long. I&apos;m a genius at
-                making wigs. It all started when ... Wigs is my life. So and so
-                can vouch for me
-              </p>
-              <a
-                href="/read_our_story"
-                className="mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-              >
-                Read my story
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* Patricia section */}
-        <section
-          aria-labelledby="featured-heading"
-          className="relative my-16 mx-10 rounded-lg overflow-hidden lg:h-96"
-        >
-          <div className="absolute inset-0">
-            <img
-              src="https://shopping-page.s3.us-west-004.backblazeb2.com/sonia-roselli-tWng4d9Njxo-unsplash.jpeg"
-              alt=""
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
-          <div aria-hidden="true" className="relative w-full h-96 lg:hidden" />
-          <div aria-hidden="true" className="relative w-full h-32 lg:hidden" />
-          <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 p-6 rounded-bl-lg rounded-br-lg backdrop-filter backdrop-blur sm:flex sm:items-center sm:justify-between lg:inset-y-0 lg:inset-x-auto lg:w-96 lg:rounded-tl-lg lg:rounded-br-none lg:flex-col lg:items-start">
-            <div>
-              <h2
-                id="featured-heading"
-                className="text-xl font-bold text-white"
-              >
-                TNC Lovely
-              </h2>
-              <p className="mt-1 text-sm text-gray-300">
-                We&apos;ve partnered with TNC Lovely Company to bring you
-                essential oils for your daily needs. Something something
-                something buy them
-              </p>
-            </div>
-            <a
-              href="/shop-patricia"
-              className="mt-6 flex-shrink-0 flex bg-white bg-opacity-0 py-3 px-4 border border-white border-opacity-25 rounded-md items-center justify-center text-base font-medium text-white hover:bg-opacity-10 sm:mt-0 sm:ml-8 lg:ml-0 lg:w-full"
-            >
-              View the collection
-            </a>
-          </div>
-        </section>
+        {/* <section */}
+        {/*  aria-labelledby="featured-heading" */}
+        {/*  className="relative my-16 mx-10 rounded-lg overflow-hidden lg:h-96" */}
+        {/* > */}
+        {/*  <div className="absolute inset-0"> */}
+        {/*    <img */}
+        {/*      src="https://shopping-page.s3.us-west-004.backblazeb2.com/sonia-roselli-tWng4d9Njxo-unsplash.jpeg" */}
+        {/*      alt="" */}
+        {/*      className="w-full h-full object-center object-cover" */}
+        {/*    /> */}
+        {/*  </div> */}
+        {/*  <div aria-hidden="true" className="relative w-full h-96 lg:hidden" /> */}
+        {/*  <div aria-hidden="true" className="relative w-full h-32 lg:hidden" /> */}
+        {/*  <div className="absolute inset-x-0 bottom-0 bg-black bg-opacity-75 p-6 rounded-bl-lg rounded-br-lg backdrop-filter backdrop-blur sm:flex sm:items-center sm:justify-between lg:inset-y-0 lg:inset-x-auto lg:w-96 lg:rounded-tl-lg lg:rounded-br-none lg:flex-col lg:items-start"> */}
+        {/*    <div> */}
+        {/*      <h2 */}
+        {/*        id="featured-heading" */}
+        {/*        className="text-xl font-bold text-white" */}
+        {/*      > */}
+        {/*        TNC Lovely */}
+        {/*      </h2> */}
+        {/*      <p className="mt-1 text-sm text-gray-300"> */}
+        {/*        We&apos;ve partnered with TNC Lovely Company to bring you */}
+        {/*        essential oils for your daily needs. Something something */}
+        {/*        something buy them */}
+        {/*      </p> */}
+        {/*    </div> */}
+        {/*    <a */}
+        {/*      href="/shop-patricia" */}
+        {/*      className="mt-6 flex-shrink-0 flex bg-white bg-opacity-0 py-3 px-4 border border-white border-opacity-25 rounded-md items-center justify-center text-base font-medium text-white hover:bg-opacity-10 sm:mt-0 sm:ml-8 lg:ml-0 lg:w-full" */}
+        {/*    > */}
+        {/*      View the collection */}
+        {/*    </a> */}
+        {/*  </div> */}
+        {/* </section> */}
 
         {/* CTA section */}
         <section aria-labelledby="sale-heading">

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const frontalImagesType = PropTypes.objectOf(
+export const accessoryImagesType = PropTypes.objectOf(
   PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -10,7 +10,7 @@ export const frontalImagesType = PropTypes.objectOf(
   )
 );
 
-export const frontalType = PropTypes.shape({
+export const accessoryType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   key: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -22,7 +22,7 @@ export const frontalType = PropTypes.shape({
     PropTypes.objectOf(PropTypes.objectOf(PropTypes.number))
   ).isRequired,
   texture: PropTypes.objectOf(PropTypes.string).isRequired,
-  images: frontalImagesType.isRequired,
+  images: accessoryImagesType.isRequired,
   additionalImages: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,

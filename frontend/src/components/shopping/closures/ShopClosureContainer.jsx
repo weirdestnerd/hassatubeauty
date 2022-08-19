@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import closures from "../../../constants/closures";
 import LoadingPage from "../../LoadingPage";
 import NotFound from "../../NotFound";
 import Shop from "./Shop";
+import { getProduct } from "../../../firebase";
+import RollbarError from "../../../helpers/Rollbar";
 
 function ShopClosureContainer() {
   const { closure } = useParams();
@@ -11,10 +12,10 @@ function ShopClosureContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (Object.keys(closures).includes(closure)) {
-      setProduct(closures[closure]);
-      setLoading(false);
-    }
+    getProduct(closure, "closures")
+      .then(setProduct)
+      .catch(RollbarError)
+      .finally(() => setLoading(false));
   }, [closure]);
 
   if (loading) return <LoadingPage />;
