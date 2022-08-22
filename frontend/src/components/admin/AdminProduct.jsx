@@ -190,11 +190,9 @@ function AdminProduct({ isEdit, product }) {
     let actions;
 
     if (product.type !== data.type) {
+      actions = [deleteInventoryProduct(data.id, product.type)];
       delete data.id;
-      actions = [
-        deleteInventoryProduct(data.id, product.type),
-        addInventoryProduct(data),
-      ];
+      actions.push(addInventoryProduct(data));
     } else {
       actions = isEdit
         ? [updateInventoryProduct(product, data)]
