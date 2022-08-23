@@ -28,6 +28,8 @@ const calculatePriceRange = (product) => {
   const startingPrice = Math.min(...minMaxPrices);
   const highestPrice = Math.max(...minMaxPrices);
 
+  if (startingPrice === highestPrice) return `$${startingPrice}`;
+
   return `$${startingPrice} - $${highestPrice}`;
 };
 

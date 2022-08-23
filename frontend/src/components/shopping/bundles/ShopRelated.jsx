@@ -19,7 +19,8 @@ function ShopRelated({ bundleKey }) {
       .map((otherBundle) => availableBundles[otherBundle]);
   };
 
-  if (!availableBundles) return null;
+  if (!availableBundles || Object.keys(availableBundles).length === 0)
+    return null;
 
   return (
     <section

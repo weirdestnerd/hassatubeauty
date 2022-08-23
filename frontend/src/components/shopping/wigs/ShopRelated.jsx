@@ -19,7 +19,7 @@ function ShopRelated({ wigKey }) {
       .map((otherWig) => availableWigs[otherWig]);
   };
 
-  if (!availableWigs) return null;
+  if (!availableWigs || Object.keys(availableWigs).length === 0) return null;
 
   return (
     <section

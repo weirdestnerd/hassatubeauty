@@ -19,7 +19,8 @@ function ShopRelated({ frontalKey }) {
       .map((otherFrontal) => availableFrontals[otherFrontal]);
   };
 
-  if (!availableFrontals) return null;
+  if (!availableFrontals || Object.keys(availableFrontals).length === 0)
+    return null;
 
   return (
     <section

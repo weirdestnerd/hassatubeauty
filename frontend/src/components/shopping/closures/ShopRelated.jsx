@@ -19,7 +19,8 @@ function ShopRelated({ closureKey }) {
       .map((otherClosure) => availableClosures[otherClosure]);
   };
 
-  if (!availableClosures) return null;
+  if (!availableClosures || Object.keys(availableClosures).length === 0)
+    return null;
 
   return (
     <section
