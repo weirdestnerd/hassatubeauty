@@ -137,6 +137,7 @@ function Navbar() {
       { name: "Bundles", href: "/shop-bundles" },
       { name: "Frontals", href: "/shop-frontals" },
       { name: "Closures", href: "/shop-closures" },
+      { name: "Accessories", href: "/shop-accessories" },
       // { name: "Deals", href: "/shop-closures" },
       // { name: "My Story", href: "/my-story" },
       // { name: "Shipping Policy", href: "/shipping-policy" },
