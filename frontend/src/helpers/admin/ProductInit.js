@@ -21,7 +21,7 @@ export const initTextures = (product) => {
 };
 
 export const initPricing = (product) => {
-  const initialPricing = {
+  let initialPricing = {
     hd: {
       straight: [
         {
@@ -32,6 +32,8 @@ export const initPricing = (product) => {
     },
   };
   if (!product || product === {}) return initialPricing;
+
+  initialPricing = {};
 
   if (Object.keys(product.laces).length === 0) {
     Object.keys(product.pricing).forEach((k) => {
