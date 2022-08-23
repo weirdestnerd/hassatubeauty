@@ -23,9 +23,12 @@ export const initTextures = (product) => {
 export const initPricing = (product) => {
   const initialPricing = {
     hd: {
-      straight: {
-        10: 0,
-      },
+      straight: [
+        {
+          length: 10,
+          price: 0,
+        },
+      ],
     },
   };
   if (!product || product === {}) return initialPricing;

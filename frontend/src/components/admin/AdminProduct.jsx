@@ -189,7 +189,7 @@ function AdminProduct({ isEdit, product }) {
     const data = asProduct();
     let actions;
 
-    if (product.type !== data.type) {
+    if (!!product && product.type !== data.type) {
       actions = [deleteInventoryProduct(data.id, product.type)];
       delete data.id;
       actions.push(addInventoryProduct(data));
