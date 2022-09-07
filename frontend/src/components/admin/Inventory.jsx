@@ -35,7 +35,7 @@ function Inventory() {
           type="success"
         />
       )}
-      <SideNav />
+      <SideNav activeNav="Inventory" />
       {/* Main column */}
       <div className="lg:pl-64 flex flex-col">
         <main className="h-full flex-auto overflow-y-auto">

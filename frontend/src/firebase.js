@@ -27,6 +27,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import rn from "random-number";
 
 const firebaseConfig = {
@@ -47,6 +48,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const functions = getFunctions(app);
+const storage = getStorage(app);
 
 const signIn = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
@@ -192,6 +194,25 @@ const getAllProducts = async (type) => {
   return result;
 };
 
+const liveGallery = (observer) => {
+  const gallery = collection(db, "image-gallery");
+  onSnapshot(query(gallery), observer);
+};
+
+const uploadToGallery = (file) => {
+  const storageRef = ref(storage, `image-gallery/${file.name}`);
+  return uploadBytes(storageRef, file);
+};
+
+const addToGallery = (filename) => {
+  getDownloadURL(ref(storage, `image-gallery/${filename}`)).then((url) => {
+    return addDoc(collection(db, "image-gallery"), {
+      src: url,
+      title: filename,
+    });
+  });
+};
+
 const getStripeCheckoutUrl = httpsCallable(functions, "getStripeCheckoutUrl");
 const getSession = httpsCallable(functions, "getSession");
 
@@ -216,6 +237,9 @@ export {
   addInventoryProduct,
   getProduct,
   getAllProducts,
+  liveGallery,
+  uploadToGallery,
+  addToGallery,
   getSession,
   getStripeCheckoutUrl,
 };
