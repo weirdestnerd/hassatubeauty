@@ -2,7 +2,8 @@ import React, { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import { HomeIcon, ViewListIcon, XIcon } from "@heroicons/react/outline";
 import classNames from "classnames";
-import { SelectorIcon } from "@heroicons/react/solid";
+import { PhotographIcon, SelectorIcon } from "@heroicons/react/solid";
+import PropTypes from "prop-types";
 import { logOut } from "../../firebase";
 import MobileSideNav from "./MobileSideNav";
 import MiniLogo from "../MiniLogo";
@@ -20,9 +21,15 @@ const navigation = [
     icon: ViewListIcon,
     current: false,
   },
+  {
+    name: "Photos",
+    href: "/admin/photos",
+    icon: PhotographIcon,
+    current: false,
+  },
 ];
 
-function SideNav() {
+function SideNav({ activeNav }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -88,16 +95,18 @@ function SideNav() {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current
+                            activeNav === item.name
                               ? "bg-gray-100 text-gray-900"
                               : "text-gray-600 hover:text-gray-900 hover:bg-gray-50",
                             "group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md"
                           )}
-                          aria-current={item.current ? "page" : undefined}
+                          aria-current={
+                            activeNav === item.name ? "page" : undefined
+                          }
                         >
                           <item.icon
                             className={classNames(
-                              item.current
+                              activeNav === item.name
                                 ? "text-gray-500"
                                 : "text-gray-400 group-hover:text-gray-500",
                               "mr-3 flex-shrink-0 h-6 w-6"
@@ -211,16 +220,16 @@ function SideNav() {
                   key={item.name}
                   href={item.href}
                   className={classNames(
-                    item.current
+                    activeNav === item.name
                       ? "bg-gray-200 text-gray-900"
                       : "text-gray-700 hover:text-gray-900 hover:bg-gray-50",
                     "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={activeNav === item.name ? "page" : undefined}
                 >
                   <item.icon
                     className={classNames(
-                      item.current
+                      activeNav === item.name
                         ? "text-gray-500"
                         : "text-gray-400 group-hover:text-gray-500",
                       "mr-3 flex-shrink-0 h-6 w-6"
@@ -239,5 +248,9 @@ function SideNav() {
     </>
   );
 }
+
+SideNav.propTypes = {
+  activeNav: PropTypes.string.isRequired,
+};
 
 export default SideNav;

@@ -1,14 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import {
-  MinusCircleIcon,
-  TrashIcon,
-  UploadIcon,
-} from "@heroicons/react/outline";
+import { TrashIcon } from "@heroicons/react/outline";
 import { RadioGroup } from "@headlessui/react";
 import rn from "random-number";
 import classNames from "classnames";
-import ImageUploading from "react-images-uploading";
 import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "@heroicons/react/solid";
 import SideNav from "./SideNav";
@@ -27,6 +22,7 @@ import { productType as ProductType } from "../../proptypes/productType";
 import {
   addInventoryProduct,
   deleteInventoryProduct,
+  liveGallery,
   updateInventoryProduct,
 } from "../../firebase";
 import RollbarError from "../../helpers/Rollbar";
@@ -37,6 +33,7 @@ import {
   initTextures,
   initType,
 } from "../../helpers/admin/ProductInit";
+import ProductImages from "./ProductImages";
 
 const showOnSiteOptions = [
   { name: "Show on site", description: "Show this product to customers" },
@@ -68,7 +65,6 @@ function AdminProduct({ isEdit, product }) {
   const [showOnSite, setShowOnSite] = useState(
     !!product && product.show ? showOnSiteOptions[0] : showOnSiteOptions[1]
   );
-  const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [toast, setToast] = useState(null);
   const [details, setDetails] = useState(
@@ -80,6 +76,22 @@ function AdminProduct({ isEdit, product }) {
   const [quickDesc, setQuickDesc] = useState(
     (!!product && product.quickDescription) || ""
   );
+  const [gallery, setGallery] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    liveGallery((querySnapshot) => {
+      setGallery([]);
+      querySnapshot.forEach((doc) => {
+        setGallery((currentPhotos) =>
+          currentPhotos.concat([{ ...doc.data(), id: doc.id, uploaded: true }])
+        );
+      });
+    });
+
+    setLoading(false);
+  }, []);
 
   const navigate = useNavigate();
   const user = useSignedInUser();
@@ -399,100 +411,6 @@ function AdminProduct({ isEdit, product }) {
     );
   };
 
-  const renderImagesSection = () => {
-    const textureImages = images[imagesTexture.value];
-
-    const onChange = (imageList) => {
-      setUploading(true);
-      // eslint-disable-next-line no-param-reassign
-      imageList = imageList.map((i) => {
-        if (i.dataURL) {
-          // TODO: upload image, set image src\
-          setTimeout(() => setUploading(false), 2000);
-          return {
-            ...i,
-            // src: `https://landing-page-images.s3.us-west-004.backblazeb2.com/${i.file.name}.JPG`,
-            src: `https://frontals.s3.us-west-004.backblazeb2.com/1B/IMG_4792.jpeg`,
-            uploaded: true,
-            dataURL: null,
-          };
-        }
-
-        return i;
-      });
-      setImages({ ...images, [`${imagesTexture.value}`]: imageList });
-    };
-
-    return (
-      <ImageUploading
-        multiple
-        value={textureImages || []}
-        onChange={onChange}
-        maxNumber={10}
-      >
-        {({ imageList, onImageUpload, onImageUpdate, onImageRemove }) => (
-          <div className="space-y-3">
-            <div className="mt-1 grid grid-cols-1 gap-x-1 gap-y-2 sm:grid-cols-2 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-2">
-              {imageList.map((image, index) => (
-                <div key={rn()} className="group relative">
-                  <div className="aspect-w-1 aspect-h-1 bg-gray-200 rounded-md overflow-hidden">
-                    <img
-                      src={image.dataURL || image.src}
-                      alt=""
-                      className="w-full object-center object-cover"
-                    />
-                  </div>
-                  <div>
-                    <button
-                      type="button"
-                      className="my-1 mx-1 inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => onImageUpdate(index)}
-                    >
-                      <UploadIcon className="h-5 w-5" />
-                      Update
-                    </button>
-                    <button
-                      type="button"
-                      className="my-1 mx-1 inline-flex items-center p-1 border border-transparent rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      onClick={() => onImageRemove(index)}
-                    >
-                      <MinusCircleIcon className="h-5 w-5" />
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={onImageUpload}
-              type="button"
-              className="relative block border-2 border-gray-300 border-dashed rounded-lg p-5 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              <svg
-                className="mx-auto h-12 w-12 text-gray-400"
-                xmlns="http://www.w3.org/2000/svg"
-                stroke="currentColor"
-                fill="none"
-                viewBox="0 0 48 48"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M8 14v20c0 4.418 7.163 8 16 8 1.381 0 2.721-.087 4-.252M8 14c0 4.418 7.163 8 16 8s16-3.582 16-8M8 14c0-4.418 7.163-8 16-8s16 3.582 16 8m0 0v14m0-4c0 4.418-7.163 8-16 8S8 28.418 8 24m32 10v6m0 0v6m0-6h6m-6 0h-6"
-                />
-              </svg>
-              <span className="mt-2 block text-sm font-medium text-gray-900">
-                Upload new image
-              </span>
-            </button>
-          </div>
-        )}
-      </ImageUploading>
-    );
-  };
-
   return (
     <div className="min-h-full">
       {loading && <LoadingOverlay />}
@@ -505,9 +423,8 @@ function AdminProduct({ isEdit, product }) {
         />
       )}
 
-      <SideNav />
+      <SideNav activeNav="Inventory" />
 
-      {uploading && <LoadingOverlay />}
       <main className="max-w-lg mx-auto pt-10 pb-12 px-4 lg:pb-16">
         <div className="space-y-6">
           <div>
@@ -656,7 +573,14 @@ function AdminProduct({ isEdit, product }) {
               )}
             </div>
           </div>
-          {imagesTexture && renderImagesSection(imagesTexture)}
+          {imagesTexture && (
+            <ProductImages
+              setImages={setImages}
+              imagesTexture={imagesTexture}
+              images={images}
+              gallery={gallery}
+            />
+          )}
 
           <Divider />
 
@@ -667,7 +591,7 @@ function AdminProduct({ isEdit, product }) {
           </div>
           {details.map((d, ind) => {
             return (
-              <div className="space-y-2">
+              <div className="space-y-2" key={rn()}>
                 <div className="flex items-stretch gap-1">
                   <label
                     htmlFor={d.name}

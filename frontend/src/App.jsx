@@ -21,6 +21,7 @@ import AdminProduct from "./components/admin/AdminProduct";
 import AdminProductContainer from "./components/admin/AdminProductContainer";
 import ShopAllAccessories from "./components/shopping/accessories/ShopAllAccessories";
 import ShopAccessoryContainer from "./components/shopping/accessories/ShopAccessoryContainer";
+import ImageGallery from "./components/admin/ImageGallery";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
       <Route path="/ordered" element={<OrderDetails />} />
       <Route path="/admin" element={<Inventory />} />
       <Route path="/admin/inventory" element={<Inventory />} />
+      <Route path="/admin/photos" element={<ImageGallery />} />
       <Route path="/admin/:type/:id" element={<AdminProductContainer />} />
       <Route
         path="/admin/products/new"
