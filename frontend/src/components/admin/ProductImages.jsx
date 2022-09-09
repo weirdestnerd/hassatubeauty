@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Divider from "../common/Divider";
 
 function ProductImages({ imagesTexture, images, setImages, gallery }) {
-  const textureImages = images[imagesTexture.value];
+  const textureImages = images[imagesTexture.value] || [];
 
   const onImageRemove = (index) => {
     const newImages = [
