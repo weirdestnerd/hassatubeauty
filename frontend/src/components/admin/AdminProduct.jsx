@@ -123,6 +123,7 @@ function AdminProduct({ isEdit, product }) {
       "26",
       "28",
       "30",
+      "40",
     ];
     const selectedLengths = nPrices.map((e) => e.length);
     return lengths
