@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
-import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 import { getAllProducts } from "../../../firebase";
 import RollbarError from "../../../helpers/Rollbar";
@@ -69,7 +68,7 @@ function ShopAllAccessories() {
 
                     <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
                       <h3>{accessory.name}</h3>
-                      <p>{calculatePriceRange(accessory)}</p>
+                      <p>{accessory.pricing}</p>
                     </div>
                     <p className="mt-1 text-sm italic text-gray-500">
                       Fully customizable

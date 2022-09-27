@@ -2,8 +2,15 @@ import React from "react";
 import { productImageType } from "../../proptypes/productType";
 
 function ProductImage({ productImages }) {
-  const firstImageKey = Object.keys(productImages)[0];
-  const firstImage = productImages[firstImageKey][0];
+  let firstImage;
+  if (Array.isArray(productImages)) {
+    const firstIndex = 0;
+    firstImage = productImages[firstIndex];
+  } else {
+    const firstImageKey = Object.keys(productImages)[0];
+    const firstIndex = 0;
+    firstImage = productImages[firstImageKey][firstIndex];
+  }
 
   return (
     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
