@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { calculatePriceRange } from "../../../helpers/utils";
 import ProductImage from "../ProductImage";
 import { getAllProducts } from "../../../firebase";
 import RollbarError from "../../../helpers/Rollbar";
@@ -25,7 +24,7 @@ function ShopRelated({ accessoryKey }) {
   return (
     <section
       aria-labelledby="related-heading"
-      className="mt-10 border-t border-gray-200 py-16 px-4 sm:px-0"
+      className="mt-10 border-t border-gray-200 py-16z px-4 sm:px-0"
     >
       <h2 id="related-heading" className="text-xl font-bold text-gray-900">
         Other accessories we have
@@ -44,7 +43,8 @@ function ShopRelated({ accessoryKey }) {
                     {accessory.name}
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">
-                    {calculatePriceRange(accessory)}
+                    {/* TODO */}
+                    {/* ${accessory.pricing} */}
                   </p>
                 </div>
                 <div className="absolute top-0 inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">

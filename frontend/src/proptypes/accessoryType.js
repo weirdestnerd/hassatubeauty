@@ -1,13 +1,11 @@
 import PropTypes from "prop-types";
 
-export const accessoryImagesType = PropTypes.objectOf(
-  PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      src: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired,
-    })
-  )
+export const accessoryImagesType = PropTypes.arrayOf(
+  PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+  })
 );
 
 export const accessoryType = PropTypes.shape({
@@ -18,9 +16,7 @@ export const accessoryType = PropTypes.shape({
   show: PropTypes.bool.isRequired,
   href: PropTypes.string.isRequired,
   laces: PropTypes.objectOf(PropTypes.string).isRequired,
-  pricing: PropTypes.objectOf(
-    PropTypes.objectOf(PropTypes.objectOf(PropTypes.number))
-  ).isRequired,
+  pricing: PropTypes.number.isRequired,
   texture: PropTypes.objectOf(PropTypes.string).isRequired,
   images: accessoryImagesType.isRequired,
   additionalImages: PropTypes.arrayOf(

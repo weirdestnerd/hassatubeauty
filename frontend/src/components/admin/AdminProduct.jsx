@@ -52,6 +52,9 @@ function AdminProduct({ isEdit, product }) {
   const [textures, setTextures] = useState(initTextures(product));
 
   const [pricing, setPricing] = useState(initPricing(product));
+  const [plainPricing, setPlainPricing] = useState(
+    productType.value === "accessories" ? product.pricing : ""
+  );
   const [images, setImages] = useState((!!product && product.images) || {});
   const [pricingLace, setPricingLace] = useState(
     laces.length !== 0 ? laces[0] : null
@@ -143,6 +146,7 @@ function AdminProduct({ isEdit, product }) {
     };
 
     const convertPricing = () => {
+      if (productType.value === "accessories") return plainPricing;
       const r = {};
       // eslint-disable-next-line no-unused-expressions
       noLace()
@@ -277,6 +281,43 @@ function AdminProduct({ isEdit, product }) {
     setFeatures(features.slice(0, ind).concat([u], features.slice(ind + 1)));
   };
 
+  const renderPlainPricing = () => {
+    return (
+      <div className="w-full flex mt-10 items-stretch gap-1">
+        <div className="self-stretch">
+          <label
+            htmlFor="price"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Price
+            <div className="mt-1 relative rounded-md shadow-sm">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <span className="text-gray-500 sm:text-sm">$</span>
+              </div>
+              <input
+                type="number"
+                name="price"
+                id="price"
+                className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                placeholder="0.00"
+                aria-describedby="price-currency"
+                value={plainPricing}
+                onChange={(e) => {
+                  setPlainPricing(e.target.value);
+                }}
+              />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <span className="text-gray-500 sm:text-sm" id="price-currency">
+                  USD
+                </span>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    );
+  };
+
   const renderPricingRow = (
     prices,
     eachPrice,
@@ -388,6 +429,7 @@ function AdminProduct({ isEdit, product }) {
   };
 
   const renderPricingSection = () => {
+    if (productType.value === "accessories") return renderPlainPricing();
     if (textures.length === 0) return null;
     const pLace = (!!pricingLace && pricingLace.value) || null;
     const pTexture = pricingTexture.value || null;
@@ -405,6 +447,38 @@ function AdminProduct({ isEdit, product }) {
 
     return (
       <>
+        <div className="grid gap-1 grid-cols-2">
+          <div className="grid-col-2">
+            {laces.length === 0 ? (
+              <div className="block text-sm font-medium text-gray-700">
+                Lace
+                <p className="py-3 pl-4">No lace</p>
+              </div>
+            ) : (
+              <ListboxSelect
+                values={laces}
+                setSelectedValue={setPricingLace}
+                selectedValue={pricingLace}
+                label="Lace"
+              />
+            )}
+          </div>
+          <div className="grid-col-2">
+            {textures.length === 0 ? (
+              <div className="block text-sm font-medium text-gray-700">
+                Texture
+                <p className="py-3 pl-4">Select textures above</p>
+              </div>
+            ) : (
+              <ListboxSelect
+                values={textures}
+                setSelectedValue={setPricingTexture}
+                selectedValue={pricingTexture}
+                label="Texture"
+              />
+            )}
+          </div>
+        </div>
         {rows}
         {availableLengths(prices).length !== 0 &&
           renderPricingRow(prices, null, pTexture, pLace, 0, true)}
@@ -514,38 +588,6 @@ function AdminProduct({ isEdit, product }) {
           <div>
             <p className="block text-sm font-medium text-gray-700">Pricing</p>
           </div>
-          <div className="grid gap-1 grid-cols-2">
-            <div className="grid-col-2">
-              {laces.length === 0 ? (
-                <div className="block text-sm font-medium text-gray-700">
-                  Lace
-                  <p className="py-3 pl-4">No lace</p>
-                </div>
-              ) : (
-                <ListboxSelect
-                  values={laces}
-                  setSelectedValue={setPricingLace}
-                  selectedValue={pricingLace}
-                  label="Lace"
-                />
-              )}
-            </div>
-            <div className="grid-col-2">
-              {textures.length === 0 ? (
-                <div className="block text-sm font-medium text-gray-700">
-                  Texture
-                  <p className="py-3 pl-4">Select textures above</p>
-                </div>
-              ) : (
-                <ListboxSelect
-                  values={textures}
-                  setSelectedValue={setPricingTexture}
-                  selectedValue={pricingTexture}
-                  label="Texture"
-                />
-              )}
-            </div>
-          </div>
 
           {renderPricingSection()}
 
@@ -555,33 +597,34 @@ function AdminProduct({ isEdit, product }) {
           <div>
             <p className="block text-sm font-medium text-gray-700">Images</p>
           </div>
-          <div className="w-full flex mt-10 items-stretch gap-1">
-            <div className="basis-full self-stretch">
-              {textures.length === 0 ? (
-                <div className="block text-sm font-medium text-gray-700">
-                  Texture
-                  <p className="py-3 pl-4">
-                    Select textures above to add images
-                  </p>
-                </div>
-              ) : (
-                <ListboxSelect
-                  values={textures}
-                  setSelectedValue={setImagesTexture}
-                  selectedValue={imagesTexture}
-                  label="Texture"
-                />
-              )}
+          {productType.value !== "accessories" && (
+            <div className="w-full flex mt-10 items-stretch gap-1">
+              <div className="basis-full self-stretch">
+                {textures.length === 0 ? (
+                  <div className="block text-sm font-medium text-gray-700">
+                    Texture
+                    <p className="py-3 pl-4">
+                      Select textures above to add images
+                    </p>
+                  </div>
+                ) : (
+                  <ListboxSelect
+                    values={textures}
+                    setSelectedValue={setImagesTexture}
+                    selectedValue={imagesTexture}
+                    label="Texture"
+                  />
+                )}
+              </div>
             </div>
-          </div>
-          {imagesTexture && (
-            <ProductImages
-              setImages={setImages}
-              imagesTexture={imagesTexture}
-              images={images}
-              gallery={gallery}
-            />
           )}
+          <ProductImages
+            setImages={setImages}
+            imagesTexture={imagesTexture}
+            images={images}
+            gallery={gallery}
+            productType={productType.value}
+          />
 
           <Divider />
 

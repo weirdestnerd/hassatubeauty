@@ -49,6 +49,20 @@ const selectedImages = (product, selectedTexture) => {
     : product.images[selectedTexture];
 };
 
+const accessoryImages = (product) => {
+  if (product.images.length === 0) {
+    return [
+      {
+        src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+        alt: "",
+        styling: {},
+      },
+    ];
+  }
+
+  return product.images;
+};
+
 const lacesExists = (product) => Object.keys(product.laces).length > 0;
 
 const disabledButtonClassName = (classname, disabled) =>
@@ -61,4 +75,5 @@ export {
   selectedImages,
   lacesExists,
   disabledButtonClassName,
+  accessoryImages,
 };

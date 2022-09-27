@@ -1,25 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../../navbar/Navbar";
 import Footer from "../../footer/Footer";
 import ProductFeatures from "../ProductFeatures";
 import ProductDetails from "../ProductDetails";
-import { calculatePriceRange, selectedImages } from "../../../helpers/utils";
+import { accessoryImages } from "../../../helpers/utils";
 import ShopRelated from "./ShopRelated";
-import ProductCustomization from "../ProductCustomization";
 import ProductImageGallery from "../ProductImageGallery";
 import { accessoryType } from "../../../proptypes/accessoryType";
+import ProductPurchase from "../ProductPurchase";
 
 function Shop({ accessory }) {
-  const [texture, setTexture] = useState(null);
-  const [imageGallery, setImageGallery] = useState(
-    selectedImages(accessory, null)
-  );
-
-  const onTextureChange = (selectedTexture) => {
-    setTexture(selectedTexture);
-    setImageGallery(selectedImages(accessory, selectedTexture));
-  };
-
   return (
     <div className="bg-white">
       <Navbar />
@@ -27,7 +17,7 @@ function Shop({ accessory }) {
       <main className="max-w-7xl mx-auto sm:pt-16 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto lg:max-w-none">
           <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">
-            <ProductImageGallery product={accessory} images={imageGallery} />
+            <ProductImageGallery images={accessoryImages(accessory)} />
 
             {/* Product info */}
             <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
@@ -38,7 +28,7 @@ function Shop({ accessory }) {
               <div className="mt-3">
                 <h2 className="sr-only">Product information</h2>
                 <p className="text-3xl text-gray-900">
-                  {calculatePriceRange(accessory)} per accessory
+                  ${accessory.pricing} each
                 </p>
               </div>
 
@@ -50,11 +40,7 @@ function Shop({ accessory }) {
                 </div>
               </div>
 
-              <ProductCustomization
-                product={accessory}
-                texture={texture}
-                setTexture={onTextureChange}
-              />
+              <ProductPurchase product={accessory} />
 
               <ProductDetails product={accessory} />
             </div>

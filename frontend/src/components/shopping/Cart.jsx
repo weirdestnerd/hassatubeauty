@@ -83,6 +83,19 @@ function Cart({ userUid, open, setOpen }) {
       .catch(RollbarError);
   };
 
+  const getProductImage = (product, productInfo) => {
+    const images = !productInfo.texture
+      ? product.images[0]
+      : product.images[productInfo.texture][0];
+
+    if (images) return images[0];
+
+    return {
+      src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+      alt: "",
+    };
+  };
+
   const startStripeCheckout = () => {
     if (shoppingCart.length === 0) return;
 
@@ -90,17 +103,19 @@ function Cart({ userUid, open, setOpen }) {
 
     const products =
       cartProducts &&
-      cartProducts.map((product) => {
-        const productInfo = shoppingCart.find(
-          (sc) => sc.productId === product.id
+      shoppingCart.map((productInfo) => {
+        const product = cartProducts.find(
+          (cp) => cp.id === productInfo.productId
         );
-        const description = [
-          product.textures[productInfo.texture],
-          lacesExists(product) && product.laces[productInfo.lace],
-          `${productInfo.hairLength}"`,
-        ].join(" - ");
+        const description = productInfo.quantity
+          ? `Quantity - ${productInfo.quantity}`
+          : [
+              product.textures[productInfo.texture],
+              lacesExists(product) && product.laces[productInfo.lace],
+              `${productInfo.hairLength}"`,
+            ].join(" - ");
 
-        const image = product.images[productInfo.texture][0].src;
+        const image = getProductImage(product, productInfo).src;
 
         return {
           name: product.name,
@@ -127,6 +142,13 @@ function Cart({ userUid, open, setOpen }) {
   };
 
   const renderCustomization = (productInfo, product) => {
+    if (productInfo.quantity)
+      return (
+        <p className="mt-1 text-sm text-gray-500">
+          Quantity - {productInfo.quantity}
+        </p>
+      );
+
     const content = [
       product.textures[productInfo.texture],
       lacesExists(product) && product.laces[productInfo.lace],
@@ -186,15 +208,15 @@ function Cart({ userUid, open, setOpen }) {
 
     return (
       cartProducts &&
-      cartProducts.map((product) => {
-        const productInfo = shoppingCart.find(
-          (sc) => sc.productId === product.id
+      shoppingCart.map((productInfo) => {
+        const product = cartProducts.find(
+          (cp) => cp.id === productInfo.productId
         );
         return (
           <li key={rn()} className="flex py-6">
             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
               <SingleProductImage
-                image={product.images[productInfo.texture][0]}
+                image={getProductImage(product, productInfo)}
               />
             </div>
 

@@ -3,29 +3,40 @@ import { MinusCircleIcon } from "@heroicons/react/outline";
 import PropTypes from "prop-types";
 import Divider from "../common/Divider";
 
-function ProductImages({ imagesTexture, images, setImages, gallery }) {
-  const textureImages = images[imagesTexture.value] || [];
+function ProductImages({
+  imagesTexture,
+  images,
+  setImages,
+  gallery,
+  productType,
+}) {
+  const pImages =
+    (productType === "accessories" ? images : images[imagesTexture.value]) ||
+    [];
 
   const onImageRemove = (index) => {
-    const newImages = [
-      ...textureImages.slice(0, index),
-      ...textureImages.slice(index + 1),
-    ];
-    setImages({ ...images, [`${imagesTexture.value}`]: [...newImages] });
+    const newImages = [...pImages.slice(0, index), ...pImages.slice(index + 1)];
+    // eslint-disable-next-line no-unused-expressions
+    productType === "accessories"
+      ? setImages(newImages)
+      : setImages({ ...images, [`${imagesTexture.value}`]: [...newImages] });
   };
 
   const onImageAdd = (src) => {
-    textureImages.push({ src });
-    setImages({
-      ...images,
-      [`${imagesTexture.value}`]: [...textureImages],
-    });
+    pImages.push({ src });
+    // eslint-disable-next-line no-unused-expressions
+    productType === "accessories"
+      ? setImages(pImages)
+      : setImages({
+          ...images,
+          [`${imagesTexture.value}`]: [...pImages],
+        });
   };
 
   return (
     <div className="space-y-3">
       <div className="mt-1 overflow-scroll max-h-80 grid grid-cols-2 gap-x-1 gap-y-2 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-2">
-        {textureImages.map((image, index) => (
+        {pImages.map((image, index) => (
           <div key={image.src} className="group relative">
             <div className="aspect-w-1 aspect-h-1 bg-gray-200 rounded-md overflow-hidden">
               <img
@@ -77,6 +88,7 @@ ProductImages.propTypes = {
   images: PropTypes.shape({}).isRequired,
   setImages: PropTypes.func.isRequired,
   gallery: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  productType: PropTypes.string.isRequired,
 };
 
 export default ProductImages;
