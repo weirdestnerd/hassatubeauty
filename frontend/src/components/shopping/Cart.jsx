@@ -88,7 +88,7 @@ function Cart({ userUid, open, setOpen }) {
       ? product.images[0]
       : product.images[productInfo.texture][0];
 
-    if (images) return images[0];
+    if (images) return images;
 
     return {
       src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
