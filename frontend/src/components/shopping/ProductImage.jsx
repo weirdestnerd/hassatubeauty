@@ -12,6 +12,12 @@ function ProductImage({ productImages }) {
     firstImage = productImages[firstImageKey][firstIndex];
   }
 
+  if (!firstImage)
+    firstImage = {
+      src: "https://landing-page-images.s3.us-west-004.backblazeb2.com/No_image_available.svg.png",
+      alt: "",
+    };
+
   return (
     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-3">
       <img
